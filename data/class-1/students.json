@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "陈思绮",
+    "gender": "女",
+    "university": "南京大学",
+    "major": "法学",
+    "phone": "13812345678",
+    "qq": "123456789",
+    "wechat": "chensiqi2026",
+    "email": "chen@example.com",
+    "birthday": "03-15",
+    "hobby": "阅读、钢琴",
+    "motto": "星光不问赶路人"
+  },
+  {
+    "id": 2,
+    "name": "陈浩然",
+    "gender": "男",
+    "university": "东南大学",
+    "major": "计算机科学与技术",
+    "phone": "13987654321",
+    "qq": "987654321",
+    "wechat": "chenhaoran",
+    "email": "haoran@example.com",
+    "birthday": "07-22",
+    "hobby": "篮球、编程",
+    "motto": "代码改变世界"
+  },
+  {
+    "id": 8,
+    "name": "赵文博",
+    "gender": "男",
+    "university": "南京航空航天大学",
+    "major": "飞行器设计",
+    "phone": "13200001111",
+    "qq": "369258147",
+    "wechat": "zhaowenbo",
+    "email": "wenbo@example.com",
+    "birthday": "08-30",
+    "hobby": "航模、摄影",
+    "motto": "志在蓝天"
+  },
+  {
+    "id": 4,
+    "name": "王雨萱",
+    "gender": "女",
+    "university": "苏州大学",
+    "major": "汉语言文学",
+    "phone": "13633334444",
+    "qq": "789123456",
+    "wechat": "wangyuxuan",
+    "email": "yuxuan@example.com",
+    "birthday": "05-20",
+    "hobby": "写作、绘画",
+    "motto": "以梦为马"
+  }
+]
