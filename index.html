@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>前黄2026届同学录 · 青春纪念册</title>
+    <title>同学录 · 青春纪念册</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,41 +19,34 @@
             --text-primary: #1e293b;
             --text-secondary: #64748b;
             --text-muted: #94a3b8;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.05);
+            --shadow-hover: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.05);
             --radius: 16px;
             --radius-sm: 8px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --glass: blur(12px) saturate(180%);
-            --input-bg: rgba(255, 255, 255, 0.6);
+            --input-bg: rgba(255,255,255,0.6);
             --danger: #ef4444;
             --success: #22c55e;
             --warning: #f59e0b;
         }
-
         [data-theme="dark"] {
             --primary: #60a5fa;
             --primary-hover: #3b82f6;
-            --primary-light: rgba(96, 165, 250, 0.15);
+            --primary-light: rgba(96,165,250,0.15);
             --bg-color: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --card-border: rgba(255, 255, 255, 0.08);
+            --card-bg: rgba(30,41,59,0.7);
+            --card-border: rgba(255,255,255,0.08);
             --text-primary: #f1f5f9;
             --text-secondary: #94a3b8;
             --text-muted: #64748b;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
-            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
-            --input-bg: rgba(30, 41, 59, 0.6);
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -2px rgba(0,0,0,0.2);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4), 0 4px 6px -4px rgba(0,0,0,0.3);
+            --shadow-hover: 0 20px 25px -5px rgba(0,0,0,0.5), 0 8px 10px -6px rgba(0,0,0,0.4);
+            --input-bg: rgba(30,41,59,0.6);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
             background: var(--bg-color);
@@ -62,2080 +55,1169 @@
             transition: var(--transition);
             overflow-x: hidden;
         }
-
         .bg-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.4;
-            transition: var(--transition);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            opacity: 0.4; transition: var(--transition);
         }
-
-        .bg-pattern.gradient-1 {
-            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 50%, #f0e9ff 100%);
-        }
-        .bg-pattern.gradient-2 {
-            background: linear-gradient(135deg, #fef3c7 0%, #fce7f3 50%, #e0e7ff 100%);
-        }
-        .bg-pattern.gradient-3 {
-            background: linear-gradient(135deg, #d1fae5 0%, #ccfbf1 50%, #e0f2fe 100%);
-        }
-        .bg-pattern.gradient-4 {
-            background: linear-gradient(135deg, #fee2e2 0%, #ffedd5 50%, #fef9c3 100%);
-        }
-
-        [data-theme="dark"] .bg-pattern.gradient-1 {
-            background: linear-gradient(135deg, #0c4a6e 0%, #1e3a5f 50%, #312e81 100%);
-        }
-        [data-theme="dark"] .bg-pattern.gradient-2 {
-            background: linear-gradient(135deg, #713f12 0%, #701a75 50%, #3730a3 100%);
-        }
-        [data-theme="dark"] .bg-pattern.gradient-3 {
-            background: linear-gradient(135deg, #064e3b 0%, #134e4a 50%, #0c4a6e 100%);
-        }
-        [data-theme="dark"] .bg-pattern.gradient-4 {
-            background: linear-gradient(135deg, #7f1d1d 0%, #7c2d12 50%, #713f12 100%);
-        }
-
+        .bg-pattern.gradient-1 { background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 50%, #f0e9ff 100%); }
+        .bg-pattern.gradient-2 { background: linear-gradient(135deg, #fef3c7 0%, #fce7f3 50%, #e0e7ff 100%); }
+        .bg-pattern.gradient-3 { background: linear-gradient(135deg, #d1fae5 0%, #ccfbf1 50%, #e0f2fe 100%); }
+        .bg-pattern.gradient-4 { background: linear-gradient(135deg, #fee2e2 0%, #ffedd5 50%, #fef9c3 100%); }
+        [data-theme="dark"] .bg-pattern.gradient-1 { background: linear-gradient(135deg, #0c4a6e 0%, #1e3a5f 50%, #312e81 100%); }
+        [data-theme="dark"] .bg-pattern.gradient-2 { background: linear-gradient(135deg, #713f12 0%, #701a75 50%, #3730a3 100%); }
+        [data-theme="dark"] .bg-pattern.gradient-3 { background: linear-gradient(135deg, #064e3b 0%, #134e4a 50%, #0c4a6e 100%); }
+        [data-theme="dark"] .bg-pattern.gradient-4 { background: linear-gradient(135deg, #7f1d1d 0%, #7c2d12 50%, #713f12 100%); }
         .bg-pattern::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background-image: radial-gradient(circle at 1px 1px, rgba(59,130,246,0.15) 1px, transparent 0);
             background-size: 40px 40px;
         }
-
         header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: sticky; top: 0; z-index: 100;
             backdrop-filter: var(--glass);
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255,255,255,0.7);
             border-bottom: 1px solid var(--card-border);
             transition: var(--transition);
         }
-
-        [data-theme="dark"] header {
-            background: rgba(15, 23, 42, 0.7);
-        }
-
+        [data-theme="dark"] header { background: rgba(15,23,42,0.7); }
         .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            max-width: 1400px; margin: 0 auto; padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem;
         }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
+        .brand { display: flex; align-items: center; gap: 0.75rem; }
         .brand-icon {
-            width: 48px;
-            height: 48px;
+            width: 48px; height: 48px;
             background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.3);
         }
-
         .brand-text h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.5rem; font-weight: 700;
             background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; letter-spacing: -0.5px;
         }
-
-        .brand-text p {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-top: -2px;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .search-box {
-            position: relative;
-        }
-
+        .brand-text p { font-size: 0.875rem; color: var(--text-secondary); margin-top: -2px; }
+        .header-actions { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+        .search-box { position: relative; }
         .search-box input {
-            width: 280px;
-            padding: 0.625rem 1rem 0.625rem 2.5rem;
-            border: 1px solid var(--card-border);
-            border-radius: 100px;
-            background: var(--input-bg);
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 0.875rem;
-            backdrop-filter: blur(8px);
-            transition: var(--transition);
-            outline: none;
+            width: 280px; padding: 0.625rem 1rem 0.625rem 2.5rem;
+            border: 1px solid var(--card-border); border-radius: 100px;
+            background: var(--input-bg); color: var(--text-primary);
+            font-family: inherit; font-size: 0.875rem;
+            backdrop-filter: blur(8px); transition: var(--transition); outline: none;
         }
-
-        .search-box input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px var(--primary-light);
-            width: 320px;
-        }
-
-        .search-box i {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
-
+        .search-box input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); width: 320px; }
+        .search-box i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.875rem; }
         .select-box {
-            padding: 0.625rem 2rem 0.625rem 1rem;
-            border: 1px solid var(--card-border);
-            border-radius: 100px;
-            background: var(--input-bg);
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 0.875rem;
-            cursor: pointer;
-            outline: none;
-            appearance: none;
+            padding: 0.625rem 2rem 0.625rem 1rem; border: 1px solid var(--card-border); border-radius: 100px;
+            background: var(--input-bg); color: var(--text-primary); font-family: inherit; font-size: 0.875rem;
+            cursor: pointer; outline: none; appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 0.75rem center;
+            background-repeat: no-repeat; background-position: right 0.75rem center;
             backdrop-filter: blur(8px);
         }
-
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.625rem 1.25rem;
-            border: none;
-            border-radius: 100px;
-            font-family: inherit;
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            outline: none;
-            white-space: nowrap;
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+            padding: 0.625rem 1.25rem; border: none; border-radius: 100px;
+            font-family: inherit; font-size: 0.875rem; font-weight: 500;
+            cursor: pointer; transition: var(--transition); outline: none; white-space: nowrap;
         }
+        .btn-primary { background: linear-gradient(135deg, var(--primary), #6366f1); color: white; box-shadow: 0 4px 12px rgba(59,130,246,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59,130,246,0.4); }
+        .btn-secondary { background: var(--input-bg); color: var(--text-secondary); border: 1px solid var(--card-border); }
+        .btn-secondary:hover { background: var(--primary-light); color: var(--primary); }
+        .btn-icon { width: 40px; height: 40px; padding: 0; border-radius: 50%; }
+        .btn-danger { background: rgba(239,68,68,0.1); color: var(--danger); }
+        .btn-danger:hover { background: var(--danger); color: white; }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #6366f1);
-            color: white;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn-secondary {
-            background: var(--input-bg);
-            color: var(--text-secondary);
-            border: 1px solid var(--card-border);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary-light);
-            color: var(--primary);
-        }
-
-        .btn-icon {
-            width: 40px;
-            height: 40px;
-            padding: 0;
-            border-radius: 50%;
-        }
-
-        .btn-danger {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--danger);
-        }
-
-        .btn-danger:hover {
-            background: var(--danger);
-            color: white;
-        }
-
-        .btn-sm {
-            padding: 0.4rem 0.875rem;
-            font-size: 0.8rem;
-        }
-
-        /* 班级导航栏 */
         .class-nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0.75rem 2rem 0;
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            align-items: center;
+            max-width: 1400px; margin: 0 auto; padding: 0.75rem 2rem 0;
+            display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;
         }
-
         .class-nav-btn {
-            padding: 0.4rem 1rem;
-            border-radius: 100px;
-            border: 1px solid var(--card-border);
-            background: var(--input-bg);
-            color: var(--text-secondary);
-            font-family: inherit;
-            font-size: 0.8rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            outline: none;
-            backdrop-filter: blur(8px);
+            padding: 0.4rem 1rem; border-radius: 100px; border: 1px solid var(--card-border);
+            background: var(--input-bg); color: var(--text-secondary); font-family: inherit;
+            font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: var(--transition);
+            outline: none; backdrop-filter: blur(8px);
         }
-
-        .class-nav-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-1px);
-        }
-
+        .class-nav-btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
         .class-nav-btn.active {
-            background: linear-gradient(135deg, var(--primary), #6366f1);
-            color: white;
-            border-color: transparent;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            background: linear-gradient(135deg, var(--primary), #6366f1); color: white;
+            border-color: transparent; box-shadow: 0 4px 12px rgba(59,130,246,0.3);
         }
 
-        main {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
+        main { max-width: 1400px; margin: 0 auto; padding: 2rem; }
         .stats-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;
         }
-
-        .stats-info {
-            display: flex;
-            gap: 1.5rem;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-
-        .stats-info span {
-            display: flex;
-            align-items: center;
-            gap: 0.375rem;
-        }
-
-        .stats-info .highlight {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 1.125rem;
-        }
-
-        .bg-selector {
-            display: flex;
-            gap: 0.5rem;
-        }
-
+        .stats-info { display: flex; gap: 1.5rem; font-size: 0.875rem; color: var(--text-secondary); }
+        .stats-info span { display: flex; align-items: center; gap: 0.375rem; }
+        .stats-info .highlight { color: var(--primary); font-weight: 600; font-size: 1.125rem; }
+        .bg-selector { display: flex; gap: 0.5rem; }
         .bg-dot {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: var(--transition);
-            position: relative;
+            width: 24px; height: 24px; border-radius: 50%; cursor: pointer;
+            border: 2px solid transparent; transition: var(--transition); position: relative;
         }
+        .bg-dot.active { border-color: var(--primary); transform: scale(1.2); }
+        .bg-dot:hover { transform: scale(1.1); }
 
-        .bg-dot.active {
-            border-color: var(--primary);
-            transform: scale(1.2);
-        }
-
-        .bg-dot:hover {
-            transform: scale(1.1);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
         .card {
-            background: var(--card-bg);
-            backdrop-filter: var(--glass);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+            background: var(--card-bg); backdrop-filter: var(--glass); border: 1px solid var(--card-border);
+            border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow);
+            transition: var(--transition); position: relative; overflow: hidden;
         }
-
         .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
             background: linear-gradient(90deg, var(--primary), #8b5cf6, #ec4899);
-            opacity: 0;
-            transition: var(--transition);
+            opacity: 0; transition: var(--transition);
         }
-
-        .card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
+        .card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+        .card:hover::before { opacity: 1; }
         .card.birthday-highlight {
-            border-color: rgba(245, 158, 11, 0.5);
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.15), var(--shadow);
+            border-color: rgba(245,158,11,0.5);
+            box-shadow: 0 0 20px rgba(245,158,11,0.15), var(--shadow);
         }
-
         .card.birthday-highlight::after {
-            content: '🎂 本月寿星';
-            position: absolute;
-            top: 12px;
-            right: -28px;
-            background: linear-gradient(135deg, #f59e0b, #ef4444);
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 4px 32px;
-            transform: rotate(45deg);
-            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+            content: '\1F382 本月寿星'; position: absolute; top: 12px; right: -28px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444); color: white;
+            font-size: 0.75rem; font-weight: 600; padding: 4px 32px;
+            transform: rotate(45deg); box-shadow: 0 2px 8px rgba(245,158,11,0.3);
         }
 
-        .card-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
+        .card-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
         .avatar {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            flex-shrink: 0;
-            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--primary);
-            overflow: hidden;
-            cursor: pointer;
+            width: 64px; height: 64px; border-radius: 50%; object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.5); box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex-shrink: 0; background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: var(--primary); overflow: hidden; cursor: pointer;
         }
-
-        .avatar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
-        }
-
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .card-title-group {
-            flex: 1;
-            min-width: 0;
-        }
-
+        .avatar:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(59,130,246,0.2); }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .card-title-group { flex: 1; min-width: 0; }
         .card-name {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 1.125rem; font-weight: 600; color: var(--text-primary);
+            margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.5rem;
         }
-
+        .gender-icon { font-size: 0.8rem; }
+        .gender-male { color: #3b82f6; }
+        .gender-female { color: #ec4899; }
         .card-birth {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 0.375rem;
+            font-size: 0.75rem; color: var(--text-muted);
+            display: flex; align-items: center; gap: 0.375rem;
         }
-
-        .card-actions {
-            display: flex;
-            gap: 0.5rem;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .card:hover .card-actions {
-            opacity: 1;
-        }
-
+        .card-actions { display: flex; gap: 0.5rem; opacity: 0; transition: var(--transition); }
+        .card:hover .card-actions { opacity: 1; }
         .card-action-btn {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: none;
-            background: var(--input-bg);
-            color: var(--text-secondary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            font-size: 0.875rem;
+            width: 32px; height: 32px; border-radius: 50%; border: none;
+            background: var(--input-bg); color: var(--text-secondary); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition); font-size: 0.875rem;
         }
+        .card-action-btn:hover { background: var(--primary); color: white; transform: scale(1.1); }
+        .card-action-btn.delete:hover { background: var(--danger); }
 
-        .card-action-btn:hover {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.1);
-        }
-
-        .card-action-btn.delete:hover {
-            background: var(--danger);
-        }
-
-        .card-body {
-            display: flex;
-            flex-direction: column;
-            gap: 0.625rem;
-        }
-
-        .info-row {
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-            font-size: 0.8125rem;
-        }
-
-        .info-label {
-            color: var(--text-muted);
-            font-weight: 500;
-            flex-shrink: 0;
-            min-width: 4.5rem;
-        }
-
-        .info-value {
-            color: var(--text-secondary);
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .info-value.phone {
-            display: flex;
-            align-items: center;
-            gap: 0.375rem;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 0.5px;
-        }
-
+        .card-body { display: flex; flex-direction: column; gap: 0.5rem; }
+        .info-row { display: flex; align-items: baseline; gap: 0.5rem; font-size: 0.8125rem; }
+        .info-label { color: var(--text-muted); font-weight: 500; flex-shrink: 0; min-width: 4.5rem; }
+        .info-value { color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .motto-box {
-            margin-top: 0.75rem;
-            padding: 0.75rem;
-            background: var(--primary-light);
-            border-radius: var(--radius-sm);
-            border-left: 3px solid var(--primary);
-            font-size: 0.8125rem;
-            color: var(--text-secondary);
-            font-style: italic;
-            position: relative;
+            margin-top: 0.5rem; padding: 0.75rem; background: var(--primary-light);
+            border-radius: var(--radius-sm); border-left: 3px solid var(--primary);
+            font-size: 0.8125rem; color: var(--text-secondary); font-style: italic; position: relative;
         }
-
         .motto-box::before {
-            content: '"';
-            position: absolute;
-            top: -4px;
-            left: 6px;
-            font-size: 1.5rem;
-            color: var(--primary);
-            opacity: 0.3;
-            font-family: Georgia, serif;
-            line-height: 1;
+            content: '"'; position: absolute; top: -4px; left: 6px;
+            font-size: 1.5rem; color: var(--primary); opacity: 0.3;
+            font-family: Georgia, serif; line-height: 1;
         }
-
         .motto-text {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
         }
-
-        .motto-text.expanded {
-            -webkit-line-clamp: unset;
-        }
-
         .card-footer {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--card-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--card-border);
+            display: flex; justify-content: space-between; align-items: center;
         }
-
-        .dream-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.375rem;
-            padding: 0.25rem 0.75rem;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
-            color: #8b5cf6;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            max-width: 180px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .date-tag {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
         .university-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            padding: 0.15rem 0.5rem;
-            background: rgba(34, 197, 94, 0.1);
-            color: #22c55e;
-            border-radius: 100px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            margin-left: 0.5rem;
+            display: inline-flex; align-items: center; gap: 0.375rem;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(59,130,246,0.1));
+            color: #22c55e; border-radius: 100px;
+            font-size: 0.75rem; font-weight: 500;
+            max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
         }
+        .date-tag { font-size: 0.75rem; color: var(--text-muted); }
+
+        .empty-state { text-align: center; padding: 4rem 2rem; color: var(--text-muted); }
+        .empty-state i { font-size: 3rem; margin-bottom: 1rem; opacity: 0.5; }
+        .empty-state h3 { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
 
         .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
+            position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
+            padding: 1rem; opacity: 0; visibility: hidden; transition: var(--transition);
         }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
+        .modal-overlay.active { opacity: 1; visibility: visible; }
         .modal {
-            background: var(--card-bg);
-            backdrop-filter: var(--glass);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius);
-            width: 100%;
-            max-width: 640px;
-            max-height: 90vh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: var(--shadow-lg);
-            transform: scale(0.95) translateY(10px);
-            transition: var(--transition);
+            background: var(--card-bg); backdrop-filter: var(--glass); border: 1px solid var(--card-border);
+            border-radius: var(--radius); width: 100%; max-width: 640px; max-height: 90vh;
+            overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-lg);
+            transform: scale(0.95) translateY(10px); transition: var(--transition);
         }
-
-        .modal-overlay.active .modal {
-            transform: scale(1) translateY(0);
-        }
-
+        .modal-overlay.active .modal { transform: scale(1) translateY(0); }
         .modal-header {
-            padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid var(--card-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--card-border);
+            display: flex; justify-content: space-between; align-items: center;
         }
-
-        .modal-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
+        .modal-title { font-size: 1.25rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
         .modal-close {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: none;
-            background: var(--input-bg);
-            color: var(--text-secondary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            font-size: 1.125rem;
+            width: 36px; height: 36px; border-radius: 50%; border: none;
+            background: var(--input-bg); color: var(--text-secondary); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition); font-size: 1.125rem;
         }
-
-        .modal-close:hover {
-            background: var(--danger);
-            color: white;
-            transform: rotate(90deg);
+        .modal-close:hover { background: var(--danger); color: white; transform: rotate(90deg); }
+        .modal-body { padding: 1.5rem; overflow-y: auto; flex: 1; }
+        .form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.375rem; }
+        .form-group.full-width { grid-column: 1 / -1; }
+        .form-label { font-size: 0.8125rem; font-weight: 500; color: var(--text-secondary); display: flex; align-items: center; gap: 0.25rem; }
+        .form-label .required { color: var(--danger); }
+        .form-input, .form-textarea, .form-select {
+            padding: 0.625rem 0.875rem; border: 1px solid var(--card-border); border-radius: var(--radius-sm);
+            background: var(--input-bg); color: var(--text-primary); font-family: inherit;
+            font-size: 0.875rem; transition: var(--transition); outline: none; width: 100%;
         }
-
-        .modal-body {
-            padding: 1.5rem;
-            overflow-y: auto;
-            flex: 1;
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light);
         }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.375rem;
-        }
-
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-
-        .form-label {
-            font-size: 0.8125rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-
-        .form-label .required {
-            color: var(--danger);
-        }
-
-        .form-input,
-        .form-textarea,
-        .form-select {
-            padding: 0.625rem 0.875rem;
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius-sm);
-            background: var(--input-bg);
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 0.875rem;
-            transition: var(--transition);
-            outline: none;
-            width: 100%;
-        }
-
-        .form-input:focus,
-        .form-textarea:focus,
-        .form-select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px var(--primary-light);
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .form-error {
-            font-size: 0.75rem;
-            color: var(--danger);
-            display: none;
-        }
-
-        .form-group.has-error .form-input,
-        .form-group.has-error .form-textarea,
-        .form-group.has-error .form-select {
-            border-color: var(--danger);
-        }
-
-        .form-group.has-error .form-error {
-            display: block;
-        }
-
-        .avatar-upload {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
+        .form-textarea { resize: vertical; min-height: 80px; }
+        .form-error { font-size: 0.75rem; color: var(--danger); display: none; }
+        .form-group.has-error .form-input, .form-group.has-error .form-textarea, .form-group.has-error .form-select { border-color: var(--danger); }
+        .form-group.has-error .form-error { display: block; }
+        .avatar-upload { display: flex; align-items: center; gap: 1rem; }
         .avatar-preview {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--card-border);
-            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--primary);
-            overflow: hidden;
-            flex-shrink: 0;
+            width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
+            border: 3px solid var(--card-border); background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; color: var(--primary); overflow: hidden; flex-shrink: 0;
         }
+        .avatar-preview img { width: 100%; height: 100%; object-fit: cover; }
+        .file-input { display: none; }
+        .modal-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--card-border); display: flex; justify-content: flex-end; gap: 0.75rem; }
 
-        .avatar-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .avatar-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .file-input {
-            display: none;
-        }
-
-        .modal-footer {
-            padding: 1rem 1.5rem;
-            border-top: 1px solid var(--card-border);
-            display: flex;
-            justify-content: flex-end;
-            gap: 0.75rem;
-        }
-
-        footer {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.875rem;
-            border-top: 1px solid var(--card-border);
-        }
-
-        .footer-actions {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
+        footer { max-width: 1400px; margin: 0 auto; padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.875rem; border-top: 1px solid var(--card-border); }
+        .footer-actions { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
 
         .confirm-dialog {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
+            position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+            z-index: 2000; display: flex; align-items: center; justify-content: center;
+            padding: 1rem; opacity: 0; visibility: hidden; transition: var(--transition);
         }
-
-        .confirm-dialog.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
+        .confirm-dialog.active { opacity: 1; visibility: visible; }
         .confirm-box {
-            background: var(--card-bg);
-            backdrop-filter: var(--glass);
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius);
-            padding: 2rem;
-            max-width: 420px;
-            width: 100%;
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-            transform: scale(0.95);
-            transition: var(--transition);
+            background: var(--card-bg); backdrop-filter: var(--glass); border: 1px solid var(--card-border);
+            border-radius: var(--radius); padding: 2rem; max-width: 420px; width: 100%;
+            text-align: center; box-shadow: var(--shadow-lg); transform: scale(0.95); transition: var(--transition);
         }
-
-        .confirm-dialog.active .confirm-box {
-            transform: scale(1);
-        }
-
-        .confirm-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--danger);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            margin: 0 auto 1rem;
-        }
-
-        .confirm-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .confirm-text {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .confirm-actions {
-            display: flex;
-            gap: 0.75rem;
-            justify-content: center;
-        }
+        .confirm-dialog.active .confirm-box { transform: scale(1); }
+        .confirm-icon { width: 64px; height: 64px; border-radius: 50%; background: rgba(239,68,68,0.1); color: var(--danger); display: flex; align-items: center; justify-content: center; font-size: 1.75rem; margin: 0 auto 1rem; }
+        .confirm-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .confirm-text { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1.5rem; }
+        .confirm-actions { display: flex; gap: 0.75rem; justify-content: center; }
 
         .toast {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: var(--text-primary);
-            color: white;
-            padding: 0.875rem 1.5rem;
-            border-radius: 100px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            box-shadow: var(--shadow-lg);
-            z-index: 3000;
-            opacity: 0;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            position: fixed; bottom: 2rem; left: 50%;
+            transform: translateX(-50%) translateY(100px); background: var(--text-primary);
+            color: white; padding: 0.875rem 1.5rem; border-radius: 100px;
+            font-size: 0.875rem; font-weight: 500; box-shadow: var(--shadow-lg);
+            z-index: 3000; opacity: 0; transition: var(--transition);
+            display: flex; align-items: center; gap: 0.5rem;
         }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-
-        .tooltip {
-            position: relative;
-        }
-
+        .tooltip { position: relative; }
         .tooltip::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: calc(100% + 6px);
-            left: 50%;
-            transform: translateX(-50%) scale(0.9);
-            background: var(--text-primary);
-            color: white;
-            padding: 0.375rem 0.75rem;
-            border-radius: var(--radius-sm);
-            font-size: 0.75rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            pointer-events: none;
-            z-index: 10;
+            content: attr(data-tooltip); position: absolute; bottom: calc(100% + 6px); left: 50%;
+            transform: translateX(-50%) scale(0.9); background: var(--text-primary); color: white;
+            padding: 0.375rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.75rem;
+            white-space: nowrap; opacity: 0; visibility: hidden; transition: var(--transition);
+            pointer-events: none; z-index: 10;
         }
+        .tooltip:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) scale(1); }
 
-        .tooltip:hover::after {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) scale(1);
-        }
+        .scroll-indicator { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--primary), #8b5cf6); z-index: 1001; transition: width 0.1s; }
 
         @media (max-width: 768px) {
-            .header-content {
-                padding: 1rem;
-            }
-
-            .search-box input,
-            .search-box input:focus {
-                width: 100%;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .card-actions {
-                opacity: 1;
-            }
-
-            .stats-bar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            main {
-                padding: 1rem;
-            }
-
-            .class-nav {
-                padding: 0.5rem 1rem 0;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-
-        .loading-skeleton {
-            background: linear-gradient(90deg, var(--card-bg) 25%, rgba(255,255,255,0.5) 50%, var(--card-bg) 75%);
-            background-size: 200% 100%;
-            animation: skeleton 1.5s infinite;
-            border-radius: var(--radius-sm);
-        }
-
-        @keyframes skeleton {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), #8b5cf6);
-            z-index: 1001;
-            transition: width 0.1s;
+            .header-content { padding: 1rem; }
+            .search-box input, .search-box input:focus { width: 100%; }
+            .grid { grid-template-columns: 1fr; gap: 1rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .card-actions { opacity: 1; }
+            .stats-bar { flex-direction: column; align-items: flex-start; }
+            main { padding: 1rem; }
+            .class-nav { padding: 0.5rem 1rem 0; }
         }
     </style>
-<base target="_blank">
 </head>
 <body>
     <div class="bg-pattern gradient-1" id="bgPattern"></div>
     <div class="scroll-indicator" id="scrollIndicator"></div>
 
-    <header role="banner">
+    <header>
         <div class="header-content">
             <div class="brand">
-                <div class="brand-icon" aria-hidden="true">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
+                <div class="brand-icon"><i class="fas fa-graduation-cap"></i></div>
                 <div class="brand-text">
                     <h1>同学录 · 青春纪念册</h1>
-                    <p>2026届21班 · 珍藏每一段美好时光</p>
+                    <p>珍藏每一段美好时光</p>
                 </div>
             </div>
             <div class="header-actions">
                 <div class="search-box">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                    <input 
-                        type="text" 
-                        id="searchInput" 
-                        placeholder="搜索姓名、电话、大学或寄语..." 
-                        aria-label="搜索同学"
-                        autocomplete="off"
-                    >
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="搜索姓名、大学、专业或格言..." autocomplete="off">
                 </div>
-                <select class="select-box" id="sortSelect" aria-label="排序方式">
+                <select class="select-box" id="sortSelect">
                     <option value="name-asc">姓名 A-Z</option>
                     <option value="name-desc">姓名 Z-A</option>
-                    <option value="date-new">添加时间 新→旧</option>
-                    <option value="date-old">添加时间 旧→新</option>
+                    <option value="birth-asc">生日 1-12月</option>
+                    <option value="birth-desc">生日 12-1月</option>
                 </select>
-                <button class="btn btn-secondary btn-icon" id="themeToggle" aria-label="切换暗色模式">
-                    <i class="fas fa-moon" id="themeIcon"></i>
-                </button>
-                <button class="btn btn-primary" id="addBtn" aria-label="添加新同学">
-                    <i class="fas fa-plus" aria-hidden="true"></i>
-                    <span>添加同学</span>
-                </button>
-                <button class="btn btn-secondary btn-icon" id="loginBtn" aria-label="登录">
-                    <i class="fas fa-lock" id="loginIcon"></i>
-                </button>
+                <button class="btn btn-secondary btn-icon" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <button class="btn btn-primary" id="addBtn"><i class="fas fa-plus"></i><span>添加同学</span></button>
+                <button class="btn btn-secondary btn-icon" id="loginBtn"><i class="fas fa-lock" id="loginIcon"></i></button>
             </div>
         </div>
     </header>
 
-    <!-- 班级导航栏 -->
-    <nav class="class-nav" id="classNav" aria-label="班级筛选"></nav>
+    <nav class="class-nav" id="classNav"></nav>
 
-    <main role="main">
-        <section class="stats-bar" aria-label="统计信息">
+    <main>
+        <div class="stats-bar">
             <div class="stats-info">
-                <span>
-                    <i class="fas fa-users" aria-hidden="true"></i>
-                    总人数: <span class="highlight" id="totalCount">0</span>
-                </span>
-                <span>
-                    <i class="fas fa-filter" aria-hidden="true"></i>
-                    当前显示: <span class="highlight" id="filteredCount">0</span>
-                </span>
+                <span><i class="fas fa-users"></i> 总人数: <span class="highlight" id="totalCount">0</span></span>
+                <span><i class="fas fa-filter"></i> 当前显示: <span class="highlight" id="filteredCount">0</span></span>
                 <span id="birthdayCount" style="display: none;">
-                    <i class="fas fa-birthday-cake" aria-hidden="true" style="color: var(--warning);"></i>
+                    <i class="fas fa-birthday-cake" style="color: var(--warning);"></i>
                     本月寿星: <span class="highlight" style="color: var(--warning);" id="birthdayNum">0</span>
                 </span>
             </div>
-            <div class="bg-selector" aria-label="背景选择" role="radiogroup">
-                <div class="bg-dot active" style="background: linear-gradient(135deg, #e0f2fe, #dbeafe);" data-bg="gradient-1" role="radio" aria-checked="true" tabindex="0" aria-label="蓝色渐变背景"></div>
-                <div class="bg-dot" style="background: linear-gradient(135deg, #fef3c7, #fce7f3);" data-bg="gradient-2" role="radio" aria-checked="false" tabindex="0" aria-label="暖色渐变背景"></div>
-                <div class="bg-dot" style="background: linear-gradient(135deg, #d1fae5, #ccfbf1);" data-bg="gradient-3" role="radio" aria-checked="false" tabindex="0" aria-label="绿色渐变背景"></div>
-                <div class="bg-dot" style="background: linear-gradient(135deg, #fee2e2, #ffedd5);" data-bg="gradient-4" role="radio" aria-checked="false" tabindex="0" aria-label="红色渐变背景"></div>
+            <div class="bg-selector">
+                <div class="bg-dot active" style="background: linear-gradient(135deg, #e0f2fe, #dbeafe);" data-bg="gradient-1"></div>
+                <div class="bg-dot" style="background: linear-gradient(135deg, #fef3c7, #fce7f3);" data-bg="gradient-2"></div>
+                <div class="bg-dot" style="background: linear-gradient(135deg, #d1fae5, #ccfbf1);" data-bg="gradient-3"></div>
+                <div class="bg-dot" style="background: linear-gradient(135deg, #fee2e2, #ffedd5);" data-bg="gradient-4"></div>
             </div>
-        </section>
+        </div>
 
-        <section id="gridSection" aria-label="同学列表">
-            <div class="grid" id="classmateGrid" role="list"></div>
-            <div class="empty-state" id="emptyState" style="display: none;">
-                <i class="fas fa-folder-open" aria-hidden="true"></i>
-                <h3>暂无同学信息</h3>
-                <p>点击右上角"添加同学"按钮，开始记录青春记忆吧</p>
-            </div>
-        </section>
+        <div class="grid" id="classmateGrid"></div>
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <i class="fas fa-folder-open"></i>
+            <h3>暂无同学信息</h3>
+            <p>点击右上角"添加同学"按钮，开始记录青春记忆吧</p>
+        </div>
     </main>
 
-    <footer role="contentinfo">
+    <footer>
         <div class="footer-actions" id="adminActions" style="display: none;">
-            <button class="btn btn-secondary" id="resetBtn" aria-label="重置示例数据">
-                <i class="fas fa-rotate-left" aria-hidden="true"></i>
-                重置示例数据
-            </button>
-            <button class="btn btn-secondary" id="logoutBtn" aria-label="退出登录">
-                <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
-                退出登录
-            </button>
+            <button class="btn btn-secondary" id="reloadBtn"><i class="fas fa-sync-alt"></i> 重新加载JSON</button>
+            <button class="btn btn-secondary" id="resetBtn"><i class="fas fa-rotate-left"></i> 重置示例数据</button>
+            <button class="btn btn-secondary" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> 退出登录</button>
         </div>
-        <p>2026届21班初中同学录 · 愿此去前程似锦，再相逢依旧如故</p>
+        <p>同学录 · 愿此去前程似锦，再相逢依旧如故</p>
     </footer>
 
-    <!-- 添加/编辑模态框 -->
-    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <div class="modal-header">
-                <div class="modal-title" id="modalTitle">
-                    <i class="fas fa-user-plus" aria-hidden="true"></i>
-                    <span>添加同学</span>
-                </div>
-                <button class="modal-close" id="modalClose" aria-label="关闭模态框">
-                    <i class="fas fa-times" aria-hidden="true"></i>
-                </button>
+                <div class="modal-title" id="modalTitle"><i class="fas fa-user-plus"></i><span>添加同学</span></div>
+                <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
                 <form id="classmateForm" novalidate>
                     <input type="hidden" id="editId">
                     <div class="form-group full-width">
-                        <label class="form-label">
-                            头像
-                        </label>
+                        <label class="form-label">头像</label>
                         <div class="avatar-upload">
-                            <div class="avatar-preview" id="avatarPreview">
-                                <i class="fas fa-user" aria-hidden="true"></i>
-                            </div>
-                            <div class="avatar-actions">
-                                <button type="button" class="btn btn-secondary" id="avatarSelectBtn" aria-label="选择头像">
-                                    <i class="fas fa-camera" aria-hidden="true"></i>
-                                    选择头像
-                                </button>
-                                <input type="file" id="avatarInput" class="file-input" accept="image/*" aria-label="上传头像图片">
+                            <div class="avatar-preview" id="avatarPreview"><i class="fas fa-user"></i></div>
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <button type="button" class="btn btn-secondary" id="avatarSelectBtn" style="width: fit-content;"><i class="fas fa-camera"></i> 选择头像</button>
+                                <input type="file" id="avatarInput" class="file-input" accept="image/*">
                                 <small style="color: var(--text-muted); font-size: 0.75rem;">支持 JPG、PNG 格式，建议正方形图片</small>
                             </div>
                         </div>
                     </div>
                     <div class="form-grid">
                         <div class="form-group">
-                            <label class="form-label" for="name">
-                                姓名 <span class="required">*</span>
-                            </label>
-                            <input type="text" id="name" class="form-input" placeholder="请输入姓名" required maxlength="5" aria-required="true">
-                            <span class="form-error">姓名不能为空，且长度需在1-5个字符之间</span>
+                            <label class="form-label" for="name">姓名 <span class="required">*</span></label>
+                            <input type="text" id="name" class="form-input" placeholder="请输入姓名" required maxlength="10">
+                            <span class="form-error">姓名不能为空</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="className">
-                                班级 <span class="required">*</span>
-                            </label>
-                            <select id="className" class="form-select" required aria-required="true">
-                                <option value="">请选择班级</option>
-                                <option value="21班">21班</option>
-                                <option value="22班">22班</option>
-                                <option value="23班">23班</option>
-                                <option value="24班">24班</option>
-                                <option value="25班">25班</option>
+                            <label class="form-label" for="gender">性别 <span class="required">*</span></label>
+                            <select id="gender" class="form-select" required>
+                                <option value="">请选择</option>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
                             </select>
+                            <span class="form-error">请选择性别</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="className">班级 <span class="required">*</span></label>
+                            <select id="className" class="form-select" required></select>
                             <span class="form-error">请选择班级</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="birthDate">
-                                出生日期 <span class="required">*</span>
-                            </label>
-                            <input type="date" id="birthDate" class="form-input" required min="2009-01-01" max="2012-12-31" aria-required="true">
-                            <span class="form-error">请选择有效的出生日期（2009-2012年）</span>
+                            <label class="form-label" for="birthday">生日 <span class="required">*</span></label>
+                            <input type="text" id="birthday" class="form-input" placeholder="如：03-15" required maxlength="5">
+                            <span class="form-error">格式如 03-15</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="phone">
-                                联系方式 <span class="required">*</span>
-                            </label>
-                            <input type="tel" id="phone" class="form-input" placeholder="请输入手机号" required aria-required="true">
+                            <label class="form-label" for="university">就读大学</label>
+                            <input type="text" id="university" class="form-input" placeholder="如：南京大学">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="major">专业</label>
+                            <input type="text" id="major" class="form-input" placeholder="如：法学">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">电话 <span class="required">*</span></label>
+                            <input type="tel" id="phone" class="form-input" placeholder="请输入手机号" required>
                             <span class="form-error">请输入有效的11位手机号码</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="university">
-                                就读大学
-                            </label>
-                            <input type="text" id="university" class="form-input" placeholder="如：苏州大学">
-                            <span class="form-error"></span>
+                            <label class="form-label" for="qq">QQ</label>
+                            <input type="text" id="qq" class="form-input" placeholder="QQ号码">
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="crush">
-                                喜欢的人 <span class="required">*</span>
-                            </label>
-                            <input type="text" id="crush" class="form-input" placeholder="可以是人名、明星或类型" required aria-required="true">
-                            <span class="form-error">此项为必填</span>
+                            <label class="form-label" for="wechat">微信</label>
+                            <input type="text" id="wechat" class="form-input" placeholder="微信号">
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="movie">
-                                喜欢的电影 <span class="required">*</span>
-                            </label>
-                            <input type="text" id="movie" class="form-input" placeholder="请输入电影名称" required aria-required="true">
-                            <span class="form-error">此项为必填</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="color">
-                                喜欢的颜色 <span class="required">*</span>
-                            </label>
-                            <input type="text" id="color" class="form-input" placeholder="如：天蓝色" required aria-required="true">
-                            <span class="form-error">此项为必填</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="food">
-                                喜欢的食物 <span class="required">*</span>
-                            </label>
-                            <input type="text" id="food" class="form-input" placeholder="请输入食物名称" required aria-required="true">
-                            <span class="form-error">此项为必填</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="game">
-                                喜欢的游戏 <span class="required">*</span>
-                            </label>
-                            <input type="text" id="game" class="form-input" placeholder="游戏名称或类型" required aria-required="true">
-                            <span class="form-error">此项为必填</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="destination">
-                                想去的远方 <span class="required">*</span>
-                            </label>
-                            <input type="text" id="destination" class="form-input" placeholder="梦想目的地" required aria-required="true">
-                            <span class="form-error">此项为必填</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="dream">
-                                心中的梦想 <span class="required">*</span>
-                            </label>
-                            <input type="text" id="dream" class="form-input" placeholder="你的梦想是..." required aria-required="true">
-                            <span class="form-error">此项为必填</span>
+                            <label class="form-label" for="email">邮箱</label>
+                            <input type="email" id="email" class="form-input" placeholder="邮箱地址">
                         </div>
                         <div class="form-group full-width">
-                            <label class="form-label" for="motto">
-                                人生格言 <span class="required">*</span>
-                            </label>
-                            <textarea id="motto" class="form-textarea" placeholder="写下你的人生格言..." required aria-required="true"></textarea>
-                            <span class="form-error">此项为必填</span>
+                            <label class="form-label" for="hobby">爱好</label>
+                            <input type="text" id="hobby" class="form-input" placeholder="如：阅读、钢琴">
                         </div>
                         <div class="form-group full-width">
-                            <label class="form-label" for="notes">
-                                备注 <span class="required">*</span>
-                            </label>
-                            <textarea id="notes" class="form-textarea" placeholder="还有什么想说的..." required aria-required="true"></textarea>
+                            <label class="form-label" for="motto">人生格言 <span class="required">*</span></label>
+                            <textarea id="motto" class="form-textarea" placeholder="写下你的人生格言..." required></textarea>
                             <span class="form-error">此项为必填</span>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" id="modalCancel" aria-label="取消">取消</button>
-                <button class="btn btn-primary" id="modalSubmit" aria-label="保存">
-                    <i class="fas fa-check" aria-hidden="true"></i>
-                    确定
-                </button>
+                <button class="btn btn-secondary" id="modalCancel">取消</button>
+                <button class="btn btn-primary" id="modalSubmit"><i class="fas fa-check"></i> 确定</button>
             </div>
         </div>
     </div>
 
-    <!-- 登录模态框 -->
-    <div class="modal-overlay" id="loginOverlay" role="dialog" aria-modal="true" aria-labelledby="loginTitle" aria-hidden="true">
+    <div class="modal-overlay" id="loginOverlay">
         <div class="modal" style="max-width: 400px;">
             <div class="modal-header">
-                <div class="modal-title" id="loginTitle">
-                    <i class="fas fa-lock" aria-hidden="true"></i>
-                    <span>管理员登录</span>
-                </div>
-                <button class="modal-close" id="loginClose" aria-label="关闭">
-                    <i class="fas fa-times" aria-hidden="true"></i>
-                </button>
+                <div class="modal-title"><i class="fas fa-lock"></i><span>管理员登录</span></div>
+                <button class="modal-close" id="loginClose"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
-                <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">
-                    请输入管理员密码以解锁数据管理权限。
-                </p>
+                <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">请输入管理员密码以解锁数据管理权限。</p>
                 <div class="form-group full-width">
                     <label class="form-label" for="loginPassword">密码</label>
                     <input type="password" id="loginPassword" class="form-input" placeholder="请输入密码">
                     <span class="form-error" id="loginError" style="display: none; margin-top: 0.5rem;">密码错误</span>
                 </div>
-                <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.75rem;">
-                    默认密码：<strong style="color: var(--primary);">202621</strong>
-                </p>
+                <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.75rem;">默认密码：<strong style="color: var(--primary);">202621</strong></p>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" id="loginCancel">取消</button>
-                <button class="btn btn-primary" id="loginSubmit">
-                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
-                    登录
-                </button>
+                <button class="btn btn-primary" id="loginSubmit"><i class="fas fa-sign-in-alt"></i> 登录</button>
             </div>
         </div>
     </div>
 
-    <!-- 确认对话框 -->
-    <div class="confirm-dialog" id="confirmDialog" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmText" aria-hidden="true">
+    <div class="confirm-dialog" id="confirmDialog">
         <div class="confirm-box">
-            <div class="confirm-icon">
-                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
-            </div>
+            <div class="confirm-icon"><i class="fas fa-exclamation-triangle"></i></div>
             <div class="confirm-title" id="confirmTitle">确认删除</div>
             <div class="confirm-text" id="confirmText">确定要删除这位同学的信息吗？此操作不可恢复。</div>
             <div class="confirm-actions">
-                <button class="btn btn-secondary" id="confirmCancel" aria-label="取消">取消</button>
-                <button class="btn btn-danger" id="confirmOk" aria-label="确认">确认</button>
+                <button class="btn btn-secondary" id="confirmCancel">取消</button>
+                <button class="btn btn-danger" id="confirmOk">确认</button>
             </div>
         </div>
     </div>
 
-    <!-- Toast -->
-    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <div class="toast" id="toast"></div>
 
     <script>
-        (function() {
-            'use strict';
+    (function() {
+        'use strict';
 
-            const STORAGE_KEY = 'classmates_2026_21';
-            const LOGIN_KEY = 'classmate_admin_logged_in';
-            const DEFAULT_PASSWORD = '202621';
+        var STORAGE_KEY = 'classmates_data_v2';
+        var LOGIN_KEY = 'classmate_admin_logged_in';
+        var DEFAULT_PASSWORD = '202621';
+        var DATA_LOADED_KEY = 'json_data_loaded';
 
-            let classmates = [];
-            let currentAvatar = null;
-            let chartInstance = null;
-            let confirmCallback = null;
-            let searchDebounceTimer = null;
-            let isAdmin = false;
-            let currentClassFilter = '全部';
+        var students = [];
+        var classes = [];
+        var currentAvatar = null;
+        var confirmCallback = null;
+        var searchDebounceTimer = null;
+        var isAdmin = false;
+        var currentClassFilter = '全部';
 
-            const defaultData = [
-                {
-                    id: 'demo_1',
-                    name: '李明轩',
-                    className: '21班',
-                    birthDate: '2010-03-15',
-                    phone: '13800138001',
-                    university: '清华大学',
-                    crush: '周杰伦',
-                    movie: '星际穿越',
-                    color: '天蓝色',
-                    food: '火锅',
-                    game: '王者荣耀',
-                    destination: '日本京都',
-                    dream: '成为一名优秀的软件工程师',
-                    motto: '星光不问赶路人，时光不负有心人。',
-                    notes: '喜欢打篮球，是班里的数学课代表。',
-                    avatar: null,
-                    createdAt: Date.now() - 100000000
-                },
-                {
-                    id: 'demo_2',
-                    name: '张雨萱',
-                    className: '21班',
-                    birthDate: '2010-07-22',
-                    phone: '13900139002',
-                    university: '北京大学',
-                    crush: '易烊千玺',
-                    movie: '千与千寻',
-                    color: '樱花粉',
-                    food: '草莓蛋糕',
-                    game: '原神',
-                    destination: '法国巴黎',
-                    dream: '成为一名插画师',
-                    motto: '保持热爱，奔赴山海。',
-                    notes: '擅长画画，曾获市级美术比赛一等奖。',
-                    avatar: null,
-                    createdAt: Date.now() - 80000000
-                },
-                {
-                    id: 'demo_3',
-                    name: '王浩然',
-                    className: '22班',
-                    birthDate: '2009-11-08',
-                    phone: '13700137003',
-                    university: '复旦大学',
-                    crush: '科比',
-                    movie: '肖申克的救赎',
-                    color: '墨绿色',
-                    food: '烤肉',
-                    game: 'NBA2K',
-                    destination: '美国洛杉矶',
-                    dream: '成为一名职业篮球运动员',
-                    motto: '努力不一定成功，但放弃一定失败。',
-                    notes: '校篮球队队长，身高185cm。',
-                    avatar: null,
-                    createdAt: Date.now() - 60000000
-                },
-                {
-                    id: 'demo_4',
-                    name: '陈思琪',
-                    className: '21班',
-                    birthDate: '2010-05-20',
-                    phone: '13600136004',
-                    university: '浙江大学',
-                    crush: '羽生结弦',
-                    movie: '泰坦尼克号',
-                    color: '珍珠白',
-                    food: '寿司',
-                    game: '动物森友会',
-                    destination: '北海道',
-                    dream: '成为一名花样滑冰运动员',
-                    motto: '每一个不曾起舞的日子，都是对生命的辜负。',
-                    notes: '学习钢琴十年，性格温柔文静。',
-                    avatar: null,
-                    createdAt: Date.now() - 40000000
-                },
-                {
-                    id: 'demo_5',
-                    name: '刘子豪',
-                    className: '23班',
-                    birthDate: '2010-09-12',
-                    phone: '13500135005',
-                    university: '南京大学',
-                    crush: '马斯克',
-                    movie: '钢铁侠',
-                    color: '科技蓝',
-                    food: '汉堡',
-                    game: '我的世界',
-                    destination: '火星',
-                    dream: '成为一名航天工程师',
-                    motto: '仰望星空，脚踏实地。',
-                    notes: '科技迷，喜欢组装机器人和编程。',
-                    avatar: null,
-                    createdAt: Date.now() - 20000000
+        function generateId() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+        }
+
+        function loadFromStorage() {
+            try {
+                var stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    var data = JSON.parse(stored);
+                    students = data.students || [];
+                    classes = data.classes || [];
+                    return true;
                 }
-            ];
+            } catch (e) {}
+            return false;
+        }
 
-            const classList = ['全部', '21班', '22班', '23班', '24班', '25班'];
-
-            function generateId() {
-                return Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+        function saveToStorage() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify({ students: students, classes: classes }));
+            } catch (e) {
+                showToast('存储空间不足', 'error');
             }
+        }
 
-            function loadData() {
-                try {
-                    const stored = localStorage.getItem(STORAGE_KEY);
-                    if (stored) {
-                        classmates = JSON.parse(stored);
+        function fetchJsonData(callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'data/classes.json', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        try {
+                            classes = JSON.parse(xhr.responseText);
+                            fetchAllStudents(callback);
+                        } catch (e) {
+                            showToast('班级数据格式错误', 'error');
+                            if (callback) callback(false);
+                        }
                     } else {
-                        classmates = JSON.parse(JSON.stringify(defaultData));
-                        saveData();
+                        showToast('无法加载班级数据 (HTTP ' + xhr.status + ')', 'error');
+                        if (callback) callback(false);
                     }
-                } catch (e) {
-                    classmates = JSON.parse(JSON.stringify(defaultData));
                 }
-            }
-
-            function saveData() {
-                try {
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(classmates));
-                } catch (e) {
-                    showToast('存储空间不足，请删除部分数据', 'error');
-                }
-            }
-
-            function checkLoginStatus() {
-                isAdmin = sessionStorage.getItem(LOGIN_KEY) === 'true';
-                updateAdminUI();
-            }
-
-            function updateAdminUI() {
-                const adminActions = document.getElementById('adminActions');
-                const loginIcon = document.getElementById('loginIcon');
-                if (isAdmin) {
-                    adminActions.style.display = 'flex';
-                    loginIcon.className = 'fas fa-user-shield';
-                    document.getElementById('loginBtn').setAttribute('aria-label', '已登录（管理员）');
-                } else {
-                    adminActions.style.display = 'none';
-                    loginIcon.className = 'fas fa-lock';
-                    document.getElementById('loginBtn').setAttribute('aria-label', '登录');
-                }
-            }
-
-            function renderClassNav() {
-                const nav = document.getElementById('classNav');
-                nav.innerHTML = classList.map(function(cls) {
-                    const isActive = cls === currentClassFilter;
-                    return '<button class="class-nav-btn ' + (isActive ? 'active' : '') + '" data-class="' + cls + '">' + cls + '</button>';
-                }).join('');
-
-                nav.querySelectorAll('.class-nav-btn').forEach(function(btn) {
-                    btn.addEventListener('click', function() {
-                        currentClassFilter = this.dataset.class;
-                        renderClassNav();
-                        render();
-                    });
-                });
-            }
-
-            function getInitials(name) {
-                return name ? name.charAt(0) : '?';
-            }
-
-            function getAvatarHtml(classmate) {
-                if (classmate.avatar) {
-                    return '<img src="' + classmate.avatar + '" alt="' + classmate.name + '的头像" loading="lazy">';
-                }
-                return '<span aria-hidden="true">' + getInitials(classmate.name) + '</span>';
-            }
-
-            function isBirthdayMonth(birthDate) {
-                if (!birthDate) return false;
-                const today = new Date();
-                const birth = new Date(birthDate);
-                return birth.getMonth() === today.getMonth();
-            }
-
-            function formatDate(dateStr) {
-                if (!dateStr) return '';
-                const d = new Date(dateStr);
-                return d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
-            }
-
-            function escapeHtml(str) {
-                if (!str) return '';
-                const div = document.createElement('div');
-                div.textContent = str;
-                return div.innerHTML;
-            }
-
-            function render() {
-                const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
-                const sortValue = document.getElementById('sortSelect').value;
-
-                let filtered = classmates.filter(function(c) {
-                    // 班级筛选
-                    if (currentClassFilter !== '全部' && c.className !== currentClassFilter) {
-                        return false;
-                    }
-                    // 搜索筛选
-                    if (!searchTerm) return true;
-                    var term = searchTerm;
-                    return (c.name && c.name.toLowerCase().indexOf(term) !== -1) ||
-                           (c.phone && c.phone.indexOf(term) !== -1) ||
-                           (c.motto && c.motto.toLowerCase().indexOf(term) !== -1) ||
-                           (c.notes && c.notes.toLowerCase().indexOf(term) !== -1) ||
-                           (c.dream && c.dream.toLowerCase().indexOf(term) !== -1) ||
-                           (c.university && c.university.toLowerCase().indexOf(term) !== -1);
-                });
-
-                filtered.sort(function(a, b) {
-                    switch(sortValue) {
-                        case 'name-asc':
-                            return (a.name || '').localeCompare(b.name || '', 'zh-CN');
-                        case 'name-desc':
-                            return (b.name || '').localeCompare(a.name || '', 'zh-CN');
-                        case 'date-new':
-                            return (b.createdAt || 0) - (a.createdAt || 0);
-                        case 'date-old':
-                            return (a.createdAt || 0) - (b.createdAt || 0);
-                        default:
-                            return 0;
-                    }
-                });
-
-                const grid = document.getElementById('classmateGrid');
-                const emptyState = document.getElementById('emptyState');
-
-                document.getElementById('totalCount').textContent = classmates.length;
-                document.getElementById('filteredCount').textContent = filtered.length;
-
-                const birthdayCount = classmates.filter(function(c) { return isBirthdayMonth(c.birthDate); }).length;
-                const birthdayEl = document.getElementById('birthdayCount');
-                const birthdayNum = document.getElementById('birthdayNum');
-                if (birthdayCount > 0) {
-                    birthdayEl.style.display = 'flex';
-                    birthdayNum.textContent = birthdayCount;
-                } else {
-                    birthdayEl.style.display = 'none';
-                }
-
-                if (filtered.length === 0) {
-                    grid.innerHTML = '';
-                    emptyState.style.display = 'block';
-                } else {
-                    emptyState.style.display = 'none';
-                    grid.innerHTML = filtered.map(function(c) {
-                        var isBirthday = isBirthdayMonth(c.birthDate);
-                        var uniTag = c.university ? '<span class="university-tag"><i class="fas fa-university" aria-hidden="true"></i> ' + escapeHtml(c.university) + '</span>' : '';
-                        return '<article class="card ' + (isBirthday ? 'birthday-highlight' : '') + '" role="listitem" data-id="' + c.id + '">' +
-                            '<div class="card-header">' +
-                                '<div class="avatar" aria-label="' + c.name + '的头像" onclick="window.filterBySurname('' + c.name.charAt(0) + '')">' +
-                                    getAvatarHtml(c) +
-                                '</div>' +
-                                '<div class="card-title-group">' +
-                                    '<div class="card-name">' +
-                                        escapeHtml(c.name) +
-                                        (isBirthday ? '<span aria-label="本月生日">🎂</span>' : '') +
-                                        uniTag +
-                                    '</div>' +
-                                    '<div class="card-birth">' +
-                                        '<i class="fas fa-calendar-alt" aria-hidden="true"></i>' +
-                                        formatDate(c.birthDate) +
-                                        ' · ' + escapeHtml(c.className) +
-                                    '</div>' +
-                                '</div>' +
-                                '<div class="card-actions">' +
-                                    '<button class="card-action-btn tooltip" data-tooltip="编辑" onclick="window.editClassmate('' + c.id + '')" aria-label="编辑' + c.name + '的信息">' +
-                                        '<i class="fas fa-pen" aria-hidden="true"></i>' +
-                                    '</button>' +
-                                    '<button class="card-action-btn delete tooltip" data-tooltip="删除" onclick="window.deleteClassmate('' + c.id + '')" aria-label="删除' + c.name + '的信息">' +
-                                        '<i class="fas fa-trash" aria-hidden="true"></i>' +
-                                    '</button>' +
-                                '</div>' +
-                            '</div>' +
-                            '<div class="card-body">' +
-                                '<div class="info-row">' +
-                                    '<span class="info-label"><i class="fas fa-phone" aria-hidden="true"></i> 电话</span>' +
-                                    '<span class="info-value phone" title="' + escapeHtml(c.phone) + '">' +
-                                        '<i class="fas fa-mobile-alt" aria-hidden="true"></i>' +
-                                        escapeHtml(c.phone) +
-                                    '</span>' +
-                                '</div>' +
-                                '<div class="info-row">' +
-                                    '<span class="info-label"><i class="fas fa-heart" aria-hidden="true"></i> 喜欢的人</span>' +
-                                    '<span class="info-value">' + escapeHtml(c.crush) + '</span>' +
-                                '</div>' +
-                                '<div class="info-row">' +
-                                    '<span class="info-label"><i class="fas fa-film" aria-hidden="true"></i> 喜欢的电影</span>' +
-                                    '<span class="info-value">' + escapeHtml(c.movie) + '</span>' +
-                                '</div>' +
-                                '<div class="info-row">' +
-                                    '<span class="info-label"><i class="fas fa-palette" aria-hidden="true"></i> 喜欢的颜色</span>' +
-                                    '<span class="info-value">' + escapeHtml(c.color) + '</span>' +
-                                '</div>' +
-                                '<div class="info-row">' +
-                                    '<span class="info-label"><i class="fas fa-utensils" aria-hidden="true"></i> 喜欢的食物</span>' +
-                                    '<span class="info-value">' + escapeHtml(c.food) + '</span>' +
-                                '</div>' +
-                                '<div class="info-row">' +
-                                    '<span class="info-label"><i class="fas fa-gamepad" aria-hidden="true"></i> 喜欢的游戏</span>' +
-                                    '<span class="info-value">' + escapeHtml(c.game) + '</span>' +
-                                '</div>' +
-                                '<div class="info-row">' +
-                                    '<span class="info-label"><i class="fas fa-plane" aria-hidden="true"></i> 想去的远方</span>' +
-                                    '<span class="info-value">' + escapeHtml(c.destination) + '</span>' +
-                                '</div>' +
-                                '<div class="info-row">' +
-                                    '<span class="info-label"><i class="fas fa-star" aria-hidden="true"></i> 心中的梦想</span>' +
-                                    '<span class="info-value">' + escapeHtml(c.dream) + '</span>' +
-                                '</div>' +
-                                '<div class="motto-box">' +
-                                    '<div class="motto-text" title="' + escapeHtml(c.motto) + '">' + escapeHtml(c.motto) + '</div>' +
-                                '</div>' +
-                                '<div class="info-row" style="margin-top: 0.5rem;">' +
-                                    '<span class="info-label"><i class="fas fa-sticky-note" aria-hidden="true"></i> 备注</span>' +
-                                    '<span class="info-value" style="white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">' + escapeHtml(c.notes) + '</span>' +
-                                '</div>' +
-                            '</div>' +
-                            '<div class="card-footer">' +
-                                '<span class="dream-tag" title="' + escapeHtml(c.dream) + '">' +
-                                    '<i class="fas fa-rocket" aria-hidden="true"></i>' +
-                                    escapeHtml(c.dream) +
-                                '</span>' +
-                                '<span class="date-tag">' + new Date(c.createdAt).toLocaleDateString('zh-CN') + '</span>' +
-                            '</div>' +
-                        '</article>';
-                    }).join('');
-                }
-            }
-
-            // 点击姓氏筛选（不显示列表，但功能保留）
-            window.filterBySurname = function(surname) {
-                document.getElementById('searchInput').value = surname;
-                render();
-                showToast('已筛选姓' + surname + '的同学');
             };
+            xhr.onerror = function() {
+                showToast('网络错误，无法加载数据', 'error');
+                if (callback) callback(false);
+            };
+            xhr.send();
+        }
 
-            function validateForm() {
-                var isValid = true;
-                var fields = [
-                    { id: 'name', validator: function(v) { return v && v.length >= 1 && v.length <= 5; } },
-                    { id: 'className', validator: function(v) { return !!v; } },
-                    { id: 'birthDate', validator: function(v) {
-                        if (!v) return false;
-                        var d = new Date(v);
-                        var year = d.getFullYear();
-                        return year >= 2009 && year <= 2012;
-                    }},
-                    { id: 'phone', validator: function(v) { return /^1[3-9]\d{9}$/.test(v); } },
-                    { id: 'crush', validator: function(v) { return !!v; } },
-                    { id: 'movie', validator: function(v) { return !!v; } },
-                    { id: 'color', validator: function(v) { return !!v; } },
-                    { id: 'food', validator: function(v) { return !!v; } },
-                    { id: 'game', validator: function(v) { return !!v; } },
-                    { id: 'destination', validator: function(v) { return !!v; } },
-                    { id: 'dream', validator: function(v) { return !!v; } },
-                    { id: 'motto', validator: function(v) { return !!v; } },
-                    { id: 'notes', validator: function(v) { return !!v; } }
-                ];
+        function fetchAllStudents(callback) {
+            var loaded = 0;
+            var total = classes.length;
+            var allStudents = [];
+            var hasError = false;
 
-                fields.forEach(function(field) {
-                    var el = document.getElementById(field.id);
-                    var group = el.closest('.form-group');
-                    var value = el.value.trim();
-                    if (!field.validator(value)) {
-                        group.classList.add('has-error');
-                        isValid = false;
-                    } else {
-                        group.classList.remove('has-error');
-                    }
+            if (total === 0) {
+                students = [];
+                if (callback) callback(true);
+                return;
+            }
+
+            for (var i = 0; i < total; i++) {
+                (function(cls) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', 'data/' + cls.id + '/students.json', true);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4) {
+                            loaded++;
+                            if (xhr.status === 200) {
+                                try {
+                                    var list = JSON.parse(xhr.responseText);
+                                    for (var j = 0; j < list.length; j++) {
+                                        var s = list[j];
+                                        s._classId = cls.id;
+                                        s._className = cls.name;
+                                        s._source = 'json';
+                                        if (!s._uid) s._uid = 'json_' + cls.id + '_' + s.id;
+                                        allStudents.push(s);
+                                    }
+                                } catch (e) {
+                                    hasError = true;
+                                }
+                            }
+                            if (loaded >= total) {
+                                students = allStudents;
+                                saveToStorage();
+                                localStorage.setItem(DATA_LOADED_KEY, 'true');
+                                if (callback) callback(!hasError);
+                            }
+                        }
+                    };
+                    xhr.onerror = function() {
+                        loaded++;
+                        if (loaded >= total) {
+                            students = allStudents;
+                            saveToStorage();
+                            if (callback) callback(!hasError);
+                        }
+                    };
+                    xhr.send();
+                })(classes[i]);
+            }
+        }
+
+        function initData() {
+            var loaded = loadFromStorage();
+            if (loaded && students.length > 0) {
+                renderClassNav();
+                render();
+            } else {
+                fetchJsonData(function(success) {
+                    renderClassNav();
+                    render();
+                    if (success) showToast('数据加载完成');
                 });
+            }
+        }
 
-                return isValid;
+        function reloadJsonData() {
+            localStorage.removeItem(DATA_LOADED_KEY);
+            fetchJsonData(function(success) {
+                renderClassNav();
+                render();
+                if (success) showToast('JSON数据已重新加载');
+            });
+        }
+
+        function checkLoginStatus() {
+            isAdmin = sessionStorage.getItem(LOGIN_KEY) === 'true';
+            updateAdminUI();
+        }
+
+        function updateAdminUI() {
+            var adminActions = document.getElementById('adminActions');
+            var loginIcon = document.getElementById('loginIcon');
+            if (isAdmin) {
+                adminActions.style.display = 'flex';
+                loginIcon.className = 'fas fa-user-shield';
+            } else {
+                adminActions.style.display = 'none';
+                loginIcon.className = 'fas fa-lock';
+            }
+        }
+
+        function renderClassNav() {
+            var nav = document.getElementById('classNav');
+            var html = '<button class="class-nav-btn ' + (currentClassFilter === '全部' ? 'active' : '') + '" data-class="全部">全部</button>';
+            for (var i = 0; i < classes.length; i++) {
+                var cls = classes[i];
+                var isActive = cls.name === currentClassFilter;
+                html += '<button class="class-nav-btn ' + (isActive ? 'active' : '') + '" data-class="' + cls.name + '">' + cls.name + '</button>';
+            }
+            nav.innerHTML = html;
+
+            var buttons = nav.querySelectorAll('.class-nav-btn');
+            for (var j = 0; j < buttons.length; j++) {
+                buttons[j].addEventListener('click', function() {
+                    currentClassFilter = this.getAttribute('data-class');
+                    renderClassNav();
+                    render();
+                });
+            }
+        }
+
+        function getInitials(name) {
+            return name ? name.charAt(0) : '?';
+        }
+
+        function getAvatarHtml(student) {
+            if (student.avatar) {
+                return '<img src="' + student.avatar + '" alt="' + student.name + '的头像" loading="lazy">';
+            }
+            return '<span>' + getInitials(student.name) + '</span>';
+        }
+
+        function isBirthdayMonth(birthday) {
+            if (!birthday) return false;
+            var parts = birthday.split('-');
+            if (parts.length < 2) return false;
+            var month = parseInt(parts[0], 10) - 1;
+            var today = new Date();
+            return month === today.getMonth();
+        }
+
+        function getBirthMonth(birthday) {
+            if (!birthday) return 0;
+            var parts = birthday.split('-');
+            if (parts.length < 2) return 0;
+            return parseInt(parts[0], 10);
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            var div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        function render() {
+            var searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+            var sortValue = document.getElementById('sortSelect').value;
+
+            var filtered = [];
+            for (var i = 0; i < students.length; i++) {
+                var s = students[i];
+                if (currentClassFilter !== '全部' && s._className !== currentClassFilter) {
+                    continue;
+                }
+                if (!searchTerm) {
+                    filtered.push(s);
+                    continue;
+                }
+                var term = searchTerm;
+                var text = (s.name || '') + (s.university || '') + (s.major || '') + (s.motto || '') + (s.hobby || '') + (s.phone || '');
+                if (text.toLowerCase().indexOf(term) !== -1) {
+                    filtered.push(s);
+                }
             }
 
-            function clearForm() {
-                document.getElementById('classmateForm').reset();
-                document.getElementById('editId').value = '';
-                currentAvatar = null;
+            filtered.sort(function(a, b) {
+                switch(sortValue) {
+                    case 'name-asc': return (a.name || '').localeCompare(b.name || '', 'zh-CN');
+                    case 'name-desc': return (b.name || '').localeCompare(a.name || '', 'zh-CN');
+                    case 'birth-asc': return getBirthMonth(a.birthday) - getBirthMonth(b.birthday);
+                    case 'birth-desc': return getBirthMonth(b.birthday) - getBirthMonth(a.birthday);
+                    default: return 0;
+                }
+            });
+
+            var grid = document.getElementById('classmateGrid');
+            var emptyState = document.getElementById('emptyState');
+
+            document.getElementById('totalCount').textContent = students.length;
+            document.getElementById('filteredCount').textContent = filtered.length;
+
+            var birthdayCount = 0;
+            for (var b = 0; b < students.length; b++) {
+                if (isBirthdayMonth(students[b].birthday)) birthdayCount++;
+            }
+            var birthdayEl = document.getElementById('birthdayCount');
+            var birthdayNum = document.getElementById('birthdayNum');
+            if (birthdayCount > 0) {
+                birthdayEl.style.display = 'flex';
+                birthdayNum.textContent = birthdayCount;
+            } else {
+                birthdayEl.style.display = 'none';
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.style.display = 'block';
+            } else {
+                emptyState.style.display = 'none';
+                var html = '';
+                for (var k = 0; k < filtered.length; k++) {
+                    var s = filtered[k];
+                    var isBirthday = isBirthdayMonth(s.birthday);
+                    var genderClass = s.gender === '男' ? 'gender-male' : 'gender-female';
+                    var genderIcon = s.gender === '男' ? '\u2642' : '\u2640';
+                    var majorTag = s.major ? '<span style="color: var(--text-muted); font-size: 0.7rem; margin-left: 0.5rem;">' + escapeHtml(s.major) + '</span>' : '';
+
+                    html += '<article class="card ' + (isBirthday ? 'birthday-highlight' : '') + '">' +
+                        '<div class="card-header">' +
+                            '<div class="avatar" onclick="window.filterBySurname(\'' + s.name.charAt(0) + '\')">' + getAvatarHtml(s) + '</div>' +
+                            '<div class="card-title-group">' +
+                                '<div class="card-name">' + escapeHtml(s.name) + 
+                                    '<span class="gender-icon ' + genderClass + '">' + genderIcon + '</span>' +
+                                    (isBirthday ? ' <span>\u1F382</span>' : '') + 
+                                '</div>' +
+                                '<div class="card-birth"><i class="fas fa-calendar-alt"></i> 生日: ' + escapeHtml(s.birthday || '') + ' \u00B7 ' + escapeHtml(s._className || '') + '</div>' +
+                            '</div>' +
+                            '<div class="card-actions">' +
+                                '<button class="card-action-btn tooltip" data-tooltip="编辑" onclick="window.editStudent(\'' + s._uid + '\')"><i class="fas fa-pen"></i></button>' +
+                                '<button class="card-action-btn delete tooltip" data-tooltip="删除" onclick="window.deleteStudent(\'' + s._uid + '\')"><i class="fas fa-trash"></i></button>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="card-body">' +
+                            '<div class="info-row"><span class="info-label"><i class="fas fa-university"></i> 大学</span><span class="info-value">' + escapeHtml(s.university || '') + majorTag + '</span></div>' +
+                            '<div class="info-row"><span class="info-label"><i class="fas fa-phone"></i> 电话</span><span class="info-value">' + escapeHtml(s.phone || '') + '</span></div>' +
+                            '<div class="info-row"><span class="info-label"><i class="fab fa-qq"></i> QQ</span><span class="info-value">' + escapeHtml(s.qq || '') + '</span></div>' +
+                            '<div class="info-row"><span class="info-label"><i class="fab fa-weixin"></i> 微信</span><span class="info-value">' + escapeHtml(s.wechat || '') + '</span></div>' +
+                            '<div class="info-row"><span class="info-label"><i class="fas fa-envelope"></i> 邮箱</span><span class="info-value">' + escapeHtml(s.email || '') + '</span></div>' +
+                            '<div class="info-row"><span class="info-label"><i class="fas fa-heart"></i> 爱好</span><span class="info-value">' + escapeHtml(s.hobby || '') + '</span></div>' +
+                            '<div class="motto-box"><div class="motto-text">' + escapeHtml(s.motto || '') + '</div></div>' +
+                        '</div>' +
+                        '<div class="card-footer">' +
+                            '<span class="university-tag"><i class="fas fa-graduation-cap"></i> ' + escapeHtml(s.university || '未知大学') + '</span>' +
+                            '<span class="date-tag">' + escapeHtml(s._className || '') + '</span>' +
+                        '</div>' +
+                    '</article>';
+                }
+                grid.innerHTML = html;
+            }
+        }
+
+        window.filterBySurname = function(surname) {
+            document.getElementById('searchInput').value = surname;
+            render();
+            showToast('已筛选姓' + surname + '的同学');
+        };
+
+        function findStudentByUid(uid) {
+            for (var i = 0; i < students.length; i++) {
+                if (students[i]._uid === uid) return students[i];
+            }
+            return null;
+        }
+
+        function validateForm() {
+            var isValid = true;
+            var fields = [
+                { id: 'name', validator: function(v) { return v && v.length >= 1; } },
+                { id: 'gender', validator: function(v) { return !!v; } },
+                { id: 'className', validator: function(v) { return !!v; } },
+                { id: 'birthday', validator: function(v) { return v && /^\d{2}-\d{2}$/.test(v); } },
+                { id: 'phone', validator: function(v) { var re = new RegExp('^[1][3-9][0-9]{9}$'); return re.test(v); } },
+                { id: 'motto', validator: function(v) { return !!v; } }
+            ];
+            for (var i = 0; i < fields.length; i++) {
+                var field = fields[i];
+                var el = document.getElementById(field.id);
+                var group = el.closest('.form-group');
+                var value = el.value.trim();
+                if (!field.validator(value)) {
+                    group.classList.add('has-error');
+                    isValid = false;
+                } else {
+                    group.classList.remove('has-error');
+                }
+            }
+            return isValid;
+        }
+
+        function clearForm() {
+            document.getElementById('classmateForm').reset();
+            document.getElementById('editId').value = '';
+            currentAvatar = null;
+            updateAvatarPreview();
+            var groups = document.querySelectorAll('.form-group');
+            for (var i = 0; i < groups.length; i++) groups[i].classList.remove('has-error');
+        }
+
+        function updateAvatarPreview() {
+            var preview = document.getElementById('avatarPreview');
+            if (currentAvatar) {
+                preview.innerHTML = '<img src="' + currentAvatar + '" alt="头像预览" style="width:100%;height:100%;object-fit:cover;">';
+            } else {
+                preview.innerHTML = '<i class="fas fa-user"></i>';
+            }
+        }
+
+        function populateClassSelect() {
+            var select = document.getElementById('className');
+            select.innerHTML = '<option value="">请选择班级</option>';
+            for (var i = 0; i < classes.length; i++) {
+                var cls = classes[i];
+                select.innerHTML += '<option value="' + cls.name + '">' + cls.name + '</option>';
+            }
+        }
+
+        function openModal(isEdit, student) {
+            populateClassSelect();
+            var overlay = document.getElementById('modalOverlay');
+            var title = document.getElementById('modalTitle');
+
+            if (isEdit && student) {
+                title.innerHTML = '<i class="fas fa-user-edit"></i><span>编辑同学</span>';
+                document.getElementById('editId').value = student._uid;
+                document.getElementById('name').value = student.name || '';
+                document.getElementById('gender').value = student.gender || '';
+                document.getElementById('className').value = student._className || '';
+                document.getElementById('birthday').value = student.birthday || '';
+                document.getElementById('university').value = student.university || '';
+                document.getElementById('major').value = student.major || '';
+                document.getElementById('phone').value = student.phone || '';
+                document.getElementById('qq').value = student.qq || '';
+                document.getElementById('wechat').value = student.wechat || '';
+                document.getElementById('email').value = student.email || '';
+                document.getElementById('hobby').value = student.hobby || '';
+                document.getElementById('motto').value = student.motto || '';
+                currentAvatar = student.avatar || null;
                 updateAvatarPreview();
-                document.querySelectorAll('.form-group').forEach(function(g) { g.classList.remove('has-error'); });
-            }
-
-            function updateAvatarPreview() {
-                var preview = document.getElementById('avatarPreview');
-                if (currentAvatar) {
-                    preview.innerHTML = '<img src="' + currentAvatar + '" alt="头像预览" style="width:100%;height:100%;object-fit:cover;">';
-                } else {
-                    preview.innerHTML = '<i class="fas fa-user" aria-hidden="true"></i>';
-                }
-            }
-
-            function openModal(isEdit, classmate) {
-                var overlay = document.getElementById('modalOverlay');
-                var title = document.getElementById('modalTitle');
-
-                if (isEdit && classmate) {
-                    title.innerHTML = '<i class="fas fa-user-edit" aria-hidden="true"></i><span>编辑同学</span>';
-                    document.getElementById('editId').value = classmate.id;
-                    document.getElementById('name').value = classmate.name;
-                    document.getElementById('className').value = classmate.className || '';
-                    document.getElementById('birthDate').value = classmate.birthDate;
-                    document.getElementById('phone').value = classmate.phone;
-                    document.getElementById('university').value = classmate.university || '';
-                    document.getElementById('crush').value = classmate.crush;
-                    document.getElementById('movie').value = classmate.movie;
-                    document.getElementById('color').value = classmate.color;
-                    document.getElementById('food').value = classmate.food;
-                    document.getElementById('game').value = classmate.game;
-                    document.getElementById('destination').value = classmate.destination;
-                    document.getElementById('dream').value = classmate.dream;
-                    document.getElementById('motto').value = classmate.motto;
-                    document.getElementById('notes').value = classmate.notes;
-                    currentAvatar = classmate.avatar;
-                    updateAvatarPreview();
-                } else {
-                    title.innerHTML = '<i class="fas fa-user-plus" aria-hidden="true"></i><span>添加同学</span>';
-                    clearForm();
-                }
-
-                overlay.classList.add('active');
-                overlay.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-                setTimeout(function() { document.getElementById('name').focus(); }, 100);
-            }
-
-            function closeModal() {
-                var overlay = document.getElementById('modalOverlay');
-                overlay.classList.remove('active');
-                overlay.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
+            } else {
+                title.innerHTML = '<i class="fas fa-user-plus"></i><span>添加同学</span>';
                 clearForm();
             }
 
-            function saveClassmate() {
-                if (!validateForm()) {
-                    showToast('请检查表单填写是否正确', 'error');
-                    return;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(function() { document.getElementById('name').focus(); }, 100);
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+            clearForm();
+        }
+
+        function saveStudent() {
+            if (!validateForm()) {
+                showToast('请检查表单填写是否正确', 'error');
+                return;
+            }
+
+            var uid = document.getElementById('editId').value;
+            var isEdit = !!uid;
+            var className = document.getElementById('className').value;
+            var classId = '';
+            for (var c = 0; c < classes.length; c++) {
+                if (classes[c].name === className) {
+                    classId = classes[c].id;
+                    break;
                 }
+            }
 
-                var id = document.getElementById('editId').value;
-                var isEdit = !!id;
-                var now = Date.now();
+            var data = {
+                _uid: isEdit ? uid : generateId(),
+                _classId: classId,
+                _className: className,
+                _source: 'local',
+                name: document.getElementById('name').value.trim(),
+                gender: document.getElementById('gender').value,
+                birthday: document.getElementById('birthday').value.trim(),
+                university: document.getElementById('university').value.trim(),
+                major: document.getElementById('major').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                qq: document.getElementById('qq').value.trim(),
+                wechat: document.getElementById('wechat').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                hobby: document.getElementById('hobby').value.trim(),
+                motto: document.getElementById('motto').value.trim(),
+                avatar: currentAvatar
+            };
 
-                var data = {
-                    id: isEdit ? id : generateId(),
-                    name: document.getElementById('name').value.trim(),
-                    className: document.getElementById('className').value,
-                    birthDate: document.getElementById('birthDate').value,
-                    phone: document.getElementById('phone').value.trim(),
-                    university: document.getElementById('university').value.trim(),
-                    crush: document.getElementById('crush').value.trim(),
-                    movie: document.getElementById('movie').value.trim(),
-                    color: document.getElementById('color').value.trim(),
-                    food: document.getElementById('food').value.trim(),
-                    game: document.getElementById('game').value.trim(),
-                    destination: document.getElementById('destination').value.trim(),
-                    dream: document.getElementById('dream').value.trim(),
-                    motto: document.getElementById('motto').value.trim(),
-                    notes: document.getElementById('notes').value.trim(),
-                    avatar: currentAvatar,
-                    createdAt: isEdit ? (classmates.find(function(c) { return c.id === id; })?.createdAt || now) : now
-                };
-
-                if (isEdit) {
-                    var index = classmates.findIndex(function(c) { return c.id === id; });
-                    if (index !== -1) {
-                        classmates[index] = data;
-                        showToast('同学信息已更新');
-                    }
-                } else {
-                    classmates.push(data);
-                    showToast('新同学已添加');
+            if (isEdit) {
+                var index = -1;
+                for (var i = 0; i < students.length; i++) {
+                    if (students[i]._uid === uid) { index = i; break; }
                 }
+                if (index !== -1) {
+                    students[index] = data;
+                    showToast('同学信息已更新');
+                }
+            } else {
+                students.push(data);
+                showToast('新同学已添加');
+            }
 
-                saveData();
+            saveToStorage();
+            render();
+            closeModal();
+        }
+
+        window.editStudent = function(uid) {
+            var s = findStudentByUid(uid);
+            if (s) openModal(true, s);
+        };
+
+        window.deleteStudent = function(uid) {
+            var s = findStudentByUid(uid);
+            if (!s) return;
+            showConfirm('确认删除', '确定要删除 ' + s.name + ' 的同学信息吗？此操作不可恢复。', function() {
+                var newList = [];
+                for (var i = 0; i < students.length; i++) {
+                    if (students[i]._uid !== uid) newList.push(students[i]);
+                }
+                students = newList;
+                saveToStorage();
                 render();
-                closeModal();
+                showToast('同学信息已删除');
+            });
+        };
+
+        function showConfirm(title, text, callback) {
+            confirmCallback = callback;
+            document.getElementById('confirmTitle').textContent = title;
+            document.getElementById('confirmText').textContent = text;
+            document.getElementById('confirmDialog').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideConfirm() {
+            document.getElementById('confirmDialog').classList.remove('active');
+            document.body.style.overflow = '';
+            confirmCallback = null;
+        }
+
+        function showToast(message, type) {
+            var toast = document.getElementById('toast');
+            var icon = type === 'error' ? '<i class="fas fa-exclamation-circle"></i>' : '<i class="fas fa-check-circle"></i>';
+            toast.innerHTML = icon + ' ' + message;
+            toast.classList.add('show');
+            setTimeout(function() { toast.classList.remove('show'); }, 3000);
+        }
+
+        function resetData() {
+            showConfirm('重置所有数据', '确定要清空所有数据并重新从JSON加载吗？本地添加的数据也会丢失。', function() {
+                localStorage.removeItem(STORAGE_KEY);
+                localStorage.removeItem(DATA_LOADED_KEY);
+                initData();
+                showToast('已重置，正在重新加载JSON数据');
+            });
+        }
+
+        function toggleTheme() {
+            var html = document.documentElement;
+            var current = html.getAttribute('data-theme');
+            var next = current === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            document.getElementById('themeIcon').className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        function initTheme() {
+            var saved = localStorage.getItem('theme');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var theme = saved || (prefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('themeIcon').className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        function initBgSelector() {
+            var dots = document.querySelectorAll('.bg-dot');
+            var pattern = document.getElementById('bgPattern');
+            var saved = localStorage.getItem('bgPattern') || 'gradient-1';
+            pattern.className = 'bg-pattern ' + saved;
+            for (var i = 0; i < dots.length; i++) {
+                if (dots[i].getAttribute('data-bg') === saved) dots[i].classList.add('active');
+                else dots[i].classList.remove('active');
             }
-
-            window.editClassmate = function(id) {
-                var classmate = classmates.find(function(c) { return c.id === id; });
-                if (classmate) {
-                    openModal(true, classmate);
-                }
-            };
-
-            window.deleteClassmate = function(id) {
-                var classmate = classmates.find(function(c) { return c.id === id; });
-                if (!classmate) return;
-
-                showConfirm(
-                    '确认删除',
-                    '确定要删除 ' + classmate.name + ' 的同学信息吗？此操作不可恢复。',
-                    function() {
-                        classmates = classmates.filter(function(c) { return c.id !== id; });
-                        saveData();
-                        render();
-                        showToast('同学信息已删除');
-                    }
-                );
-            };
-
-            function showConfirm(title, text, callback) {
-                confirmCallback = callback;
-                document.getElementById('confirmTitle').textContent = title;
-                document.getElementById('confirmText').textContent = text;
-                var dialog = document.getElementById('confirmDialog');
-                dialog.classList.add('active');
-                dialog.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function hideConfirm() {
-                var dialog = document.getElementById('confirmDialog');
-                dialog.classList.remove('active');
-                dialog.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-                confirmCallback = null;
-            }
-
-            function showToast(message, type) {
-                var toast = document.getElementById('toast');
-                var icon = type === 'error' ? '<i class="fas fa-exclamation-circle" aria-hidden="true"></i>' : '<i class="fas fa-check-circle" aria-hidden="true"></i>';
-                toast.innerHTML = icon + ' ' + message;
-                toast.classList.add('show');
-                setTimeout(function() { toast.classList.remove('show'); }, 3000);
-            }
-
-            function resetData() {
-                showConfirm(
-                    '重置示例数据',
-                    '确定要覆盖当前所有数据，恢复为初始示例数据吗？此操作不可恢复。',
-                    function() {
-                        classmates = JSON.parse(JSON.stringify(defaultData));
-                        saveData();
-                        render();
-                        showToast('已重置为示例数据');
-                    }
-                );
-            }
-
-            function toggleTheme() {
-                var html = document.documentElement;
-                var current = html.getAttribute('data-theme');
-                var next = current === 'light' ? 'dark' : 'light';
-                html.setAttribute('data-theme', next);
-                localStorage.setItem('theme', next);
-
-                var icon = document.getElementById('themeIcon');
-                icon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-            }
-
-            function initTheme() {
-                var saved = localStorage.getItem('theme');
-                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                var theme = saved || (prefersDark ? 'dark' : 'light');
-                document.documentElement.setAttribute('data-theme', theme);
-                document.getElementById('themeIcon').className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-            }
-
-            function initBgSelector() {
-                var dots = document.querySelectorAll('.bg-dot');
-                var pattern = document.getElementById('bgPattern');
-                var saved = localStorage.getItem('bgPattern') || 'gradient-1';
-
-                pattern.className = 'bg-pattern ' + saved;
-                dots.forEach(function(d) {
-                    if (d.dataset.bg === saved) {
-                        d.classList.add('active');
-                        d.setAttribute('aria-checked', 'true');
-                    } else {
-                        d.classList.remove('active');
-                        d.setAttribute('aria-checked', 'false');
-                    }
-                });
-
-                dots.forEach(function(dot) {
-                    dot.addEventListener('click', function() {
-                        var bg = this.dataset.bg;
-                        pattern.className = 'bg-pattern ' + bg;
-                        localStorage.setItem('bgPattern', bg);
-                        dots.forEach(function(d) {
-                            d.classList.remove('active');
-                            d.setAttribute('aria-checked', 'false');
-                        });
-                        this.classList.add('active');
-                        this.setAttribute('aria-checked', 'true');
-                    });
-
-                    dot.addEventListener('keydown', function(e) {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            this.click();
-                        }
-                    });
+            for (var j = 0; j < dots.length; j++) {
+                dots[j].addEventListener('click', function() {
+                    var bg = this.getAttribute('data-bg');
+                    pattern.className = 'bg-pattern ' + bg;
+                    localStorage.setItem('bgPattern', bg);
+                    for (var k = 0; k < dots.length; k++) dots[k].classList.remove('active');
+                    this.classList.add('active');
                 });
             }
+        }
 
-            // 登录相关
-            function openLoginModal() {
-                if (isAdmin) {
-                    showToast('您已是登录状态（管理员）');
-                    return;
-                }
-                var overlay = document.getElementById('loginOverlay');
-                overlay.classList.add('active');
-                overlay.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-                document.getElementById('loginPassword').value = '';
-                document.getElementById('loginError').style.display = 'none';
-                setTimeout(function() { document.getElementById('loginPassword').focus(); }, 100);
-            }
+        function openLoginModal() {
+            if (isAdmin) { showToast('您已是登录状态（管理员）'); return; }
+            document.getElementById('loginOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('loginError').style.display = 'none';
+            setTimeout(function() { document.getElementById('loginPassword').focus(); }, 100);
+        }
 
-            function closeLoginModal() {
-                var overlay = document.getElementById('loginOverlay');
-                overlay.classList.remove('active');
-                overlay.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-            }
+        function closeLoginModal() {
+            document.getElementById('loginOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
 
-            function doLogin() {
-                var pwd = document.getElementById('loginPassword').value;
-                if (pwd === DEFAULT_PASSWORD) {
-                    isAdmin = true;
-                    sessionStorage.setItem(LOGIN_KEY, 'true');
-                    updateAdminUI();
-                    closeLoginModal();
-                    showToast('登录成功，已解锁管理权限');
-                } else {
-                    document.getElementById('loginError').style.display = 'block';
-                    document.getElementById('loginPassword').value = '';
-                    document.getElementById('loginPassword').focus();
-                }
-            }
-
-            function doLogout() {
-                isAdmin = false;
-                sessionStorage.removeItem(LOGIN_KEY);
+        function doLogin() {
+            var pwd = document.getElementById('loginPassword').value;
+            if (pwd === DEFAULT_PASSWORD) {
+                isAdmin = true;
+                sessionStorage.setItem(LOGIN_KEY, 'true');
                 updateAdminUI();
-                showToast('已退出登录');
+                closeLoginModal();
+                showToast('登录成功，已解锁管理权限');
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+                document.getElementById('loginPassword').value = '';
+                document.getElementById('loginPassword').focus();
             }
+        }
 
-            function initEventListeners() {
-                document.getElementById('addBtn').addEventListener('click', function() { openModal(false); });
-                document.getElementById('modalClose').addEventListener('click', closeModal);
-                document.getElementById('modalCancel').addEventListener('click', closeModal);
-                document.getElementById('modalSubmit').addEventListener('click', saveClassmate);
-                document.getElementById('resetBtn').addEventListener('click', resetData);
-                document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-                document.getElementById('loginBtn').addEventListener('click', openLoginModal);
-                document.getElementById('loginClose').addEventListener('click', closeLoginModal);
-                document.getElementById('loginCancel').addEventListener('click', closeLoginModal);
-                document.getElementById('loginSubmit').addEventListener('click', doLogin);
-                document.getElementById('logoutBtn').addEventListener('click', doLogout);
+        function doLogout() {
+            isAdmin = false;
+            sessionStorage.removeItem(LOGIN_KEY);
+            updateAdminUI();
+            showToast('已退出登录');
+        }
 
-                document.getElementById('modalOverlay').addEventListener('click', function(e) {
-                    if (e.target === e.currentTarget) closeModal();
-                });
+        function initEventListeners() {
+            document.getElementById('addBtn').addEventListener('click', function() { openModal(false); });
+            document.getElementById('modalClose').addEventListener('click', closeModal);
+            document.getElementById('modalCancel').addEventListener('click', closeModal);
+            document.getElementById('modalSubmit').addEventListener('click', saveStudent);
+            document.getElementById('resetBtn').addEventListener('click', resetData);
+            document.getElementById('reloadBtn').addEventListener('click', reloadJsonData);
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+            document.getElementById('loginBtn').addEventListener('click', openLoginModal);
+            document.getElementById('loginClose').addEventListener('click', closeLoginModal);
+            document.getElementById('loginCancel').addEventListener('click', closeLoginModal);
+            document.getElementById('loginSubmit').addEventListener('click', doLogin);
+            document.getElementById('logoutBtn').addEventListener('click', doLogout);
 
-                document.getElementById('loginOverlay').addEventListener('click', function(e) {
-                    if (e.target === e.currentTarget) closeLoginModal();
-                });
+            document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === e.currentTarget) closeModal(); });
+            document.getElementById('loginOverlay').addEventListener('click', function(e) { if (e.target === e.currentTarget) closeLoginModal(); });
+            document.getElementById('confirmCancel').addEventListener('click', hideConfirm);
+            document.getElementById('confirmOk').addEventListener('click', function() { if (confirmCallback) confirmCallback(); hideConfirm(); });
+            document.getElementById('confirmDialog').addEventListener('click', function(e) { if (e.target === e.currentTarget) hideConfirm(); });
 
-                document.getElementById('confirmCancel').addEventListener('click', hideConfirm);
-                document.getElementById('confirmOk').addEventListener('click', function() {
-                    if (confirmCallback) confirmCallback();
-                    hideConfirm();
-                });
+            document.getElementById('searchInput').addEventListener('input', function() {
+                clearTimeout(searchDebounceTimer);
+                searchDebounceTimer = setTimeout(render, 300);
+            });
+            document.getElementById('sortSelect').addEventListener('change', render);
 
-                document.getElementById('confirmDialog').addEventListener('click', function(e) {
-                    if (e.target === e.currentTarget) hideConfirm();
-                });
+            document.getElementById('avatarSelectBtn').addEventListener('click', function() { document.getElementById('avatarInput').click(); });
+            document.getElementById('avatarInput').addEventListener('change', function(e) {
+                var file = e.target.files[0];
+                if (!file) return;
+                if (file.size > 2 * 1024 * 1024) { showToast('图片大小不能超过2MB', 'error'); return; }
+                var reader = new FileReader();
+                reader.onload = function(event) { currentAvatar = event.target.result; updateAvatarPreview(); };
+                reader.readAsDataURL(file);
+            });
 
-                document.getElementById('searchInput').addEventListener('input', function() {
-                    clearTimeout(searchDebounceTimer);
-                    searchDebounceTimer = setTimeout(render, 300);
-                });
+            document.getElementById('loginPassword').addEventListener('keydown', function(e) { if (e.key === 'Enter') doLogin(); });
 
-                document.getElementById('sortSelect').addEventListener('change', render);
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (document.getElementById('confirmDialog').classList.contains('active')) hideConfirm();
+                    else if (document.getElementById('loginOverlay').classList.contains('active')) closeLoginModal();
+                    else if (document.getElementById('modalOverlay').classList.contains('active')) closeModal();
+                }
+            });
 
-                document.getElementById('avatarSelectBtn').addEventListener('click', function() {
-                    document.getElementById('avatarInput').click();
-                });
+            window.addEventListener('scroll', function() {
+                var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                var scrolled = (winScroll / height) * 100;
+                document.getElementById('scrollIndicator').style.width = scrolled + '%';
+            });
+        }
 
-                document.getElementById('avatarInput').addEventListener('change', function(e) {
-                    var file = e.target.files[0];
-                    if (!file) return;
+        function init() {
+            initTheme();
+            initBgSelector();
+            checkLoginStatus();
+            initEventListeners();
+            initData();
+        }
 
-                    if (file.size > 2 * 1024 * 1024) {
-                        showToast('图片大小不能超过2MB', 'error');
-                        return;
-                    }
-
-                    var reader = new FileReader();
-                    reader.onload = function(event) {
-                        currentAvatar = event.target.result;
-                        updateAvatarPreview();
-                    };
-                    reader.readAsDataURL(file);
-                });
-
-                document.getElementById('loginPassword').addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter') doLogin();
-                });
-
-                document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape') {
-                        if (document.getElementById('confirmDialog').classList.contains('active')) {
-                            hideConfirm();
-                        } else if (document.getElementById('loginOverlay').classList.contains('active')) {
-                            closeLoginModal();
-                        } else if (document.getElementById('modalOverlay').classList.contains('active')) {
-                            closeModal();
-                        }
-                    }
-                });
-
-                window.addEventListener('scroll', function() {
-                    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-                    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                    var scrolled = (winScroll / height) * 100;
-                    document.getElementById('scrollIndicator').style.width = scrolled + '%';
-                });
-            }
-
-            function init() {
-                loadData();
-                checkLoginStatus();
-                initTheme();
-                initBgSelector();
-                renderClassNav();
-                initEventListeners();
-                render();
-            }
-
-            init();
-        })();
+        init();
+    })();
     </script>
 </body>
 </html>
