@@ -1,0 +1,30 @@
+[
+  {
+    "id": 5,
+    "name": "张子涵",
+    "gender": "男",
+    "university": "河海大学",
+    "major": "电气工程",
+    "phone": "13555556666",
+    "qq": "321654987",
+    "wechat": "zhangzihan",
+    "email": "zihan@example.com",
+    "birthday": "09-01",
+    "hobby": "电子制作、游泳",
+    "motto": "知行合一"
+  },
+  {
+    "id": 7,
+    "name": "陈嘉怡",
+    "gender": "女",
+    "university": "苏州大学",
+    "major": "法学",
+    "phone": "13399990000",
+    "qq": "147258369",
+    "wechat": "chenjiayi",
+    "email": "jiayi@example.com",
+    "birthday": "04-18",
+    "hobby": "辩论、瑜伽",
+    "motto": "公平正义"
+  }
+]
