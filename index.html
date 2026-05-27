@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026届初中同学录 - 安全版</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#4a90d9;--primary-dark:#357abd;--success:#27ae60;--warning:#f39c12;--danger:#e74c3c;--bg:#f5f7fa;--card:#fff;--text:#2c3e50;--light:#7f8c8d;--border:#e0e6ed;--shadow:0 2px 12px rgba(0,0,0,0.08)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.header{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;padding:40px 20px;text-align:center;position:relative}
+.header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 1px,transparent 1px);background-size:20px 20px;opacity:0.3}
+.header h1{font-size:2.2em;margin-bottom:8px;position:relative}
+.header .subtitle{opacity:0.9;position:relative}
+.header .badge{display:inline-block;background:rgba(255,255,255,0.2);padding:4px 16px;border-radius:20px;margin-top:10px;font-size:0.9em}
+
+.auth-bar{background:var(--card);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.auth-info{display:flex;align-items:center;gap:12px;font-size:0.9em}
+.user-name{font-weight:600;color:var(--primary)}
+.role-tag{padding:2px 10px;border-radius:12px;font-size:0.8em;font-weight:600;color:white}
+.role-tag.monitor{background:#1565c0}
+.role-tag.viceMonitor{background:#7b1fa2}
+.role-tag.secretary{background:#2e7d32}
+.role-tag.studyCommittee{background:#ef6c00}
+.role-tag.sportsCommittee{background:#c2185b}
+.role-tag.admin{background:var(--danger)}
+.role-tag.guest{background:var(--light)}
+.auth-actions{display:flex;gap:8px}
+
+.btn{padding:8px 16px;border:none;border-radius:8px;font-size:0.9em;cursor:pointer;transition:all 0.25s;font-family:inherit}
+.btn-primary{background:var(--primary);color:white}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px)}
+.btn-success{background:var(--success);color:white}
+.btn-success:hover{background:#219a52}
+.btn-warning{background:var(--warning);color:white}
+.btn-danger{background:var(--danger);color:white}
+.btn-outline{background:white;border:1.5px solid var(--border);color:var(--text)}
+.btn-outline:hover{border-color:var(--primary);color:var(--primary)}
+.btn-sm{padding:5px 12px;font-size:0.8em}
+.btn:disabled{opacity:0.5;cursor:not-allowed}
+
+.search-bar{max-width:600px;margin:-20px auto 0;padding:0 20px;position:relative;z-index:10}
+.search-input{width:100%;padding:14px 20px 14px 48px;border:none;border-radius:12px;font-size:1em;box-shadow:var(--shadow);background:white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 16px center;transition:box-shadow 0.3s}
+.search-input:focus{outline:none;box-shadow:0 4px 20px rgba(74,144,217,0.2)}
+
+.filter-bar{max-width:1200px;margin:30px auto 0;padding:0 20px}
+.filter-section{background:var(--card);border-radius:12px;padding:16px 20px;margin-bottom:12px;box-shadow:var(--shadow)}
+.filter-label{font-size:0.85em;color:var(--light);margin-bottom:10px;font-weight:600;display:flex;align-items:center;gap:6px}
+.filter-label::before{content:'';display:inline-block;width:4px;height:16px;background:var(--primary);border-radius:2px}
+.filter-tags{display:flex;flex-wrap:wrap;gap:8px}
+.filter-tag{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:0.9em;transition:all 0.25s}
+.filter-tag:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}
+.filter-tag.active{background:var(--primary);color:white;border-color:var(--primary);box-shadow:0 2px 8px rgba(74,144,217,0.3)}
+.filter-tag .count{font-size:0.8em;opacity:0.7;margin-left:4px}
+
+.active-filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.active-filter-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border-radius:20px;font-size:0.85em}
+.active-filter-tag .remove{cursor:pointer;width:18px;height:18px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,0.2);font-size:12px}
+.clear-all{color:var(--light);font-size:0.85em;cursor:pointer;text-decoration:underline}
+.clear-all:hover{color:var(--danger)}
+
+.stats-bar{max-width:1200px;margin:0 auto 20px;padding:0 20px;display:flex;gap:16px;flex-wrap:wrap}
+.stat-item{background:var(--card);padding:10px 18px;border-radius:10px;box-shadow:var(--shadow);font-size:0.9em}
+.stat-item .number{font-size:1.3em;font-weight:700;color:var(--primary)}
+
+.container{max-width:1200px;margin:0 auto;padding:0 20px 40px}
+.students-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+
+.student-card{background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;transition:all 0.3s}
+.student-card:hover{transform:translateY(-4px);box-shadow:0 4px 20px rgba(0,0,0,0.12)}
+.card-header{display:flex;align-items:center;padding:20px;background:linear-gradient(135deg,#f8fafc,#eef2f7);border-bottom:1px solid var(--border)}
+.avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;font-size:1.8em;font-weight:700;color:white;margin-right:16px;cursor:pointer;transition:all 0.3s;position:relative;flex-shrink:0}
+.avatar:hover{transform:scale(1.08);box-shadow:0 4px 15px rgba(74,144,217,0.4)}
+.name-info{flex:1;min-width:0}
+.name-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.student-name{font-size:1.3em;font-weight:700}
+.gender-tag{font-size:0.75em;padding:2px 8px;border-radius:10px;font-weight:600}
+.gender-tag.male{background:#e3f2fd;color:#1976d2}
+.gender-tag.female{background:#fce4ec;color:#c2185b}
+.role-badge-inline{font-size:0.7em;padding:2px 8px;border-radius:10px;font-weight:600;color:white;white-space:nowrap}
+.class-tag{display:inline-flex;align-items:center;gap:4px;font-size:0.85em;color:var(--light);cursor:pointer;padding:2px 6px;border-radius:6px}
+.class-tag:hover{color:var(--primary);background:rgba(74,144,217,0.08)}
+.class-tag::before{content:'📚';font-size:0.9em}
+
+.card-body{padding:16px 20px}
+.info-row{display:flex;align-items:flex-start;margin-bottom:10px;font-size:0.95em}
+.info-label{color:var(--light);min-width:70px;font-size:0.9em;flex-shrink:0}
+.info-value{flex:1;word-break:break-all}
+.university-link{color:var(--primary);cursor:pointer;border-bottom:1px dashed var(--primary);padding:1px 4px;border-radius:4px}
+.university-link:hover{background:rgba(74,144,217,0.08);border-bottom-style:solid}
+
+.phone-section{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.phone-masked{font-family:'Courier New',monospace;letter-spacing:1px}
+.phone-full{display:none;font-family:'Courier New',monospace;letter-spacing:1px;color:var(--success);font-weight:600}
+.phone-full.visible{display:inline}
+.phone-masked.hidden{display:none}
+.reveal-btn{padding:4px 10px;border:1.5px solid var(--primary);background:white;color:var(--primary);border-radius:6px;font-size:0.8em;cursor:pointer;white-space:nowrap}
+.reveal-btn:hover{background:var(--primary);color:white}
+.reveal-btn.revealed{background:var(--success);border-color:var(--success);color:white}
+.privacy-hint{font-size:0.75em;color:var(--light);margin-left:4px}
+
+.card-actions{display:flex;gap:6px;padding:12px 20px;border-top:1px solid var(--border);background:#f8fafc}
+
+.empty-state{text-align:center;padding:60px 20px;color:var(--light)}
+.empty-state .icon{font-size:4em;margin-bottom:16px;opacity:0.5}
+.empty-state h3{font-size:1.3em;margin-bottom:8px;color:var(--text)}
+
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;z-index:1000;padding:20px}
+.modal-overlay.active{display:flex}
+.modal{background:var(--card);border-radius:16px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:modalIn 0.3s ease}
+@keyframes modalIn{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.modal-header h3{font-size:1.2em}
+.modal-close{width:32px;height:32px;border:none;background:var(--bg);border-radius:50%;cursor:pointer;font-size:1.2em;color:var(--light);transition:all 0.2s}
+.modal-close:hover{background:var(--danger);color:white}
+.modal-body{padding:20px 24px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:0.9em;font-weight:600;margin-bottom:6px}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:0.95em;font-family:inherit;transition:border-color 0.2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--primary)}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-hint{font-size:0.8em;color:var(--light);margin-top:4px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal-footer{padding:16px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px}
+
+.toast{position:fixed;top:20px;right:20px;padding:14px 20px;border-radius:10px;color:white;font-size:0.95em;box-shadow:0 4px 20px rgba(0,0,0,0.2);z-index:2000;animation:toastIn 0.3s ease;max-width:400px}
+@keyframes toastIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+.toast.success{background:var(--success)}
+.toast.error{background:var(--danger)}
+.toast.warning{background:var(--warning)}
+
+.footer{text-align:center;padding:30px 20px;color:var(--light);font-size:0.9em;border-top:1px solid var(--border);margin-top:20px}
+
+@media(max-width:768px){.header h1{font-size:1.6em}.students-grid{grid-template-columns:1fr}.auth-bar{flex-direction:column;align-items:flex-start}.form-row{grid-template-columns:1fr}}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#c0c8d0;border-radius:4px}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>🎓 2026届初中同学录</h1>
+<div class="subtitle">青春不散场，友谊永长存</div>
+<div class="badge">江苏省常州市 · 2023届初中毕业生</div>
+</div>
+
+<div class="auth-bar" id="authBar">
+<div class="auth-info">
+<span>👤 当前身份：</span>
+<span id="authStatus">未登录（仅可查看公开信息）</span>
+</div>
+<div class="auth-actions">
+<button class="btn btn-primary btn-sm" id="loginBtn" onclick="showLoginModal()">🔑 登录</button>
+<button class="btn btn-success btn-sm" id="addBtn" onclick="showAddModal()" style="display:none">➕ 添加同学</button>
+<button class="btn btn-warning btn-sm" id="roleBtn" onclick="showRoleModal()" style="display:none">🏅 职务管理</button>
+<button class="btn btn-outline btn-sm" id="logoutBtn" onclick="logout()" style="display:none">退出</button>
+</div>
+</div>
+
+<div class="search-bar">
+<input type="text" class="search-input" id="searchInput" placeholder="搜索姓名、大学、班级...">
+</div>
+
+<div class="filter-bar">
+<div class="filter-section">
+<div class="filter-label">班级筛选</div>
+<div class="filter-tags" id="classFilters"></div>
+</div>
+<div class="filter-section">
+<div class="filter-label">姓氏索引（点击头像筛选同姓同学）</div>
+<div class="filter-tags" id="surnameFilters"></div>
+</div>
+<div class="filter-section">
+<div class="filter-label">大学筛选</div>
+<div class="filter-tags" id="universityFilters"></div>
+</div>
+<div class="active-filters" id="activeFilters" style="display:none"></div>
+</div>
+
+<div class="stats-bar" id="statsBar"></div>
+
+<div class="container">
+<div class="students-grid" id="studentsGrid"></div>
+<div class="empty-state" id="emptyState" style="display:none">
+<div class="icon">🔍</div>
+<h3>没有找到符合条件的同学</h3>
+<p>试试调整筛选条件或搜索关键词</p>
+</div>
+</div>
+
+<div class="footer">
+<p>📌 隐私说明：电话号码仅对同班同学完整显示，所有修改需经班长审核</p>
+<p style="margin-top:6px">数据更新时间：<span id="updateTime">-</span> | 共收录 <span id="totalCount">0</span> 位同学</p>
+</div>
+
+<!-- 登录模态框 -->
+<div class="modal-overlay" id="loginModal">
+<div class="modal">
+<div class="modal-header"><h3>🔑 管理员/班长登录</h3><button class="modal-close" onclick="closeModal('loginModal')">×</button></div>
+<div class="modal-body">
+<div class="form-group">
+<label>选择身份</label>
+<select id="loginRole">
+<option value="">请选择...</option>
+<option value="admin">超级管理员</option>
+<option value="monitor">班长</option>
+<option value="viceMonitor">副班长</option>
+<option value="secretary">团委</option>
+<option value="studyCommittee">学习委员</option>
+<option value="sportsCommittee">体育委员</option>
+</select>
+</div>
+<div class="form-group">
+<label>所在班级</label>
+<select id="loginClass"><option value="">请选择班级...</option></select>
+<div class="form-hint">超级管理员可不选班级</div>
+</div>
+<div class="form-group">
+<label>GitHub Personal Access Token</label>
+<input type="password" id="loginToken" placeholder="ghp_xxxxxxxxxxxx">
+<div class="form-hint">用于提交数据修改申请，<a href="#" onclick="showTokenHelp()" style="color:var(--primary)">如何获取？</a></div>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline" onclick="closeModal('loginModal')">取消</button>
+<button class="btn btn-primary" onclick="doLogin()">登录</button>
+</div>
+</div>
+</div>
+
+<!-- 添加同学模态框 -->
+<div class="modal-overlay" id="addModal">
+<div class="modal">
+<div class="modal-header"><h3>➕ 添加同学信息</h3><button class="modal-close" onclick="closeModal('addModal')">×</button></div>
+<div class="modal-body">
+<div class="form-row">
+<div class="form-group"><label>姓名 *</label><input type="text" id="addName" placeholder="同学姓名"></div>
+<div class="form-group"><label>性别 *</label><select id="addGender"><option value="男">男</option><option value="女">女</option></select></div>
+</div>
+<div class="form-group"><label>班级 *</label><select id="addClass"></select></div>
+<div class="form-row">
+<div class="form-group"><label>就读大学</label><input type="text" id="addUniversity" placeholder="如：南京大学"></div>
+<div class="form-group"><label>专业</label><input type="text" id="addMajor" placeholder="如：法学"></div>
+</div>
+<div class="form-group"><label>手机号码</label><input type="tel" id="addPhone" placeholder="11位手机号"><div class="form-hint">仅同班同学可查看完整号码</div></div>
+<div class="form-row">
+<div class="form-group"><label>QQ</label><input type="text" id="addQQ" placeholder="QQ号"></div>
+<div class="form-group"><label>微信</label><input type="text" id="addWechat" placeholder="微信号"></div>
+</div>
+<div class="form-group"><label>邮箱</label><input type="email" id="addEmail" placeholder="邮箱地址"></div>
+<div class="form-group"><label>生日</label><input type="text" id="addBirthday" placeholder="MM-DD，如：03-15"></div>
+<div class="form-group"><label>爱好</label><input type="text" id="addHobby" placeholder="如：阅读、钢琴"></div>
+<div class="form-group"><label>座右铭</label><textarea id="addMotto" placeholder="一句喜欢的格言..."></textarea></div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline" onclick="closeModal('addModal')">取消</button>
+<button class="btn btn-primary" onclick="submitAdd()">提交审核（创建PR）</button>
+</div>
+</div>
+</div>
+
+<!-- 职务管理模态框 -->
+<div class="modal-overlay" id="roleModal">
+<div class="modal">
+<div class="modal-header"><h3>🏅 班级职务管理</h3><button class="modal-close" onclick="closeModal('roleModal')">×</button></div>
+<div class="modal-body">
+<div class="form-group"><label>选择班级</label><select id="roleClass" onchange="loadClassRoles()"></select></div>
+<div id="currentRoles" style="margin-bottom:16px"></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:16px 0">
+<h4 style="margin-bottom:12px;font-size:1em">任命新职务</h4>
+<div class="form-row">
+<div class="form-group"><label>职务类型</label><select id="newRoleType">
+<option value="monitor">班长</option>
+<option value="viceMonitor">副班长</option>
+<option value="secretary">团委</option>
+<option value="studyCommittee">学习委员</option>
+<option value="sportsCommittee">体育委员</option>
+<option value="artCommittee">文艺委员</option>
+<option value="lifeCommittee">生活委员</option>
+</select></div>
+<div class="form-group"><label>同学姓名</label><input type="text" id="newRoleName" placeholder="输入同学姓名"></div>
+</div>
+</div>
+<div class="modal-footer">
+<button class="btn btn-outline" onclick="closeModal('roleModal')">取消</button>
+<button class="btn btn-primary" onclick="submitRole()">提交任命（创建PR）</button>
+</div>
+</div>
+</div>
+
+<!-- Token帮助 -->
+<div class="modal-overlay" id="tokenHelpModal">
+<div class="modal">
+<div class="modal-header"><h3>📖 如何获取 GitHub Token</h3><button class="modal-close" onclick="closeModal('tokenHelpModal')">×</button></div>
+<div class="modal-body">
+<p style="margin-bottom:12px"><strong>步骤1：</strong>登录 GitHub → 点击右上角头像 → Settings</p>
+<p style="margin-bottom:12px"><strong>步骤2：</strong>左侧最下方 Developer settings → Personal access tokens → Tokens (classic)</p>
+<p style="margin-bottom:12px"><strong>步骤3：</strong>点击 Generate new token (classic)</p>
+<p style="margin-bottom:12px"><strong>步骤4：</strong>填写 Note，Expiration 选 No expiration</p>
+<p style="margin-bottom:12px"><strong>步骤5：</strong>勾选 <code>repo</code> 权限，点击 Generate token</p>
+<p style="margin-bottom:12px"><strong>步骤6：</strong><span style="color:var(--danger);font-weight:600">立即复制保存</span>（只显示一次！）</p>
+<div style="background:#fff3e0;padding:12px;border-radius:8px;margin-top:16px">
+<strong>⚠️ 安全提醒：</strong>Token 相当于密码，请勿泄露。建议仅班长和超级管理员持有。
+</div>
+</div>
+<div class="modal-footer"><button class="btn btn-primary" onclick="closeModal('tokenHelpModal')">明白了</button></div>
+</div>
+</div>
+
+<script>
+// ==================== 配置区（已配置为你的仓库）====================
+const CONFIG = {
+GITHUB_OWNER: 'qhgz2026',
+GITHUB_REPO: 'qhgz2026.github.io',
+GITHUB_BRANCH: 'main',
+DATA_PATH: 'data',
+ROLES: {
+admin: {name:'超级管理员',level:99,canManageAll:true,canAssign:true},
+monitor: {name:'班长',level:5,canManageClass:true,canAssign:true},
+viceMonitor: {name:'副班长',level:4,canManageClass:true,canAssign:false},
+secretary: {name:'团委',level:3,canManageClass:false,canAssign:false},
+studyCommittee: {name:'学习委员',level:3,canManageClass:false,canAssign:false},
+sportsCommittee: {name:'体育委员',level:3,canManageClass:false,canAssign:false},
+artCommittee: {name:'文艺委员',level:3,canManageClass:false,canAssign:false},
+lifeCommittee: {name:'生活委员',level:3,canManageClass:false,canAssign:false}
+}
+};
+
+// ==================== 状态管理 ====================
+let appState = {
+students: [],
+classes: [],
+roles: {},
+currentUser: null,
+filters: {className:null,surname:null,university:null,search:''},
+revealedPhones: new Set()
+};
+
+// ==================== 初始化 ====================
+async function init() {
+const saved = localStorage.getItem('classbook_user');
+if (saved) { try { appState.currentUser = JSON.parse(saved); } catch(e) {} }
+showToast('正在加载数据...', 'warning');
+try {
+await loadData();
+renderFilters();
+renderStudents();
+updateStats();
+updateAuthUI();
+document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN');
+showToast('数据加载完成！', 'success');
+} catch (e) {
+console.error(e);
+loadDemoData();
+showToast('使用演示数据（请上传数据文件到GitHub仓库）', 'warning');
+}
+document.getElementById('searchInput').addEventListener('input', (e) => {
+appState.filters.search = e.target.value.trim();
+renderStudents();
+updateStats();
+});
+}
+
+// ==================== 数据加载 ====================
+async function loadData() {
+const baseUrl = `https://raw.githubusercontent.com/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPO}/${CONFIG.GITHUB_BRANCH}/${CONFIG.DATA_PATH}`;
+try {
+const res = await fetch(`${baseUrl}/classes.json`);
+if (res.ok) appState.classes = await res.json();
+} catch(e) {}
+if (!appState.classes.length) {
+appState.classes = [{id:'class-1',name:'高三(1)班'},{id:'class-2',name:'高三(2)班'},{id:'class-3',name:'高三(3)班'}];
+}
+appState.students = [];
+for (const cls of appState.classes) {
+try {
+const res = await fetch(`${baseUrl}/${cls.id}/students.json`);
+if (res.ok) {
+const students = await res.json();
+students.forEach(s => { s.className = cls.name; s._classId = cls.id; });
+appState.students.push(...students);
+}
+const roleRes = await fetch(`${baseUrl}/${cls.id}/roles.json`);
+if (roleRes.ok) appState.roles[cls.name] = await roleRes.json();
+} catch(e) {}
+}
+}
+
+function loadDemoData() {
+appState.classes = [{id:'class-1',name:'高三(1)班'},{id:'class-2',name:'高三(2)班'},{id:'class-3',name:'高三(3)班'}];
+appState.students = [
+{id:1,name:"陈思绮",gender:"女",className:"高三(1)班",university:"南京大学",major:"法学",phone:"13812345678",qq:"123456789",wechat:"chensiqi",email:"chen@example.com",birthday:"03-15",hobby:"阅读、钢琴",motto:"星光不问赶路人"},
+{id:2,name:"陈浩然",gender:"男",className:"高三(1)班",university:"东南大学",major:"计算机",phone:"13987654321",qq:"987654321",wechat:"chenhaoran",email:"haoran@example.com",birthday:"07-22",hobby:"篮球、编程",motto:"代码改变世界"},
+{id:3,name:"李明轩",gender:"男",className:"高三(2)班",university:"南京大学",major:"物理",phone:"13711112222",qq:"456789123",wechat:"limingxuan",email:"mingxuan@example.com",birthday:"11-08",hobby:"物理竞赛",motto:"探索未知"},
+{id:4,name:"王雨萱",gender:"女",className:"高三(1)班",university:"苏州大学",major:"中文",phone:"13633334444",qq:"789123456",wechat:"wangyuxuan",email:"yuxuan@example.com",birthday:"05-20",hobby:"写作、绘画",motto:"以梦为马"},
+{id:5,name:"张子涵",gender:"男",className:"高三(3)班",university:"河海大学",major:"电气",phone:"13555556666",qq:"321654987",wechat:"zhangzihan",email:"zihan@example.com",birthday:"09-01",hobby:"电子制作",motto:"知行合一"},
+{id:6,name:"刘思颖",gender:"女",className:"高三(2)班",university:"南京师范大学",major:"英语",phone:"13477778888",qq:"654987321",wechat:"liusiying",email:"siying@example.com",birthday:"12-25",hobby:"英语演讲",motto:"世界那么大"},
+{id:7,name:"陈嘉怡",gender:"女",className:"高三(3)班",university:"苏州大学",major:"法学",phone:"13399990000",qq:"147258369",wechat:"chenjiayi",email:"jiayi@example.com",birthday:"04-18",hobby:"辩论",motto:"公平正义"},
+{id:8,name:"赵文博",gender:"男",className:"高三(1)班",university:"南京航空航天大学",major:"飞行器设计",phone:"13200001111",qq:"369258147",wechat:"zhaowenbo",email:"wenbo@example.com",birthday:"08-30",hobby:"航模",motto:"志在蓝天"}
+];
+appState.roles = {"高三(1)班":{monitor:"陈思绮",studyCommittee:"陈浩然"},"高三(2)班":{monitor:"李明轩"},"高三(3)班":{monitor:"张子涵"}};
+}
+
+// ==================== 权限检查 ====================
+function checkPermission(action, targetClass) {
+if (!appState.currentUser) return false;
+const user = appState.currentUser;
+const role = CONFIG.ROLES[user.role];
+if (!role) return false;
+if (user.role === 'admin') return true;
+if (action === 'manageClass' && role.canManageClass && user.className === targetClass) return true;
+if (action === 'assignRole' && role.canAssign && user.className === targetClass) return true;
+if (action === 'viewPhone' && user.className === targetClass) return true;
+return false;
+}
+
+// ==================== 筛选渲染 ====================
+function getSurname(name){return name.charAt(0)}
+function maskPhone(phone){if(!phone||phone.length!==11)return phone;return phone.substring(0,3)+'****'+phone.substring(7)}
+
+function renderFilters() {
+const cf = document.getElementById('classFilters');
+cf.innerHTML = appState.classes.map(c => {
+const count = appState.students.filter(s => s.className === c.name).length;
+return `<span class="filter-tag ${appState.filters.className===c.name?'active':''}" onclick="toggleFilter('className','${c.name}')">${c.name}<span class="count">${count}</span></span>`;
+}).join('');
+const surnames = [...new Set(appState.students.map(s => getSurname(s.name)))].sort();
+document.getElementById('surnameFilters').innerHTML = surnames.map(sur => {
+const count = appState.students.filter(s => getSurname(s.name)===sur).length;
+return `<span class="filter-tag ${appState.filters.surname===sur?'active':''}" onclick="toggleFilter('surname','${sur}')">${sur}<span class="count">${count}</span></span>`;
+}).join('');
+const unis = [...new Set(appState.students.map(s => s.university).filter(Boolean))].sort();
+document.getElementById('universityFilters').innerHTML = unis.map(uni => {
+const count = appState.students.filter(s => s.university===uni).length;
+return `<span class="filter-tag ${appState.filters.university===uni?'active':''}" onclick="toggleFilter('university','${uni}')">${uni}<span class="count">${count}</span></span>`;
+}).join('');
+updateActiveFilters();
+}
+
+function toggleFilter(type, value) {
+appState.filters[type] = appState.filters[type] === value ? null : value;
+renderFilters();
+renderStudents();
+updateStats();
+}
+
+function clearAllFilters() {
+appState.filters = {className:null,surname:null,university:null,search:''};
+document.getElementById('searchInput').value = '';
+renderFilters();
+renderStudents();
+updateStats();
+}
+
+function updateActiveFilters() {
+const container = document.getElementById('activeFilters');
+const active = [];
+if (appState.filters.className) active.push({type:'className',label:'班级',value:appState.filters.className});
+if (appState.filters.surname) active.push({type:'surname',label:'姓氏',value:appState.filters.surname});
+if (appState.filters.university) active.push({type:'university',label:'大学',value:appState.filters.university});
+if (appState.filters.search) active.push({type:'search',label:'搜索',value:appState.filters.search});
+if (active.length === 0) { container.style.display = 'none'; return; }
+container.style.display = 'flex';
+let html = '<span style="color:var(--light);font-size:0.85em">当前筛选：</span>';
+active.forEach(f => {
+html += `<span class="active-filter-tag">${f.label}: ${f.value}<span class="remove" onclick="toggleFilter('${f.type}','${f.value}')">×</span></span>`;
+});
+html += '<span class="clear-all" onclick="clearAllFilters()">清除全部</span>';
+container.innerHTML = html;
+}
+
+// ==================== 学生卡片渲染 ====================
+function renderStudents() {
+const grid = document.getElementById('studentsGrid');
+const empty = document.getElementById('emptyState');
+const students = appState.students.filter(s => {
+if (appState.filters.className && s.className !== appState.filters.className) return false;
+if (appState.filters.surname && getSurname(s.name) !== appState.filters.surname) return false;
+if (appState.filters.university && s.university !== appState.filters.university) return false;
+if (appState.filters.search) {
+const q = appState.filters.search.toLowerCase();
+return s.name.includes(q) || (s.university&&s.university.includes(q)) || s.className.includes(q) || (s.major&&s.major.includes(q));
+}
+return true;
+});
+if (students.length === 0) { grid.style.display = 'none'; empty.style.display = 'block'; return; }
+grid.style.display = 'grid'; empty.style.display = 'none';
+grid.innerHTML = students.map(s => {
+const surname = getSurname(s.name);
+const isRevealed = appState.revealedPhones.has(s.id);
+const canViewPhone = checkPermission('viewPhone', s.className);
+const showRevealBtn = canViewPhone && !isRevealed;
+const classRoles = appState.roles[s.className] || {};
+const studentRole = Object.entries(classRoles).find(([role, name]) => name === s.name);
+const roleKey = studentRole ? studentRole[0] : null;
+const roleConfig = roleKey ? CONFIG.ROLES[roleKey] : null;
+return `<div class="student-card" data-id="${s.id}">
+<div class="card-header">
+<div class="avatar" onclick="toggleFilter('surname','${surname}')" title="点击筛选姓${surname}的同学">${surname}</div>
+<div class="name-info">
+<div class="name-row">
+<span class="student-name">${s.name}</span>
+<span class="gender-tag ${s.gender==='男'?'male':'female'}">${s.gender}</span>
+${roleConfig ? `<span class="role-badge-inline ${roleKey}">${roleConfig.name}</span>` : ''}
+</div>
+<div class="class-tag" onclick="toggleFilter('className','${s.className}')">${s.className}</div>
+</div>
+</div>
+<div class="card-body">
+${s.university?`<div class="info-row"><span class="info-label">🏫 大学</span><span class="info-value"><span class="university-link" onclick="toggleFilter('university','${s.university}')">${s.university}</span>${s.major?' · '+s.major:''}</span></div>`:''}
+${s.phone?`<div class="info-row"><span class="info-label">📱 电话</span><span class="info-value"><span class="phone-section"><span class="phone-masked ${isRevealed?'hidden':''}">${maskPhone(s.phone)}</span><span class="phone-full ${isRevealed?'visible':''}">${s.phone}</span>${showRevealBtn?`<button class="reveal-btn" onclick="revealPhone(${s.id},'${s.className}')">显示完整号码</button>`:''}${isRevealed?`<button class="reveal-btn revealed" onclick="hidePhone(${s.id})">隐藏</button>`:''}</span>${!canViewPhone?'<span class="privacy-hint">（仅同班同学可见）</span>':''}</span></div>`:''}
+${s.qq?`<div class="info-row"><span class="info-label">🐧 QQ</span><span class="info-value">${s.qq}</span></div>`:''}
+${s.wechat?`<div class="info-row"><span class="info-label">💬 微信</span><span class="info-value">${s.wechat}</span></div>`:''}
+${s.email?`<div class="info-row"><span class="info-label">📧 邮箱</span><span class="info-value">${s.email}</span></div>`:''}
+${s.birthday?`<div class="info-row"><span class="info-label">🎂 生日</span><span class="info-value">${s.birthday}</span></div>`:''}
+${s.hobby?`<div class="info-row"><span class="info-label">❤️ 爱好</span><span class="info-value">${s.hobby}</span></div>`:''}
+${s.motto?`<div class="info-row"><span class="info-label">💡 座右铭</span><span class="info-value" style="font-style:italic;color:var(--primary)">"${s.motto}"</span></div>`:''}
+</div>
+${checkPermission('manageClass',s.className)?`<div class="card-actions"><button class="btn btn-outline btn-sm" onclick="editStudent(${s.id})">✏️ 编辑</button><button class="btn btn-danger btn-sm" onclick="deleteStudent(${s.id})">🗑️ 删除</button></div>`:''}
+</div>`;
+}).join('');
+}
+
+function revealPhone(id, className) {
+if (!checkPermission('viewPhone', className)) { showToast('仅同班同学可查看完整号码', 'error'); return; }
+appState.revealedPhones.add(id);
+renderStudents();
+}
+function hidePhone(id) { appState.revealedPhones.delete(id); renderStudents(); }
+
+// ==================== 统计 ====================
+function updateStats() {
+const students = appState.students.filter(s => {
+if (appState.filters.className && s.className !== appState.filters.className) return false;
+if (appState.filters.surname && getSurname(s.name) !== appState.filters.surname) return false;
+if (appState.filters.university && s.university !== appState.filters.university) return false;
+if (appState.filters.search) {
+const q = appState.filters.search.toLowerCase();
+return s.name.includes(q) || (s.university&&s.university.includes(q)) || s.className.includes(q) || (s.major&&s.major.includes(q));
+}
+return true;
+});
+document.getElementById('statsBar').innerHTML = `
+<div class="stat-item">共收录 <span class="number">${appState.students.length}</span> 人</div>
+<div class="stat-item">当前显示 <span class="number">${students.length}</span> 人</div>
+<div class="stat-item">男生 <span class="number">${students.filter(s=>s.gender==='男').length}</span> 人</div>
+<div class="stat-item">女生 <span class="number">${students.filter(s=>s.gender==='女').length}</span> 人</div>`;
+document.getElementById('totalCount').textContent = appState.students.length;
+}
+
+// ==================== 登录系统 ====================
+function showLoginModal() {
+const classSelect = document.getElementById('loginClass');
+classSelect.innerHTML = '<option value="">请选择班级...</option>' + appState.classes.map(c => `<option value="${c.name}">${c.name}</option>`).join('');
+document.getElementById('loginModal').classList.add('active');
+}
+function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+function showTokenHelp() { closeModal('loginModal'); document.getElementById('tokenHelpModal').classList.add('active'); }
+
+async function doLogin() {
+const role = document.getElementById('loginRole').value;
+const className = document.getElementById('loginClass').value;
+const token = document.getElementById('loginToken').value.trim();
+if (!role) { showToast('请选择身份', 'error'); return; }
+if (role !== 'admin' && !className) { showToast('请选择班级', 'error'); return; }
+if (!token) { showToast('请输入Token', 'error'); return; }
+showToast('正在验证Token...', 'warning');
+try {
+const res = await fetch('https://api.github.com/user', {headers:{'Authorization':`token ${token}`}});
+if (!res.ok) throw new Error('Token无效');
+appState.currentUser = {role, className, token};
+localStorage.setItem('classbook_user', JSON.stringify(appState.currentUser));
+closeModal('loginModal');
+updateAuthUI();
+renderStudents();
+showToast(`登录成功！${CONFIG.ROLES[role].name}${className?' - '+className:''}`, 'success');
+} catch(e) { showToast('Token验证失败：'+e.message, 'error'); }
+}
+function logout() {
+appState.currentUser = null;
+appState.revealedPhones.clear();
+localStorage.removeItem('classbook_user');
+updateAuthUI();
+renderStudents();
+showToast('已退出登录', 'warning');
+}
+function updateAuthUI() {
+const user = appState.currentUser;
+const status = document.getElementById('authStatus');
+const loginBtn = document.getElementById('loginBtn');
+const addBtn = document.getElementById('addBtn');
+const roleBtn = document.getElementById('roleBtn');
+const logoutBtn = document.getElementById('logoutBtn');
+if (!user) {
+status.innerHTML = '未登录（仅可查看公开信息）';
+loginBtn.style.display = 'inline-block';
+addBtn.style.display = 'none';
+roleBtn.style.display = 'none';
+logoutBtn.style.display = 'none';
+return;
+}
+const roleInfo = CONFIG.ROLES[user.role];
+status.innerHTML = `<span class="user-name">${user.className||'全局'}</span> <span class="role-tag ${user.role}">${roleInfo.name}</span>`;
+loginBtn.style.display = 'none';
+logoutBtn.style.display = 'inline-block';
+addBtn.style.display = (roleInfo.canManageClass || roleInfo.canManageAll) ? 'inline-block' : 'none';
+roleBtn.style.display = (roleInfo.canAssign || roleInfo.canManageAll) ? 'inline-block' : 'none';
+}
+
+// ==================== 添加同学 ====================
+function showAddModal() {
+if (!appState.currentUser) { showToast('请先登录', 'warning'); showLoginModal(); return; }
+const select = document.getElementById('addClass');
+select.innerHTML = appState.classes.map(c => `<option value="${c.name}" ${appState.currentUser.className===c.name?'selected':''}>${c.name}</option>`).join('');
+['addName','addUniversity','addMajor','addPhone','addQQ','addWechat','addEmail','addBirthday','addHobby','addMotto'].forEach(id => document.getElementById(id).value = '');
+document.getElementById('addModal').classList.add('active');
+}
+
+async function submitAdd() {
+const student = {
+id: Date.now(),
+name: document.getElementById('addName').value.trim(),
+gender: document.getElementById('addGender').value,
+className: document.getElementById('addClass').value,
+university: document.getElementById('addUniversity').value.trim() || null,
+major: document.getElementById('addMajor').value.trim() || null,
+phone: document.getElementById('addPhone').value.trim() || null,
+qq: document.getElementById('addQQ').value.trim() || null,
+wechat: document.getElementById('addWechat').value.trim() || null,
+email: document.getElementById('addEmail').value.trim() || null,
+birthday: document.getElementById('addBirthday').value.trim() || null,
+hobby: document.getElementById('addHobby').value.trim() || null,
+motto: document.getElementById('addMotto').value.trim() || null
+};
+if (!student.name) { showToast('请输入姓名', 'error'); return; }
+if (!student.className) { showToast('请选择班级', 'error'); return; }
+if (!checkPermission('manageClass', student.className)) { showToast('您没有权限管理该班级', 'error'); return; }
+showToast('正在创建Pull Request...', 'warning');
+try {
+await createPullRequest('add', student);
+closeModal('addModal');
+showToast('提交成功！请等待审核合并', 'success');
+} catch(e) { showToast('提交失败：'+e.message, 'error'); console.error(e); }
+}
+
+// ==================== 职务管理 ====================
+function showRoleModal() {
+if (!appState.currentUser) { showToast('请先登录', 'warning'); return; }
+const manageable = appState.currentUser.role === 'admin' ? appState.classes : appState.classes.filter(c => c.name === appState.currentUser.className);
+const select = document.getElementById('roleClass');
+select.innerHTML = manageable.map(c => `<option value="${c.name}">${c.name}</option>`).join('');
+loadClassRoles();
+document.getElementById('roleModal').classList.add('active');
+}
+function loadClassRoles() {
+const className = document.getElementById('roleClass').value;
+const roles = appState.roles[className] || {};
+const container = document.getElementById('currentRoles');
+if (Object.keys(roles).length === 0) {
+container.innerHTML = '<p style="color:var(--light);font-size:0.9em">该班级暂无职务分配</p>';
+return;
+}
+container.innerHTML = Object.entries(roles).map(([roleKey, name]) => {
+const roleInfo = CONFIG.ROLES[roleKey];
+return `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+<span><span class="role-badge-inline ${roleKey}">${roleInfo?.name||roleKey}</span> <strong>${name}</strong></span>
+<button class="btn btn-danger btn-sm" onclick="removeRole('${className}','${roleKey}')">移除</button>
+</div>`;
+}).join('');
+}
+async function submitRole() {
+const className = document.getElementById('roleClass').value;
+const roleType = document.getElementById('newRoleType').value;
+const roleName = document.getElementById('newRoleName').value.trim();
+if (!roleName) { showToast('请输入同学姓名', 'error'); return; }
+if (!checkPermission('assignRole', className)) { showToast('您没有权限任命该班级职务', 'error'); return; }
+showToast('正在提交职务任命...', 'warning');
+try {
+await createPullRequest('role', {className, roleType, roleName});
+closeModal('roleModal');
+showToast('职务任命已提交审核！', 'success');
+} catch(e) { showToast('提交失败：'+e.message, 'error'); }
+}
+
+// ==================== GitHub Pull Request 核心 ====================
+async function createPullRequest(type, data) {
+const token = appState.currentUser?.token;
+if (!token) throw new Error('未登录');
+const owner = CONFIG.GITHUB_OWNER;
+const repo = CONFIG.GITHUB_REPO;
+const baseBranch = CONFIG.GITHUB_BRANCH;
+const timestamp = Date.now();
+const branchName = `update-${type}-${timestamp}`;
+
+// 1. 获取主分支SHA
+const baseRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/ref/heads/${baseBranch}`, {
+headers: {'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'}
+});
+if (!baseRes.ok) throw new Error('无法获取分支信息');
+const baseData = await baseRes.json();
+const baseSha = baseData.object.sha;
+
+// 2. 创建新分支
+const branchRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/refs`, {
+method: 'POST',
+headers: {'Authorization':`token ${token}`,'Content-Type':'application/json'},
+body: JSON.stringify({ref:`refs/heads/${branchName}`,sha:baseSha})
+});
+if (!branchRes.ok) throw new Error('创建分支失败');
+
+// 3. 获取文件内容并修改
+const cls = appState.classes.find(c => c.name === data.className);
+const classId = cls ? cls.id : 'class-1';
+let filePath, content, message;
+
+if (type === 'add') {
+let students = [];
+try {
+const res = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/${baseBranch}/${CONFIG.DATA_PATH}/${classId}/students.json`);
+if (res.ok) students = await res.json();
+} catch(e) {}
+const saveData = {...data};
+delete saveData.className;
+students.push(saveData);
+filePath = `${CONFIG.DATA_PATH}/${classId}/students.json`;
+content = btoa(unescape(encodeURIComponent(JSON.stringify(students, null, 2))));
+message = `添加同学：${data.name} (${data.className})`;
+} else if (type === 'role') {
+let roles = {};
+try {
+const res = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/${baseBranch}/${CONFIG.DATA_PATH}/${classId}/roles.json`);
+if (res.ok) roles = await res.json();
+} catch(e) {}
+roles[data.roleType] = data.roleName;
+filePath = `${CONFIG.DATA_PATH}/${classId}/roles.json`;
+content = btoa(unescape(encodeURIComponent(JSON.stringify(roles, null, 2))));
+message = `任命职务：${data.roleName} 为 ${CONFIG.ROLES[data.roleType]?.name || data.roleType} (${data.className})`;
+}
+
+// 4. 获取文件SHA（如果存在）
+let fileSha = null;
+try {
+const fileRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${baseBranch}`, {
+headers: {'Authorization':`token ${token}`}
+});
+if (fileRes.ok) {
+const fileData = await fileRes.json();
+fileSha = fileData.sha;
+}
+} catch(e) {}
+
+// 5. 提交文件修改
+const body = {message,content,branch:branchName};
+if (fileSha) body.sha = fileSha;
+const updateRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
+method: 'PUT',
+headers: {'Authorization':`token ${token}`,'Content-Type':'application/json'},
+body: JSON.stringify(body)
+});
+if (!updateRes.ok) throw new Error('提交文件失败');
+
+// 6. 创建Pull Request
+const prRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/pulls`, {
+method: 'POST',
+headers: {'Authorization':`token ${token}`,'Content-Type':'application/json'},
+body: JSON.stringify({
+title: `[同学录] ${message}`,
+body: `由 ${appState.currentUser.className || '管理员'} 提交
+
+请审核后合并`,
+head: branchName,
+base: baseBranch
+})
+});
+if (!prRes.ok) throw new Error('创建PR失败');
+const prData = await prRes.json();
+window.open(prData.html_url, '_blank');
+}
+
+// ==================== 编辑/删除提示 ====================
+function editStudent(id) {
+const s = appState.students.find(x => x.id === id);
+if (!s) return;
+showToast('编辑功能：请通过GitHub直接修改 data/'+s._classId+'/students.json', 'warning');
+}
+function deleteStudent(id) {
+const s = appState.students.find(x => x.id === id);
+if (!s) return;
+if (!confirm(`确定要删除 ${s.name} 的信息吗？`)) return;
+showToast('删除功能：请通过GitHub直接删除 data/'+s._classId+'/students.json 中对应条目', 'warning');
+}
+function removeRole(className, roleKey) {
+if (!confirm(`确定要移除该职务吗？`)) return;
+showToast('移除职务：请通过GitHub直接修改 data/'+appState.classes.find(c=>c.name===className)?.id+'/roles.json', 'warning');
+}
+
+// ==================== Toast提示 ====================
+function showToast(message, type='info') {
+const toast = document.createElement('div');
+toast.className = `toast ${type}`;
+toast.textContent = message;
+document.body.appendChild(toast);
+setTimeout(() => toast.classList.add('show'), 10);
+setTimeout(() => { toast.remove(); }, 3000);
+}
+
+// 启动
+init();
+</script>
+</body>
+</html>
