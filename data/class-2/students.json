@@ -1,0 +1,30 @@
+[
+  {
+    "id": 3,
+    "name": "李明轩",
+    "gender": "男",
+    "university": "南京大学",
+    "major": "物理学",
+    "phone": "13711112222",
+    "qq": "456789123",
+    "wechat": "limingxuan",
+    "email": "mingxuan@example.com",
+    "birthday": "11-08",
+    "hobby": "物理竞赛、天文",
+    "motto": "探索未知"
+  },
+  {
+    "id": 6,
+    "name": "刘思颖",
+    "gender": "女",
+    "university": "南京师范大学",
+    "major": "英语",
+    "phone": "13477778888",
+    "qq": "654987321",
+    "wechat": "liusiying",
+    "email": "siying@example.com",
+    "birthday": "12-25",
+    "hobby": "英语演讲、旅行",
+    "motto": "世界那么大"
+  }
+]
