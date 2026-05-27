@@ -1,811 +1,2141 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026届初中同学录 - 安全版</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--primary:#4a90d9;--primary-dark:#357abd;--success:#27ae60;--warning:#f39c12;--danger:#e74c3c;--bg:#f5f7fa;--card:#fff;--text:#2c3e50;--light:#7f8c8d;--border:#e0e6ed;--shadow:0 2px 12px rgba(0,0,0,0.08)}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-.header{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;padding:40px 20px;text-align:center;position:relative}
-.header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 1px,transparent 1px);background-size:20px 20px;opacity:0.3}
-.header h1{font-size:2.2em;margin-bottom:8px;position:relative}
-.header .subtitle{opacity:0.9;position:relative}
-.header .badge{display:inline-block;background:rgba(255,255,255,0.2);padding:4px 16px;border-radius:20px;margin-top:10px;font-size:0.9em}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前黄2026届同学录 · 青春纪念册</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --primary-light: rgba(59, 130, 246, 0.1);
+            --bg-color: #f0f4f8;
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --card-border: rgba(255, 255, 255, 0.5);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --glass: blur(12px) saturate(180%);
+            --input-bg: rgba(255, 255, 255, 0.6);
+            --danger: #ef4444;
+            --success: #22c55e;
+            --warning: #f59e0b;
+        }
 
-.auth-bar{background:var(--card);border-bottom:1px solid var(--border);padding:12px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-.auth-info{display:flex;align-items:center;gap:12px;font-size:0.9em}
-.user-name{font-weight:600;color:var(--primary)}
-.role-tag{padding:2px 10px;border-radius:12px;font-size:0.8em;font-weight:600;color:white}
-.role-tag.monitor{background:#1565c0}
-.role-tag.viceMonitor{background:#7b1fa2}
-.role-tag.secretary{background:#2e7d32}
-.role-tag.studyCommittee{background:#ef6c00}
-.role-tag.sportsCommittee{background:#c2185b}
-.role-tag.admin{background:var(--danger)}
-.role-tag.guest{background:var(--light)}
-.auth-actions{display:flex;gap:8px}
+        [data-theme="dark"] {
+            --primary: #60a5fa;
+            --primary-hover: #3b82f6;
+            --primary-light: rgba(96, 165, 250, 0.15);
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+            --input-bg: rgba(30, 41, 59, 0.6);
+        }
 
-.btn{padding:8px 16px;border:none;border-radius:8px;font-size:0.9em;cursor:pointer;transition:all 0.25s;font-family:inherit}
-.btn-primary{background:var(--primary);color:white}
-.btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px)}
-.btn-success{background:var(--success);color:white}
-.btn-success:hover{background:#219a52}
-.btn-warning{background:var(--warning);color:white}
-.btn-danger{background:var(--danger);color:white}
-.btn-outline{background:white;border:1.5px solid var(--border);color:var(--text)}
-.btn-outline:hover{border-color:var(--primary);color:var(--primary)}
-.btn-sm{padding:5px 12px;font-size:0.8em}
-.btn:disabled{opacity:0.5;cursor:not-allowed}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.search-bar{max-width:600px;margin:-20px auto 0;padding:0 20px;position:relative;z-index:10}
-.search-input{width:100%;padding:14px 20px 14px 48px;border:none;border-radius:12px;font-size:1em;box-shadow:var(--shadow);background:white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 16px center;transition:box-shadow 0.3s}
-.search-input:focus{outline:none;box-shadow:0 4px 20px rgba(74,144,217,0.2)}
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
 
-.filter-bar{max-width:1200px;margin:30px auto 0;padding:0 20px}
-.filter-section{background:var(--card);border-radius:12px;padding:16px 20px;margin-bottom:12px;box-shadow:var(--shadow)}
-.filter-label{font-size:0.85em;color:var(--light);margin-bottom:10px;font-weight:600;display:flex;align-items:center;gap:6px}
-.filter-label::before{content:'';display:inline-block;width:4px;height:16px;background:var(--primary);border-radius:2px}
-.filter-tags{display:flex;flex-wrap:wrap;gap:8px}
-.filter-tag{padding:6px 14px;border-radius:20px;border:1.5px solid var(--border);background:white;cursor:pointer;font-size:0.9em;transition:all 0.25s}
-.filter-tag:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}
-.filter-tag.active{background:var(--primary);color:white;border-color:var(--primary);box-shadow:0 2px 8px rgba(74,144,217,0.3)}
-.filter-tag .count{font-size:0.8em;opacity:0.7;margin-left:4px}
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+            transition: var(--transition);
+        }
 
-.active-filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
-.active-filter-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border-radius:20px;font-size:0.85em}
-.active-filter-tag .remove{cursor:pointer;width:18px;height:18px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,0.2);font-size:12px}
-.clear-all{color:var(--light);font-size:0.85em;cursor:pointer;text-decoration:underline}
-.clear-all:hover{color:var(--danger)}
+        .bg-pattern.gradient-1 {
+            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 50%, #f0e9ff 100%);
+        }
+        .bg-pattern.gradient-2 {
+            background: linear-gradient(135deg, #fef3c7 0%, #fce7f3 50%, #e0e7ff 100%);
+        }
+        .bg-pattern.gradient-3 {
+            background: linear-gradient(135deg, #d1fae5 0%, #ccfbf1 50%, #e0f2fe 100%);
+        }
+        .bg-pattern.gradient-4 {
+            background: linear-gradient(135deg, #fee2e2 0%, #ffedd5 50%, #fef9c3 100%);
+        }
 
-.stats-bar{max-width:1200px;margin:0 auto 20px;padding:0 20px;display:flex;gap:16px;flex-wrap:wrap}
-.stat-item{background:var(--card);padding:10px 18px;border-radius:10px;box-shadow:var(--shadow);font-size:0.9em}
-.stat-item .number{font-size:1.3em;font-weight:700;color:var(--primary)}
+        [data-theme="dark"] .bg-pattern.gradient-1 {
+            background: linear-gradient(135deg, #0c4a6e 0%, #1e3a5f 50%, #312e81 100%);
+        }
+        [data-theme="dark"] .bg-pattern.gradient-2 {
+            background: linear-gradient(135deg, #713f12 0%, #701a75 50%, #3730a3 100%);
+        }
+        [data-theme="dark"] .bg-pattern.gradient-3 {
+            background: linear-gradient(135deg, #064e3b 0%, #134e4a 50%, #0c4a6e 100%);
+        }
+        [data-theme="dark"] .bg-pattern.gradient-4 {
+            background: linear-gradient(135deg, #7f1d1d 0%, #7c2d12 50%, #713f12 100%);
+        }
 
-.container{max-width:1200px;margin:0 auto;padding:0 20px 40px}
-.students-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+        .bg-pattern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: radial-gradient(circle at 1px 1px, rgba(59,130,246,0.15) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
 
-.student-card{background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;transition:all 0.3s}
-.student-card:hover{transform:translateY(-4px);box-shadow:0 4px 20px rgba(0,0,0,0.12)}
-.card-header{display:flex;align-items:center;padding:20px;background:linear-gradient(135deg,#f8fafc,#eef2f7);border-bottom:1px solid var(--border)}
-.avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));display:flex;align-items:center;justify-content:center;font-size:1.8em;font-weight:700;color:white;margin-right:16px;cursor:pointer;transition:all 0.3s;position:relative;flex-shrink:0}
-.avatar:hover{transform:scale(1.08);box-shadow:0 4px 15px rgba(74,144,217,0.4)}
-.name-info{flex:1;min-width:0}
-.name-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
-.student-name{font-size:1.3em;font-weight:700}
-.gender-tag{font-size:0.75em;padding:2px 8px;border-radius:10px;font-weight:600}
-.gender-tag.male{background:#e3f2fd;color:#1976d2}
-.gender-tag.female{background:#fce4ec;color:#c2185b}
-.role-badge-inline{font-size:0.7em;padding:2px 8px;border-radius:10px;font-weight:600;color:white;white-space:nowrap}
-.class-tag{display:inline-flex;align-items:center;gap:4px;font-size:0.85em;color:var(--light);cursor:pointer;padding:2px 6px;border-radius:6px}
-.class-tag:hover{color:var(--primary);background:rgba(74,144,217,0.08)}
-.class-tag::before{content:'📚';font-size:0.9em}
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: var(--glass);
+            background: rgba(255, 255, 255, 0.7);
+            border-bottom: 1px solid var(--card-border);
+            transition: var(--transition);
+        }
 
-.card-body{padding:16px 20px}
-.info-row{display:flex;align-items:flex-start;margin-bottom:10px;font-size:0.95em}
-.info-label{color:var(--light);min-width:70px;font-size:0.9em;flex-shrink:0}
-.info-value{flex:1;word-break:break-all}
-.university-link{color:var(--primary);cursor:pointer;border-bottom:1px dashed var(--primary);padding:1px 4px;border-radius:4px}
-.university-link:hover{background:rgba(74,144,217,0.08);border-bottom-style:solid}
+        [data-theme="dark"] header {
+            background: rgba(15, 23, 42, 0.7);
+        }
 
-.phone-section{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.phone-masked{font-family:'Courier New',monospace;letter-spacing:1px}
-.phone-full{display:none;font-family:'Courier New',monospace;letter-spacing:1px;color:var(--success);font-weight:600}
-.phone-full.visible{display:inline}
-.phone-masked.hidden{display:none}
-.reveal-btn{padding:4px 10px;border:1.5px solid var(--primary);background:white;color:var(--primary);border-radius:6px;font-size:0.8em;cursor:pointer;white-space:nowrap}
-.reveal-btn:hover{background:var(--primary);color:white}
-.reveal-btn.revealed{background:var(--success);border-color:var(--success);color:white}
-.privacy-hint{font-size:0.75em;color:var(--light);margin-left:4px}
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
 
-.card-actions{display:flex;gap:6px;padding:12px 20px;border-top:1px solid var(--border);background:#f8fafc}
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
 
-.empty-state{text-align:center;padding:60px 20px;color:var(--light)}
-.empty-state .icon{font-size:4em;margin-bottom:16px;opacity:0.5}
-.empty-state h3{font-size:1.3em;margin-bottom:8px;color:var(--text)}
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
 
-.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;z-index:1000;padding:20px}
-.modal-overlay.active{display:flex}
-.modal{background:var(--card);border-radius:16px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:modalIn 0.3s ease}
-@keyframes modalIn{from{transform:scale(0.9);opacity:0}to{transform:scale(1);opacity:1}}
-.modal-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.modal-header h3{font-size:1.2em}
-.modal-close{width:32px;height:32px;border:none;background:var(--bg);border-radius:50%;cursor:pointer;font-size:1.2em;color:var(--light);transition:all 0.2s}
-.modal-close:hover{background:var(--danger);color:white}
-.modal-body{padding:20px 24px}
-.form-group{margin-bottom:16px}
-.form-group label{display:block;font-size:0.9em;font-weight:600;margin-bottom:6px}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:0.95em;font-family:inherit;transition:border-color 0.2s}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--primary)}
-.form-group textarea{resize:vertical;min-height:80px}
-.form-hint{font-size:0.8em;color:var(--light);margin-top:4px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.modal-footer{padding:16px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px}
+        .brand-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
 
-.toast{position:fixed;top:20px;right:20px;padding:14px 20px;border-radius:10px;color:white;font-size:0.95em;box-shadow:0 4px 20px rgba(0,0,0,0.2);z-index:2000;animation:toastIn 0.3s ease;max-width:400px}
-@keyframes toastIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
-.toast.success{background:var(--success)}
-.toast.error{background:var(--danger)}
-.toast.warning{background:var(--warning)}
+        .brand-text p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: -2px;
+        }
 
-.footer{text-align:center;padding:30px 20px;color:var(--light);font-size:0.9em;border-top:1px solid var(--border);margin-top:20px}
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
 
-@media(max-width:768px){.header h1{font-size:1.6em}.students-grid{grid-template-columns:1fr}.auth-bar{flex-direction:column;align-items:flex-start}.form-row{grid-template-columns:1fr}}
-::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:#c0c8d0;border-radius:4px}
-</style>
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            width: 280px;
+            padding: 0.625rem 1rem 0.625rem 2.5rem;
+            border: 1px solid var(--card-border);
+            border-radius: 100px;
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.875rem;
+            backdrop-filter: blur(8px);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+            width: 320px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .select-box {
+            padding: 0.625rem 2rem 0.625rem 1rem;
+            border: 1px solid var(--card-border);
+            border-radius: 100px;
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.875rem;
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            backdrop-filter: blur(8px);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            border: none;
+            border-radius: 100px;
+            font-family: inherit;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            outline: none;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #6366f1);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--input-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--card-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .btn-icon {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border-radius: 50%;
+        }
+
+        .btn-danger {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        .btn-sm {
+            padding: 0.4rem 0.875rem;
+            font-size: 0.8rem;
+        }
+
+        /* 班级导航栏 */
+        .class-nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.75rem 2rem 0;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .class-nav-btn {
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            border: 1px solid var(--card-border);
+            background: var(--input-bg);
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            outline: none;
+            backdrop-filter: blur(8px);
+        }
+
+        .class-nav-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .class-nav-btn.active {
+            background: linear-gradient(135deg, var(--primary), #6366f1);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .stats-info {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .stats-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .stats-info .highlight {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .bg-selector {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .bg-dot {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .bg-dot.active {
+            border-color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .bg-dot:hover {
+            transform: scale(1.1);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: var(--glass);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), #8b5cf6, #ec4899);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card.birthday-highlight {
+            border-color: rgba(245, 158, 11, 0.5);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.15), var(--shadow);
+        }
+
+        .card.birthday-highlight::after {
+            content: '🎂 本月寿星';
+            position: absolute;
+            top: 12px;
+            right: -28px;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 32px;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-title-group {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .card-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-birth {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .card:hover .card-actions {
+            opacity: 1;
+        }
+
+        .card-action-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: var(--input-bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 0.875rem;
+        }
+
+        .card-action-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .card-action-btn.delete:hover {
+            background: var(--danger);
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+        }
+
+        .info-label {
+            color: var(--text-muted);
+            font-weight: 500;
+            flex-shrink: 0;
+            min-width: 4.5rem;
+        }
+
+        .info-value {
+            color: var(--text-secondary);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .info-value.phone {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.5px;
+        }
+
+        .motto-box {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: var(--primary-light);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--primary);
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            position: relative;
+        }
+
+        .motto-box::before {
+            content: '"';
+            position: absolute;
+            top: -4px;
+            left: 6px;
+            font-size: 1.5rem;
+            color: var(--primary);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .motto-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .motto-text.expanded {
+            -webkit-line-clamp: unset;
+        }
+
+        .card-footer {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dream-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+            color: #8b5cf6;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            max-width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .date-tag {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .university-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.15rem 0.5rem;
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--card-bg);
+            backdrop-filter: var(--glass);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 640px;
+            max-height: 90vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.95) translateY(10px);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: var(--input-bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.125rem;
+        }
+
+        .modal-close:hover {
+            background: var(--danger);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .form-label .required {
+            color: var(--danger);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            padding: 0.625rem 0.875rem;
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-sm);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.875rem;
+            transition: var(--transition);
+            outline: none;
+            width: 100%;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-error {
+            font-size: 0.75rem;
+            color: var(--danger);
+            display: none;
+        }
+
+        .form-group.has-error .form-input,
+        .form-group.has-error .form-textarea,
+        .form-group.has-error .form-select {
+            border-color: var(--danger);
+        }
+
+        .form-group.has-error .form-error {
+            display: block;
+        }
+
+        .avatar-upload {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .avatar-preview {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--card-border);
+            background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .avatar-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .modal-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+        }
+
+        footer {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .confirm-dialog {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .confirm-dialog.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .confirm-box {
+            background: var(--card-bg);
+            backdrop-filter: var(--glass);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.95);
+            transition: var(--transition);
+        }
+
+        .confirm-dialog.active .confirm-box {
+            transform: scale(1);
+        }
+
+        .confirm-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 1rem;
+        }
+
+        .confirm-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .confirm-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .confirm-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--text-primary);
+            color: white;
+            padding: 0.875rem 1.5rem;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            box-shadow: var(--shadow-lg);
+            z-index: 3000;
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%) scale(0.9);
+            background: var(--text-primary);
+            color: white;
+            padding: 0.375rem 0.75rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) scale(1);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 1rem;
+            }
+
+            .search-box input,
+            .search-box input:focus {
+                width: 100%;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-actions {
+                opacity: 1;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .class-nav {
+                padding: 0.5rem 1rem 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .loading-skeleton {
+            background: linear-gradient(90deg, var(--card-bg) 25%, rgba(255,255,255,0.5) 50%, var(--card-bg) 75%);
+            background-size: 200% 100%;
+            animation: skeleton 1.5s infinite;
+            border-radius: var(--radius-sm);
+        }
+
+        @keyframes skeleton {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), #8b5cf6);
+            z-index: 1001;
+            transition: width 0.1s;
+        }
+    </style>
+<base target="_blank">
 </head>
 <body>
-<div class="header">
-<h1>🎓 2026届初中同学录</h1>
-<div class="subtitle">青春不散场，友谊永长存</div>
-<div class="badge">江苏省常州市 · 2023届初中毕业生</div>
-</div>
+    <div class="bg-pattern gradient-1" id="bgPattern"></div>
+    <div class="scroll-indicator" id="scrollIndicator"></div>
 
-<div class="auth-bar" id="authBar">
-<div class="auth-info">
-<span>👤 当前身份：</span>
-<span id="authStatus">未登录（仅可查看公开信息）</span>
-</div>
-<div class="auth-actions">
-<button class="btn btn-primary btn-sm" id="loginBtn" onclick="showLoginModal()">🔑 登录</button>
-<button class="btn btn-success btn-sm" id="addBtn" onclick="showAddModal()" style="display:none">➕ 添加同学</button>
-<button class="btn btn-warning btn-sm" id="roleBtn" onclick="showRoleModal()" style="display:none">🏅 职务管理</button>
-<button class="btn btn-outline btn-sm" id="logoutBtn" onclick="logout()" style="display:none">退出</button>
-</div>
-</div>
+    <header role="banner">
+        <div class="header-content">
+            <div class="brand">
+                <div class="brand-icon" aria-hidden="true">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>同学录 · 青春纪念册</h1>
+                    <p>2026届21班 · 珍藏每一段美好时光</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="search-box">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="搜索姓名、电话、大学或寄语..." 
+                        aria-label="搜索同学"
+                        autocomplete="off"
+                    >
+                </div>
+                <select class="select-box" id="sortSelect" aria-label="排序方式">
+                    <option value="name-asc">姓名 A-Z</option>
+                    <option value="name-desc">姓名 Z-A</option>
+                    <option value="date-new">添加时间 新→旧</option>
+                    <option value="date-old">添加时间 旧→新</option>
+                </select>
+                <button class="btn btn-secondary btn-icon" id="themeToggle" aria-label="切换暗色模式">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <button class="btn btn-primary" id="addBtn" aria-label="添加新同学">
+                    <i class="fas fa-plus" aria-hidden="true"></i>
+                    <span>添加同学</span>
+                </button>
+                <button class="btn btn-secondary btn-icon" id="loginBtn" aria-label="登录">
+                    <i class="fas fa-lock" id="loginIcon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
 
-<div class="search-bar">
-<input type="text" class="search-input" id="searchInput" placeholder="搜索姓名、大学、班级...">
-</div>
+    <!-- 班级导航栏 -->
+    <nav class="class-nav" id="classNav" aria-label="班级筛选"></nav>
 
-<div class="filter-bar">
-<div class="filter-section">
-<div class="filter-label">班级筛选</div>
-<div class="filter-tags" id="classFilters"></div>
-</div>
-<div class="filter-section">
-<div class="filter-label">姓氏索引（点击头像筛选同姓同学）</div>
-<div class="filter-tags" id="surnameFilters"></div>
-</div>
-<div class="filter-section">
-<div class="filter-label">大学筛选</div>
-<div class="filter-tags" id="universityFilters"></div>
-</div>
-<div class="active-filters" id="activeFilters" style="display:none"></div>
-</div>
+    <main role="main">
+        <section class="stats-bar" aria-label="统计信息">
+            <div class="stats-info">
+                <span>
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    总人数: <span class="highlight" id="totalCount">0</span>
+                </span>
+                <span>
+                    <i class="fas fa-filter" aria-hidden="true"></i>
+                    当前显示: <span class="highlight" id="filteredCount">0</span>
+                </span>
+                <span id="birthdayCount" style="display: none;">
+                    <i class="fas fa-birthday-cake" aria-hidden="true" style="color: var(--warning);"></i>
+                    本月寿星: <span class="highlight" style="color: var(--warning);" id="birthdayNum">0</span>
+                </span>
+            </div>
+            <div class="bg-selector" aria-label="背景选择" role="radiogroup">
+                <div class="bg-dot active" style="background: linear-gradient(135deg, #e0f2fe, #dbeafe);" data-bg="gradient-1" role="radio" aria-checked="true" tabindex="0" aria-label="蓝色渐变背景"></div>
+                <div class="bg-dot" style="background: linear-gradient(135deg, #fef3c7, #fce7f3);" data-bg="gradient-2" role="radio" aria-checked="false" tabindex="0" aria-label="暖色渐变背景"></div>
+                <div class="bg-dot" style="background: linear-gradient(135deg, #d1fae5, #ccfbf1);" data-bg="gradient-3" role="radio" aria-checked="false" tabindex="0" aria-label="绿色渐变背景"></div>
+                <div class="bg-dot" style="background: linear-gradient(135deg, #fee2e2, #ffedd5);" data-bg="gradient-4" role="radio" aria-checked="false" tabindex="0" aria-label="红色渐变背景"></div>
+            </div>
+        </section>
 
-<div class="stats-bar" id="statsBar"></div>
+        <section id="gridSection" aria-label="同学列表">
+            <div class="grid" id="classmateGrid" role="list"></div>
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <i class="fas fa-folder-open" aria-hidden="true"></i>
+                <h3>暂无同学信息</h3>
+                <p>点击右上角"添加同学"按钮，开始记录青春记忆吧</p>
+            </div>
+        </section>
+    </main>
 
-<div class="container">
-<div class="students-grid" id="studentsGrid"></div>
-<div class="empty-state" id="emptyState" style="display:none">
-<div class="icon">🔍</div>
-<h3>没有找到符合条件的同学</h3>
-<p>试试调整筛选条件或搜索关键词</p>
-</div>
-</div>
+    <footer role="contentinfo">
+        <div class="footer-actions" id="adminActions" style="display: none;">
+            <button class="btn btn-secondary" id="resetBtn" aria-label="重置示例数据">
+                <i class="fas fa-rotate-left" aria-hidden="true"></i>
+                重置示例数据
+            </button>
+            <button class="btn btn-secondary" id="logoutBtn" aria-label="退出登录">
+                <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                退出登录
+            </button>
+        </div>
+        <p>2026届21班初中同学录 · 愿此去前程似锦，再相逢依旧如故</p>
+    </footer>
 
-<div class="footer">
-<p>📌 隐私说明：电话号码仅对同班同学完整显示，所有修改需经班长审核</p>
-<p style="margin-top:6px">数据更新时间：<span id="updateTime">-</span> | 共收录 <span id="totalCount">0</span> 位同学</p>
-</div>
+    <!-- 添加/编辑模态框 -->
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">
+                    <i class="fas fa-user-plus" aria-hidden="true"></i>
+                    <span>添加同学</span>
+                </div>
+                <button class="modal-close" id="modalClose" aria-label="关闭模态框">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="classmateForm" novalidate>
+                    <input type="hidden" id="editId">
+                    <div class="form-group full-width">
+                        <label class="form-label">
+                            头像
+                        </label>
+                        <div class="avatar-upload">
+                            <div class="avatar-preview" id="avatarPreview">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                            </div>
+                            <div class="avatar-actions">
+                                <button type="button" class="btn btn-secondary" id="avatarSelectBtn" aria-label="选择头像">
+                                    <i class="fas fa-camera" aria-hidden="true"></i>
+                                    选择头像
+                                </button>
+                                <input type="file" id="avatarInput" class="file-input" accept="image/*" aria-label="上传头像图片">
+                                <small style="color: var(--text-muted); font-size: 0.75rem;">支持 JPG、PNG 格式，建议正方形图片</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="name">
+                                姓名 <span class="required">*</span>
+                            </label>
+                            <input type="text" id="name" class="form-input" placeholder="请输入姓名" required maxlength="5" aria-required="true">
+                            <span class="form-error">姓名不能为空，且长度需在1-5个字符之间</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="className">
+                                班级 <span class="required">*</span>
+                            </label>
+                            <select id="className" class="form-select" required aria-required="true">
+                                <option value="">请选择班级</option>
+                                <option value="21班">21班</option>
+                                <option value="22班">22班</option>
+                                <option value="23班">23班</option>
+                                <option value="24班">24班</option>
+                                <option value="25班">25班</option>
+                            </select>
+                            <span class="form-error">请选择班级</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="birthDate">
+                                出生日期 <span class="required">*</span>
+                            </label>
+                            <input type="date" id="birthDate" class="form-input" required min="2009-01-01" max="2012-12-31" aria-required="true">
+                            <span class="form-error">请选择有效的出生日期（2009-2012年）</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">
+                                联系方式 <span class="required">*</span>
+                            </label>
+                            <input type="tel" id="phone" class="form-input" placeholder="请输入手机号" required aria-required="true">
+                            <span class="form-error">请输入有效的11位手机号码</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="university">
+                                就读大学
+                            </label>
+                            <input type="text" id="university" class="form-input" placeholder="如：苏州大学">
+                            <span class="form-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="crush">
+                                喜欢的人 <span class="required">*</span>
+                            </label>
+                            <input type="text" id="crush" class="form-input" placeholder="可以是人名、明星或类型" required aria-required="true">
+                            <span class="form-error">此项为必填</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="movie">
+                                喜欢的电影 <span class="required">*</span>
+                            </label>
+                            <input type="text" id="movie" class="form-input" placeholder="请输入电影名称" required aria-required="true">
+                            <span class="form-error">此项为必填</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="color">
+                                喜欢的颜色 <span class="required">*</span>
+                            </label>
+                            <input type="text" id="color" class="form-input" placeholder="如：天蓝色" required aria-required="true">
+                            <span class="form-error">此项为必填</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="food">
+                                喜欢的食物 <span class="required">*</span>
+                            </label>
+                            <input type="text" id="food" class="form-input" placeholder="请输入食物名称" required aria-required="true">
+                            <span class="form-error">此项为必填</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="game">
+                                喜欢的游戏 <span class="required">*</span>
+                            </label>
+                            <input type="text" id="game" class="form-input" placeholder="游戏名称或类型" required aria-required="true">
+                            <span class="form-error">此项为必填</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="destination">
+                                想去的远方 <span class="required">*</span>
+                            </label>
+                            <input type="text" id="destination" class="form-input" placeholder="梦想目的地" required aria-required="true">
+                            <span class="form-error">此项为必填</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="dream">
+                                心中的梦想 <span class="required">*</span>
+                            </label>
+                            <input type="text" id="dream" class="form-input" placeholder="你的梦想是..." required aria-required="true">
+                            <span class="form-error">此项为必填</span>
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="form-label" for="motto">
+                                人生格言 <span class="required">*</span>
+                            </label>
+                            <textarea id="motto" class="form-textarea" placeholder="写下你的人生格言..." required aria-required="true"></textarea>
+                            <span class="form-error">此项为必填</span>
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="form-label" for="notes">
+                                备注 <span class="required">*</span>
+                            </label>
+                            <textarea id="notes" class="form-textarea" placeholder="还有什么想说的..." required aria-required="true"></textarea>
+                            <span class="form-error">此项为必填</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="modalCancel" aria-label="取消">取消</button>
+                <button class="btn btn-primary" id="modalSubmit" aria-label="保存">
+                    <i class="fas fa-check" aria-hidden="true"></i>
+                    确定
+                </button>
+            </div>
+        </div>
+    </div>
 
-<!-- 登录模态框 -->
-<div class="modal-overlay" id="loginModal">
-<div class="modal">
-<div class="modal-header"><h3>🔑 管理员/班长登录</h3><button class="modal-close" onclick="closeModal('loginModal')">×</button></div>
-<div class="modal-body">
-<div class="form-group">
-<label>选择身份</label>
-<select id="loginRole">
-<option value="">请选择...</option>
-<option value="admin">超级管理员</option>
-<option value="monitor">班长</option>
-<option value="viceMonitor">副班长</option>
-<option value="secretary">团委</option>
-<option value="studyCommittee">学习委员</option>
-<option value="sportsCommittee">体育委员</option>
-</select>
-</div>
-<div class="form-group">
-<label>所在班级</label>
-<select id="loginClass"><option value="">请选择班级...</option></select>
-<div class="form-hint">超级管理员可不选班级</div>
-</div>
-<div class="form-group">
-<label>GitHub Personal Access Token</label>
-<input type="password" id="loginToken" placeholder="ghp_xxxxxxxxxxxx">
-<div class="form-hint">用于提交数据修改申请，<a href="#" onclick="showTokenHelp()" style="color:var(--primary)">如何获取？</a></div>
-</div>
-</div>
-<div class="modal-footer">
-<button class="btn btn-outline" onclick="closeModal('loginModal')">取消</button>
-<button class="btn btn-primary" onclick="doLogin()">登录</button>
-</div>
-</div>
-</div>
+    <!-- 登录模态框 -->
+    <div class="modal-overlay" id="loginOverlay" role="dialog" aria-modal="true" aria-labelledby="loginTitle" aria-hidden="true">
+        <div class="modal" style="max-width: 400px;">
+            <div class="modal-header">
+                <div class="modal-title" id="loginTitle">
+                    <i class="fas fa-lock" aria-hidden="true"></i>
+                    <span>管理员登录</span>
+                </div>
+                <button class="modal-close" id="loginClose" aria-label="关闭">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">
+                    请输入管理员密码以解锁数据管理权限。
+                </p>
+                <div class="form-group full-width">
+                    <label class="form-label" for="loginPassword">密码</label>
+                    <input type="password" id="loginPassword" class="form-input" placeholder="请输入密码">
+                    <span class="form-error" id="loginError" style="display: none; margin-top: 0.5rem;">密码错误</span>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.75rem;">
+                    默认密码：<strong style="color: var(--primary);">202621</strong>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="loginCancel">取消</button>
+                <button class="btn btn-primary" id="loginSubmit">
+                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+                    登录
+                </button>
+            </div>
+        </div>
+    </div>
 
-<!-- 添加同学模态框 -->
-<div class="modal-overlay" id="addModal">
-<div class="modal">
-<div class="modal-header"><h3>➕ 添加同学信息</h3><button class="modal-close" onclick="closeModal('addModal')">×</button></div>
-<div class="modal-body">
-<div class="form-row">
-<div class="form-group"><label>姓名 *</label><input type="text" id="addName" placeholder="同学姓名"></div>
-<div class="form-group"><label>性别 *</label><select id="addGender"><option value="男">男</option><option value="女">女</option></select></div>
-</div>
-<div class="form-group"><label>班级 *</label><select id="addClass"></select></div>
-<div class="form-row">
-<div class="form-group"><label>就读大学</label><input type="text" id="addUniversity" placeholder="如：南京大学"></div>
-<div class="form-group"><label>专业</label><input type="text" id="addMajor" placeholder="如：法学"></div>
-</div>
-<div class="form-group"><label>手机号码</label><input type="tel" id="addPhone" placeholder="11位手机号"><div class="form-hint">仅同班同学可查看完整号码</div></div>
-<div class="form-row">
-<div class="form-group"><label>QQ</label><input type="text" id="addQQ" placeholder="QQ号"></div>
-<div class="form-group"><label>微信</label><input type="text" id="addWechat" placeholder="微信号"></div>
-</div>
-<div class="form-group"><label>邮箱</label><input type="email" id="addEmail" placeholder="邮箱地址"></div>
-<div class="form-group"><label>生日</label><input type="text" id="addBirthday" placeholder="MM-DD，如：03-15"></div>
-<div class="form-group"><label>爱好</label><input type="text" id="addHobby" placeholder="如：阅读、钢琴"></div>
-<div class="form-group"><label>座右铭</label><textarea id="addMotto" placeholder="一句喜欢的格言..."></textarea></div>
-</div>
-<div class="modal-footer">
-<button class="btn btn-outline" onclick="closeModal('addModal')">取消</button>
-<button class="btn btn-primary" onclick="submitAdd()">提交审核（创建PR）</button>
-</div>
-</div>
-</div>
+    <!-- 确认对话框 -->
+    <div class="confirm-dialog" id="confirmDialog" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmText" aria-hidden="true">
+        <div class="confirm-box">
+            <div class="confirm-icon">
+                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+            </div>
+            <div class="confirm-title" id="confirmTitle">确认删除</div>
+            <div class="confirm-text" id="confirmText">确定要删除这位同学的信息吗？此操作不可恢复。</div>
+            <div class="confirm-actions">
+                <button class="btn btn-secondary" id="confirmCancel" aria-label="取消">取消</button>
+                <button class="btn btn-danger" id="confirmOk" aria-label="确认">确认</button>
+            </div>
+        </div>
+    </div>
 
-<!-- 职务管理模态框 -->
-<div class="modal-overlay" id="roleModal">
-<div class="modal">
-<div class="modal-header"><h3>🏅 班级职务管理</h3><button class="modal-close" onclick="closeModal('roleModal')">×</button></div>
-<div class="modal-body">
-<div class="form-group"><label>选择班级</label><select id="roleClass" onchange="loadClassRoles()"></select></div>
-<div id="currentRoles" style="margin-bottom:16px"></div>
-<hr style="border:none;border-top:1px solid var(--border);margin:16px 0">
-<h4 style="margin-bottom:12px;font-size:1em">任命新职务</h4>
-<div class="form-row">
-<div class="form-group"><label>职务类型</label><select id="newRoleType">
-<option value="monitor">班长</option>
-<option value="viceMonitor">副班长</option>
-<option value="secretary">团委</option>
-<option value="studyCommittee">学习委员</option>
-<option value="sportsCommittee">体育委员</option>
-<option value="artCommittee">文艺委员</option>
-<option value="lifeCommittee">生活委员</option>
-</select></div>
-<div class="form-group"><label>同学姓名</label><input type="text" id="newRoleName" placeholder="输入同学姓名"></div>
-</div>
-</div>
-<div class="modal-footer">
-<button class="btn btn-outline" onclick="closeModal('roleModal')">取消</button>
-<button class="btn btn-primary" onclick="submitRole()">提交任命（创建PR）</button>
-</div>
-</div>
-</div>
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
-<!-- Token帮助 -->
-<div class="modal-overlay" id="tokenHelpModal">
-<div class="modal">
-<div class="modal-header"><h3>📖 如何获取 GitHub Token</h3><button class="modal-close" onclick="closeModal('tokenHelpModal')">×</button></div>
-<div class="modal-body">
-<p style="margin-bottom:12px"><strong>步骤1：</strong>登录 GitHub → 点击右上角头像 → Settings</p>
-<p style="margin-bottom:12px"><strong>步骤2：</strong>左侧最下方 Developer settings → Personal access tokens → Tokens (classic)</p>
-<p style="margin-bottom:12px"><strong>步骤3：</strong>点击 Generate new token (classic)</p>
-<p style="margin-bottom:12px"><strong>步骤4：</strong>填写 Note，Expiration 选 No expiration</p>
-<p style="margin-bottom:12px"><strong>步骤5：</strong>勾选 <code>repo</code> 权限，点击 Generate token</p>
-<p style="margin-bottom:12px"><strong>步骤6：</strong><span style="color:var(--danger);font-weight:600">立即复制保存</span>（只显示一次！）</p>
-<div style="background:#fff3e0;padding:12px;border-radius:8px;margin-top:16px">
-<strong>⚠️ 安全提醒：</strong>Token 相当于密码，请勿泄露。建议仅班长和超级管理员持有。
-</div>
-</div>
-<div class="modal-footer"><button class="btn btn-primary" onclick="closeModal('tokenHelpModal')">明白了</button></div>
-</div>
-</div>
+    <script>
+        (function() {
+            'use strict';
 
-<script>
-// ==================== 配置区（已配置为你的仓库）====================
-const CONFIG = {
-GITHUB_OWNER: 'qhgz2026',
-GITHUB_REPO: 'qhgz2026.github.io',
-GITHUB_BRANCH: 'main',
-DATA_PATH: 'data',
-ROLES: {
-admin: {name:'超级管理员',level:99,canManageAll:true,canAssign:true},
-monitor: {name:'班长',level:5,canManageClass:true,canAssign:true},
-viceMonitor: {name:'副班长',level:4,canManageClass:true,canAssign:false},
-secretary: {name:'团委',level:3,canManageClass:false,canAssign:false},
-studyCommittee: {name:'学习委员',level:3,canManageClass:false,canAssign:false},
-sportsCommittee: {name:'体育委员',level:3,canManageClass:false,canAssign:false},
-artCommittee: {name:'文艺委员',level:3,canManageClass:false,canAssign:false},
-lifeCommittee: {name:'生活委员',level:3,canManageClass:false,canAssign:false}
-}
-};
+            const STORAGE_KEY = 'classmates_2026_21';
+            const LOGIN_KEY = 'classmate_admin_logged_in';
+            const DEFAULT_PASSWORD = '202621';
 
-// ==================== 状态管理 ====================
-let appState = {
-students: [],
-classes: [],
-roles: {},
-currentUser: null,
-filters: {className:null,surname:null,university:null,search:''},
-revealedPhones: new Set()
-};
+            let classmates = [];
+            let currentAvatar = null;
+            let chartInstance = null;
+            let confirmCallback = null;
+            let searchDebounceTimer = null;
+            let isAdmin = false;
+            let currentClassFilter = '全部';
 
-// ==================== 初始化 ====================
-async function init() {
-const saved = localStorage.getItem('classbook_user');
-if (saved) { try { appState.currentUser = JSON.parse(saved); } catch(e) {} }
-showToast('正在加载数据...', 'warning');
-try {
-await loadData();
-renderFilters();
-renderStudents();
-updateStats();
-updateAuthUI();
-document.getElementById('updateTime').textContent = new Date().toLocaleString('zh-CN');
-showToast('数据加载完成！', 'success');
-} catch (e) {
-console.error(e);
-loadDemoData();
-showToast('使用演示数据（请上传数据文件到GitHub仓库）', 'warning');
-}
-document.getElementById('searchInput').addEventListener('input', (e) => {
-appState.filters.search = e.target.value.trim();
-renderStudents();
-updateStats();
-});
-}
+            const defaultData = [
+                {
+                    id: 'demo_1',
+                    name: '李明轩',
+                    className: '21班',
+                    birthDate: '2010-03-15',
+                    phone: '13800138001',
+                    university: '清华大学',
+                    crush: '周杰伦',
+                    movie: '星际穿越',
+                    color: '天蓝色',
+                    food: '火锅',
+                    game: '王者荣耀',
+                    destination: '日本京都',
+                    dream: '成为一名优秀的软件工程师',
+                    motto: '星光不问赶路人，时光不负有心人。',
+                    notes: '喜欢打篮球，是班里的数学课代表。',
+                    avatar: null,
+                    createdAt: Date.now() - 100000000
+                },
+                {
+                    id: 'demo_2',
+                    name: '张雨萱',
+                    className: '21班',
+                    birthDate: '2010-07-22',
+                    phone: '13900139002',
+                    university: '北京大学',
+                    crush: '易烊千玺',
+                    movie: '千与千寻',
+                    color: '樱花粉',
+                    food: '草莓蛋糕',
+                    game: '原神',
+                    destination: '法国巴黎',
+                    dream: '成为一名插画师',
+                    motto: '保持热爱，奔赴山海。',
+                    notes: '擅长画画，曾获市级美术比赛一等奖。',
+                    avatar: null,
+                    createdAt: Date.now() - 80000000
+                },
+                {
+                    id: 'demo_3',
+                    name: '王浩然',
+                    className: '22班',
+                    birthDate: '2009-11-08',
+                    phone: '13700137003',
+                    university: '复旦大学',
+                    crush: '科比',
+                    movie: '肖申克的救赎',
+                    color: '墨绿色',
+                    food: '烤肉',
+                    game: 'NBA2K',
+                    destination: '美国洛杉矶',
+                    dream: '成为一名职业篮球运动员',
+                    motto: '努力不一定成功，但放弃一定失败。',
+                    notes: '校篮球队队长，身高185cm。',
+                    avatar: null,
+                    createdAt: Date.now() - 60000000
+                },
+                {
+                    id: 'demo_4',
+                    name: '陈思琪',
+                    className: '21班',
+                    birthDate: '2010-05-20',
+                    phone: '13600136004',
+                    university: '浙江大学',
+                    crush: '羽生结弦',
+                    movie: '泰坦尼克号',
+                    color: '珍珠白',
+                    food: '寿司',
+                    game: '动物森友会',
+                    destination: '北海道',
+                    dream: '成为一名花样滑冰运动员',
+                    motto: '每一个不曾起舞的日子，都是对生命的辜负。',
+                    notes: '学习钢琴十年，性格温柔文静。',
+                    avatar: null,
+                    createdAt: Date.now() - 40000000
+                },
+                {
+                    id: 'demo_5',
+                    name: '刘子豪',
+                    className: '23班',
+                    birthDate: '2010-09-12',
+                    phone: '13500135005',
+                    university: '南京大学',
+                    crush: '马斯克',
+                    movie: '钢铁侠',
+                    color: '科技蓝',
+                    food: '汉堡',
+                    game: '我的世界',
+                    destination: '火星',
+                    dream: '成为一名航天工程师',
+                    motto: '仰望星空，脚踏实地。',
+                    notes: '科技迷，喜欢组装机器人和编程。',
+                    avatar: null,
+                    createdAt: Date.now() - 20000000
+                }
+            ];
 
-// ==================== 数据加载 ====================
-async function loadData() {
-const baseUrl = `https://raw.githubusercontent.com/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPO}/${CONFIG.GITHUB_BRANCH}/${CONFIG.DATA_PATH}`;
-try {
-const res = await fetch(`${baseUrl}/classes.json`);
-if (res.ok) appState.classes = await res.json();
-} catch(e) {}
-if (!appState.classes.length) {
-appState.classes = [{id:'class-1',name:'高三(1)班'},{id:'class-2',name:'高三(2)班'},{id:'class-3',name:'高三(3)班'}];
-}
-appState.students = [];
-for (const cls of appState.classes) {
-try {
-const res = await fetch(`${baseUrl}/${cls.id}/students.json`);
-if (res.ok) {
-const students = await res.json();
-students.forEach(s => { s.className = cls.name; s._classId = cls.id; });
-appState.students.push(...students);
-}
-const roleRes = await fetch(`${baseUrl}/${cls.id}/roles.json`);
-if (roleRes.ok) appState.roles[cls.name] = await roleRes.json();
-} catch(e) {}
-}
-}
+            const classList = ['全部', '21班', '22班', '23班', '24班', '25班'];
 
-function loadDemoData() {
-appState.classes = [{id:'class-1',name:'高三(1)班'},{id:'class-2',name:'高三(2)班'},{id:'class-3',name:'高三(3)班'}];
-appState.students = [
-{id:1,name:"陈思绮",gender:"女",className:"高三(1)班",university:"南京大学",major:"法学",phone:"13812345678",qq:"123456789",wechat:"chensiqi",email:"chen@example.com",birthday:"03-15",hobby:"阅读、钢琴",motto:"星光不问赶路人"},
-{id:2,name:"陈浩然",gender:"男",className:"高三(1)班",university:"东南大学",major:"计算机",phone:"13987654321",qq:"987654321",wechat:"chenhaoran",email:"haoran@example.com",birthday:"07-22",hobby:"篮球、编程",motto:"代码改变世界"},
-{id:3,name:"李明轩",gender:"男",className:"高三(2)班",university:"南京大学",major:"物理",phone:"13711112222",qq:"456789123",wechat:"limingxuan",email:"mingxuan@example.com",birthday:"11-08",hobby:"物理竞赛",motto:"探索未知"},
-{id:4,name:"王雨萱",gender:"女",className:"高三(1)班",university:"苏州大学",major:"中文",phone:"13633334444",qq:"789123456",wechat:"wangyuxuan",email:"yuxuan@example.com",birthday:"05-20",hobby:"写作、绘画",motto:"以梦为马"},
-{id:5,name:"张子涵",gender:"男",className:"高三(3)班",university:"河海大学",major:"电气",phone:"13555556666",qq:"321654987",wechat:"zhangzihan",email:"zihan@example.com",birthday:"09-01",hobby:"电子制作",motto:"知行合一"},
-{id:6,name:"刘思颖",gender:"女",className:"高三(2)班",university:"南京师范大学",major:"英语",phone:"13477778888",qq:"654987321",wechat:"liusiying",email:"siying@example.com",birthday:"12-25",hobby:"英语演讲",motto:"世界那么大"},
-{id:7,name:"陈嘉怡",gender:"女",className:"高三(3)班",university:"苏州大学",major:"法学",phone:"13399990000",qq:"147258369",wechat:"chenjiayi",email:"jiayi@example.com",birthday:"04-18",hobby:"辩论",motto:"公平正义"},
-{id:8,name:"赵文博",gender:"男",className:"高三(1)班",university:"南京航空航天大学",major:"飞行器设计",phone:"13200001111",qq:"369258147",wechat:"zhaowenbo",email:"wenbo@example.com",birthday:"08-30",hobby:"航模",motto:"志在蓝天"}
-];
-appState.roles = {"高三(1)班":{monitor:"陈思绮",studyCommittee:"陈浩然"},"高三(2)班":{monitor:"李明轩"},"高三(3)班":{monitor:"张子涵"}};
-}
+            function generateId() {
+                return Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+            }
 
-// ==================== 权限检查 ====================
-function checkPermission(action, targetClass) {
-if (!appState.currentUser) return false;
-const user = appState.currentUser;
-const role = CONFIG.ROLES[user.role];
-if (!role) return false;
-if (user.role === 'admin') return true;
-if (action === 'manageClass' && role.canManageClass && user.className === targetClass) return true;
-if (action === 'assignRole' && role.canAssign && user.className === targetClass) return true;
-if (action === 'viewPhone' && user.className === targetClass) return true;
-return false;
-}
+            function loadData() {
+                try {
+                    const stored = localStorage.getItem(STORAGE_KEY);
+                    if (stored) {
+                        classmates = JSON.parse(stored);
+                    } else {
+                        classmates = JSON.parse(JSON.stringify(defaultData));
+                        saveData();
+                    }
+                } catch (e) {
+                    classmates = JSON.parse(JSON.stringify(defaultData));
+                }
+            }
 
-// ==================== 筛选渲染 ====================
-function getSurname(name){return name.charAt(0)}
-function maskPhone(phone){if(!phone||phone.length!==11)return phone;return phone.substring(0,3)+'****'+phone.substring(7)}
+            function saveData() {
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(classmates));
+                } catch (e) {
+                    showToast('存储空间不足，请删除部分数据', 'error');
+                }
+            }
 
-function renderFilters() {
-const cf = document.getElementById('classFilters');
-cf.innerHTML = appState.classes.map(c => {
-const count = appState.students.filter(s => s.className === c.name).length;
-return `<span class="filter-tag ${appState.filters.className===c.name?'active':''}" onclick="toggleFilter('className','${c.name}')">${c.name}<span class="count">${count}</span></span>`;
-}).join('');
-const surnames = [...new Set(appState.students.map(s => getSurname(s.name)))].sort();
-document.getElementById('surnameFilters').innerHTML = surnames.map(sur => {
-const count = appState.students.filter(s => getSurname(s.name)===sur).length;
-return `<span class="filter-tag ${appState.filters.surname===sur?'active':''}" onclick="toggleFilter('surname','${sur}')">${sur}<span class="count">${count}</span></span>`;
-}).join('');
-const unis = [...new Set(appState.students.map(s => s.university).filter(Boolean))].sort();
-document.getElementById('universityFilters').innerHTML = unis.map(uni => {
-const count = appState.students.filter(s => s.university===uni).length;
-return `<span class="filter-tag ${appState.filters.university===uni?'active':''}" onclick="toggleFilter('university','${uni}')">${uni}<span class="count">${count}</span></span>`;
-}).join('');
-updateActiveFilters();
-}
+            function checkLoginStatus() {
+                isAdmin = sessionStorage.getItem(LOGIN_KEY) === 'true';
+                updateAdminUI();
+            }
 
-function toggleFilter(type, value) {
-appState.filters[type] = appState.filters[type] === value ? null : value;
-renderFilters();
-renderStudents();
-updateStats();
-}
+            function updateAdminUI() {
+                const adminActions = document.getElementById('adminActions');
+                const loginIcon = document.getElementById('loginIcon');
+                if (isAdmin) {
+                    adminActions.style.display = 'flex';
+                    loginIcon.className = 'fas fa-user-shield';
+                    document.getElementById('loginBtn').setAttribute('aria-label', '已登录（管理员）');
+                } else {
+                    adminActions.style.display = 'none';
+                    loginIcon.className = 'fas fa-lock';
+                    document.getElementById('loginBtn').setAttribute('aria-label', '登录');
+                }
+            }
 
-function clearAllFilters() {
-appState.filters = {className:null,surname:null,university:null,search:''};
-document.getElementById('searchInput').value = '';
-renderFilters();
-renderStudents();
-updateStats();
-}
+            function renderClassNav() {
+                const nav = document.getElementById('classNav');
+                nav.innerHTML = classList.map(function(cls) {
+                    const isActive = cls === currentClassFilter;
+                    return '<button class="class-nav-btn ' + (isActive ? 'active' : '') + '" data-class="' + cls + '">' + cls + '</button>';
+                }).join('');
 
-function updateActiveFilters() {
-const container = document.getElementById('activeFilters');
-const active = [];
-if (appState.filters.className) active.push({type:'className',label:'班级',value:appState.filters.className});
-if (appState.filters.surname) active.push({type:'surname',label:'姓氏',value:appState.filters.surname});
-if (appState.filters.university) active.push({type:'university',label:'大学',value:appState.filters.university});
-if (appState.filters.search) active.push({type:'search',label:'搜索',value:appState.filters.search});
-if (active.length === 0) { container.style.display = 'none'; return; }
-container.style.display = 'flex';
-let html = '<span style="color:var(--light);font-size:0.85em">当前筛选：</span>';
-active.forEach(f => {
-html += `<span class="active-filter-tag">${f.label}: ${f.value}<span class="remove" onclick="toggleFilter('${f.type}','${f.value}')">×</span></span>`;
-});
-html += '<span class="clear-all" onclick="clearAllFilters()">清除全部</span>';
-container.innerHTML = html;
-}
+                nav.querySelectorAll('.class-nav-btn').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        currentClassFilter = this.dataset.class;
+                        renderClassNav();
+                        render();
+                    });
+                });
+            }
 
-// ==================== 学生卡片渲染 ====================
-function renderStudents() {
-const grid = document.getElementById('studentsGrid');
-const empty = document.getElementById('emptyState');
-const students = appState.students.filter(s => {
-if (appState.filters.className && s.className !== appState.filters.className) return false;
-if (appState.filters.surname && getSurname(s.name) !== appState.filters.surname) return false;
-if (appState.filters.university && s.university !== appState.filters.university) return false;
-if (appState.filters.search) {
-const q = appState.filters.search.toLowerCase();
-return s.name.includes(q) || (s.university&&s.university.includes(q)) || s.className.includes(q) || (s.major&&s.major.includes(q));
-}
-return true;
-});
-if (students.length === 0) { grid.style.display = 'none'; empty.style.display = 'block'; return; }
-grid.style.display = 'grid'; empty.style.display = 'none';
-grid.innerHTML = students.map(s => {
-const surname = getSurname(s.name);
-const isRevealed = appState.revealedPhones.has(s.id);
-const canViewPhone = checkPermission('viewPhone', s.className);
-const showRevealBtn = canViewPhone && !isRevealed;
-const classRoles = appState.roles[s.className] || {};
-const studentRole = Object.entries(classRoles).find(([role, name]) => name === s.name);
-const roleKey = studentRole ? studentRole[0] : null;
-const roleConfig = roleKey ? CONFIG.ROLES[roleKey] : null;
-return `<div class="student-card" data-id="${s.id}">
-<div class="card-header">
-<div class="avatar" onclick="toggleFilter('surname','${surname}')" title="点击筛选姓${surname}的同学">${surname}</div>
-<div class="name-info">
-<div class="name-row">
-<span class="student-name">${s.name}</span>
-<span class="gender-tag ${s.gender==='男'?'male':'female'}">${s.gender}</span>
-${roleConfig ? `<span class="role-badge-inline ${roleKey}">${roleConfig.name}</span>` : ''}
-</div>
-<div class="class-tag" onclick="toggleFilter('className','${s.className}')">${s.className}</div>
-</div>
-</div>
-<div class="card-body">
-${s.university?`<div class="info-row"><span class="info-label">🏫 大学</span><span class="info-value"><span class="university-link" onclick="toggleFilter('university','${s.university}')">${s.university}</span>${s.major?' · '+s.major:''}</span></div>`:''}
-${s.phone?`<div class="info-row"><span class="info-label">📱 电话</span><span class="info-value"><span class="phone-section"><span class="phone-masked ${isRevealed?'hidden':''}">${maskPhone(s.phone)}</span><span class="phone-full ${isRevealed?'visible':''}">${s.phone}</span>${showRevealBtn?`<button class="reveal-btn" onclick="revealPhone(${s.id},'${s.className}')">显示完整号码</button>`:''}${isRevealed?`<button class="reveal-btn revealed" onclick="hidePhone(${s.id})">隐藏</button>`:''}</span>${!canViewPhone?'<span class="privacy-hint">（仅同班同学可见）</span>':''}</span></div>`:''}
-${s.qq?`<div class="info-row"><span class="info-label">🐧 QQ</span><span class="info-value">${s.qq}</span></div>`:''}
-${s.wechat?`<div class="info-row"><span class="info-label">💬 微信</span><span class="info-value">${s.wechat}</span></div>`:''}
-${s.email?`<div class="info-row"><span class="info-label">📧 邮箱</span><span class="info-value">${s.email}</span></div>`:''}
-${s.birthday?`<div class="info-row"><span class="info-label">🎂 生日</span><span class="info-value">${s.birthday}</span></div>`:''}
-${s.hobby?`<div class="info-row"><span class="info-label">❤️ 爱好</span><span class="info-value">${s.hobby}</span></div>`:''}
-${s.motto?`<div class="info-row"><span class="info-label">💡 座右铭</span><span class="info-value" style="font-style:italic;color:var(--primary)">"${s.motto}"</span></div>`:''}
-</div>
-${checkPermission('manageClass',s.className)?`<div class="card-actions"><button class="btn btn-outline btn-sm" onclick="editStudent(${s.id})">✏️ 编辑</button><button class="btn btn-danger btn-sm" onclick="deleteStudent(${s.id})">🗑️ 删除</button></div>`:''}
-</div>`;
-}).join('');
-}
+            function getInitials(name) {
+                return name ? name.charAt(0) : '?';
+            }
 
-function revealPhone(id, className) {
-if (!checkPermission('viewPhone', className)) { showToast('仅同班同学可查看完整号码', 'error'); return; }
-appState.revealedPhones.add(id);
-renderStudents();
-}
-function hidePhone(id) { appState.revealedPhones.delete(id); renderStudents(); }
+            function getAvatarHtml(classmate) {
+                if (classmate.avatar) {
+                    return '<img src="' + classmate.avatar + '" alt="' + classmate.name + '的头像" loading="lazy">';
+                }
+                return '<span aria-hidden="true">' + getInitials(classmate.name) + '</span>';
+            }
 
-// ==================== 统计 ====================
-function updateStats() {
-const students = appState.students.filter(s => {
-if (appState.filters.className && s.className !== appState.filters.className) return false;
-if (appState.filters.surname && getSurname(s.name) !== appState.filters.surname) return false;
-if (appState.filters.university && s.university !== appState.filters.university) return false;
-if (appState.filters.search) {
-const q = appState.filters.search.toLowerCase();
-return s.name.includes(q) || (s.university&&s.university.includes(q)) || s.className.includes(q) || (s.major&&s.major.includes(q));
-}
-return true;
-});
-document.getElementById('statsBar').innerHTML = `
-<div class="stat-item">共收录 <span class="number">${appState.students.length}</span> 人</div>
-<div class="stat-item">当前显示 <span class="number">${students.length}</span> 人</div>
-<div class="stat-item">男生 <span class="number">${students.filter(s=>s.gender==='男').length}</span> 人</div>
-<div class="stat-item">女生 <span class="number">${students.filter(s=>s.gender==='女').length}</span> 人</div>`;
-document.getElementById('totalCount').textContent = appState.students.length;
-}
+            function isBirthdayMonth(birthDate) {
+                if (!birthDate) return false;
+                const today = new Date();
+                const birth = new Date(birthDate);
+                return birth.getMonth() === today.getMonth();
+            }
 
-// ==================== 登录系统 ====================
-function showLoginModal() {
-const classSelect = document.getElementById('loginClass');
-classSelect.innerHTML = '<option value="">请选择班级...</option>' + appState.classes.map(c => `<option value="${c.name}">${c.name}</option>`).join('');
-document.getElementById('loginModal').classList.add('active');
-}
-function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-function showTokenHelp() { closeModal('loginModal'); document.getElementById('tokenHelpModal').classList.add('active'); }
+            function formatDate(dateStr) {
+                if (!dateStr) return '';
+                const d = new Date(dateStr);
+                return d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
+            }
 
-async function doLogin() {
-const role = document.getElementById('loginRole').value;
-const className = document.getElementById('loginClass').value;
-const token = document.getElementById('loginToken').value.trim();
-if (!role) { showToast('请选择身份', 'error'); return; }
-if (role !== 'admin' && !className) { showToast('请选择班级', 'error'); return; }
-if (!token) { showToast('请输入Token', 'error'); return; }
-showToast('正在验证Token...', 'warning');
-try {
-const res = await fetch('https://api.github.com/user', {headers:{'Authorization':`token ${token}`}});
-if (!res.ok) throw new Error('Token无效');
-appState.currentUser = {role, className, token};
-localStorage.setItem('classbook_user', JSON.stringify(appState.currentUser));
-closeModal('loginModal');
-updateAuthUI();
-renderStudents();
-showToast(`登录成功！${CONFIG.ROLES[role].name}${className?' - '+className:''}`, 'success');
-} catch(e) { showToast('Token验证失败：'+e.message, 'error'); }
-}
-function logout() {
-appState.currentUser = null;
-appState.revealedPhones.clear();
-localStorage.removeItem('classbook_user');
-updateAuthUI();
-renderStudents();
-showToast('已退出登录', 'warning');
-}
-function updateAuthUI() {
-const user = appState.currentUser;
-const status = document.getElementById('authStatus');
-const loginBtn = document.getElementById('loginBtn');
-const addBtn = document.getElementById('addBtn');
-const roleBtn = document.getElementById('roleBtn');
-const logoutBtn = document.getElementById('logoutBtn');
-if (!user) {
-status.innerHTML = '未登录（仅可查看公开信息）';
-loginBtn.style.display = 'inline-block';
-addBtn.style.display = 'none';
-roleBtn.style.display = 'none';
-logoutBtn.style.display = 'none';
-return;
-}
-const roleInfo = CONFIG.ROLES[user.role];
-status.innerHTML = `<span class="user-name">${user.className||'全局'}</span> <span class="role-tag ${user.role}">${roleInfo.name}</span>`;
-loginBtn.style.display = 'none';
-logoutBtn.style.display = 'inline-block';
-addBtn.style.display = (roleInfo.canManageClass || roleInfo.canManageAll) ? 'inline-block' : 'none';
-roleBtn.style.display = (roleInfo.canAssign || roleInfo.canManageAll) ? 'inline-block' : 'none';
-}
+            function escapeHtml(str) {
+                if (!str) return '';
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
 
-// ==================== 添加同学 ====================
-function showAddModal() {
-if (!appState.currentUser) { showToast('请先登录', 'warning'); showLoginModal(); return; }
-const select = document.getElementById('addClass');
-select.innerHTML = appState.classes.map(c => `<option value="${c.name}" ${appState.currentUser.className===c.name?'selected':''}>${c.name}</option>`).join('');
-['addName','addUniversity','addMajor','addPhone','addQQ','addWechat','addEmail','addBirthday','addHobby','addMotto'].forEach(id => document.getElementById(id).value = '');
-document.getElementById('addModal').classList.add('active');
-}
+            function render() {
+                const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+                const sortValue = document.getElementById('sortSelect').value;
 
-async function submitAdd() {
-const student = {
-id: Date.now(),
-name: document.getElementById('addName').value.trim(),
-gender: document.getElementById('addGender').value,
-className: document.getElementById('addClass').value,
-university: document.getElementById('addUniversity').value.trim() || null,
-major: document.getElementById('addMajor').value.trim() || null,
-phone: document.getElementById('addPhone').value.trim() || null,
-qq: document.getElementById('addQQ').value.trim() || null,
-wechat: document.getElementById('addWechat').value.trim() || null,
-email: document.getElementById('addEmail').value.trim() || null,
-birthday: document.getElementById('addBirthday').value.trim() || null,
-hobby: document.getElementById('addHobby').value.trim() || null,
-motto: document.getElementById('addMotto').value.trim() || null
-};
-if (!student.name) { showToast('请输入姓名', 'error'); return; }
-if (!student.className) { showToast('请选择班级', 'error'); return; }
-if (!checkPermission('manageClass', student.className)) { showToast('您没有权限管理该班级', 'error'); return; }
-showToast('正在创建Pull Request...', 'warning');
-try {
-await createPullRequest('add', student);
-closeModal('addModal');
-showToast('提交成功！请等待审核合并', 'success');
-} catch(e) { showToast('提交失败：'+e.message, 'error'); console.error(e); }
-}
+                let filtered = classmates.filter(function(c) {
+                    // 班级筛选
+                    if (currentClassFilter !== '全部' && c.className !== currentClassFilter) {
+                        return false;
+                    }
+                    // 搜索筛选
+                    if (!searchTerm) return true;
+                    var term = searchTerm;
+                    return (c.name && c.name.toLowerCase().indexOf(term) !== -1) ||
+                           (c.phone && c.phone.indexOf(term) !== -1) ||
+                           (c.motto && c.motto.toLowerCase().indexOf(term) !== -1) ||
+                           (c.notes && c.notes.toLowerCase().indexOf(term) !== -1) ||
+                           (c.dream && c.dream.toLowerCase().indexOf(term) !== -1) ||
+                           (c.university && c.university.toLowerCase().indexOf(term) !== -1);
+                });
 
-// ==================== 职务管理 ====================
-function showRoleModal() {
-if (!appState.currentUser) { showToast('请先登录', 'warning'); return; }
-const manageable = appState.currentUser.role === 'admin' ? appState.classes : appState.classes.filter(c => c.name === appState.currentUser.className);
-const select = document.getElementById('roleClass');
-select.innerHTML = manageable.map(c => `<option value="${c.name}">${c.name}</option>`).join('');
-loadClassRoles();
-document.getElementById('roleModal').classList.add('active');
-}
-function loadClassRoles() {
-const className = document.getElementById('roleClass').value;
-const roles = appState.roles[className] || {};
-const container = document.getElementById('currentRoles');
-if (Object.keys(roles).length === 0) {
-container.innerHTML = '<p style="color:var(--light);font-size:0.9em">该班级暂无职务分配</p>';
-return;
-}
-container.innerHTML = Object.entries(roles).map(([roleKey, name]) => {
-const roleInfo = CONFIG.ROLES[roleKey];
-return `<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-<span><span class="role-badge-inline ${roleKey}">${roleInfo?.name||roleKey}</span> <strong>${name}</strong></span>
-<button class="btn btn-danger btn-sm" onclick="removeRole('${className}','${roleKey}')">移除</button>
-</div>`;
-}).join('');
-}
-async function submitRole() {
-const className = document.getElementById('roleClass').value;
-const roleType = document.getElementById('newRoleType').value;
-const roleName = document.getElementById('newRoleName').value.trim();
-if (!roleName) { showToast('请输入同学姓名', 'error'); return; }
-if (!checkPermission('assignRole', className)) { showToast('您没有权限任命该班级职务', 'error'); return; }
-showToast('正在提交职务任命...', 'warning');
-try {
-await createPullRequest('role', {className, roleType, roleName});
-closeModal('roleModal');
-showToast('职务任命已提交审核！', 'success');
-} catch(e) { showToast('提交失败：'+e.message, 'error'); }
-}
+                filtered.sort(function(a, b) {
+                    switch(sortValue) {
+                        case 'name-asc':
+                            return (a.name || '').localeCompare(b.name || '', 'zh-CN');
+                        case 'name-desc':
+                            return (b.name || '').localeCompare(a.name || '', 'zh-CN');
+                        case 'date-new':
+                            return (b.createdAt || 0) - (a.createdAt || 0);
+                        case 'date-old':
+                            return (a.createdAt || 0) - (b.createdAt || 0);
+                        default:
+                            return 0;
+                    }
+                });
 
-// ==================== GitHub Pull Request 核心 ====================
-async function createPullRequest(type, data) {
-const token = appState.currentUser?.token;
-if (!token) throw new Error('未登录');
-const owner = CONFIG.GITHUB_OWNER;
-const repo = CONFIG.GITHUB_REPO;
-const baseBranch = CONFIG.GITHUB_BRANCH;
-const timestamp = Date.now();
-const branchName = `update-${type}-${timestamp}`;
+                const grid = document.getElementById('classmateGrid');
+                const emptyState = document.getElementById('emptyState');
 
-// 1. 获取主分支SHA
-const baseRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/ref/heads/${baseBranch}`, {
-headers: {'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'}
-});
-if (!baseRes.ok) throw new Error('无法获取分支信息');
-const baseData = await baseRes.json();
-const baseSha = baseData.object.sha;
+                document.getElementById('totalCount').textContent = classmates.length;
+                document.getElementById('filteredCount').textContent = filtered.length;
 
-// 2. 创建新分支
-const branchRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/git/refs`, {
-method: 'POST',
-headers: {'Authorization':`token ${token}`,'Content-Type':'application/json'},
-body: JSON.stringify({ref:`refs/heads/${branchName}`,sha:baseSha})
-});
-if (!branchRes.ok) throw new Error('创建分支失败');
+                const birthdayCount = classmates.filter(function(c) { return isBirthdayMonth(c.birthDate); }).length;
+                const birthdayEl = document.getElementById('birthdayCount');
+                const birthdayNum = document.getElementById('birthdayNum');
+                if (birthdayCount > 0) {
+                    birthdayEl.style.display = 'flex';
+                    birthdayNum.textContent = birthdayCount;
+                } else {
+                    birthdayEl.style.display = 'none';
+                }
 
-// 3. 获取文件内容并修改
-const cls = appState.classes.find(c => c.name === data.className);
-const classId = cls ? cls.id : 'class-1';
-let filePath, content, message;
+                if (filtered.length === 0) {
+                    grid.innerHTML = '';
+                    emptyState.style.display = 'block';
+                } else {
+                    emptyState.style.display = 'none';
+                    grid.innerHTML = filtered.map(function(c) {
+                        var isBirthday = isBirthdayMonth(c.birthDate);
+                        var uniTag = c.university ? '<span class="university-tag"><i class="fas fa-university" aria-hidden="true"></i> ' + escapeHtml(c.university) + '</span>' : '';
+                        return '<article class="card ' + (isBirthday ? 'birthday-highlight' : '') + '" role="listitem" data-id="' + c.id + '">' +
+                            '<div class="card-header">' +
+                                '<div class="avatar" aria-label="' + c.name + '的头像" onclick="window.filterBySurname('' + c.name.charAt(0) + '')">' +
+                                    getAvatarHtml(c) +
+                                '</div>' +
+                                '<div class="card-title-group">' +
+                                    '<div class="card-name">' +
+                                        escapeHtml(c.name) +
+                                        (isBirthday ? '<span aria-label="本月生日">🎂</span>' : '') +
+                                        uniTag +
+                                    '</div>' +
+                                    '<div class="card-birth">' +
+                                        '<i class="fas fa-calendar-alt" aria-hidden="true"></i>' +
+                                        formatDate(c.birthDate) +
+                                        ' · ' + escapeHtml(c.className) +
+                                    '</div>' +
+                                '</div>' +
+                                '<div class="card-actions">' +
+                                    '<button class="card-action-btn tooltip" data-tooltip="编辑" onclick="window.editClassmate('' + c.id + '')" aria-label="编辑' + c.name + '的信息">' +
+                                        '<i class="fas fa-pen" aria-hidden="true"></i>' +
+                                    '</button>' +
+                                    '<button class="card-action-btn delete tooltip" data-tooltip="删除" onclick="window.deleteClassmate('' + c.id + '')" aria-label="删除' + c.name + '的信息">' +
+                                        '<i class="fas fa-trash" aria-hidden="true"></i>' +
+                                    '</button>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="card-body">' +
+                                '<div class="info-row">' +
+                                    '<span class="info-label"><i class="fas fa-phone" aria-hidden="true"></i> 电话</span>' +
+                                    '<span class="info-value phone" title="' + escapeHtml(c.phone) + '">' +
+                                        '<i class="fas fa-mobile-alt" aria-hidden="true"></i>' +
+                                        escapeHtml(c.phone) +
+                                    '</span>' +
+                                '</div>' +
+                                '<div class="info-row">' +
+                                    '<span class="info-label"><i class="fas fa-heart" aria-hidden="true"></i> 喜欢的人</span>' +
+                                    '<span class="info-value">' + escapeHtml(c.crush) + '</span>' +
+                                '</div>' +
+                                '<div class="info-row">' +
+                                    '<span class="info-label"><i class="fas fa-film" aria-hidden="true"></i> 喜欢的电影</span>' +
+                                    '<span class="info-value">' + escapeHtml(c.movie) + '</span>' +
+                                '</div>' +
+                                '<div class="info-row">' +
+                                    '<span class="info-label"><i class="fas fa-palette" aria-hidden="true"></i> 喜欢的颜色</span>' +
+                                    '<span class="info-value">' + escapeHtml(c.color) + '</span>' +
+                                '</div>' +
+                                '<div class="info-row">' +
+                                    '<span class="info-label"><i class="fas fa-utensils" aria-hidden="true"></i> 喜欢的食物</span>' +
+                                    '<span class="info-value">' + escapeHtml(c.food) + '</span>' +
+                                '</div>' +
+                                '<div class="info-row">' +
+                                    '<span class="info-label"><i class="fas fa-gamepad" aria-hidden="true"></i> 喜欢的游戏</span>' +
+                                    '<span class="info-value">' + escapeHtml(c.game) + '</span>' +
+                                '</div>' +
+                                '<div class="info-row">' +
+                                    '<span class="info-label"><i class="fas fa-plane" aria-hidden="true"></i> 想去的远方</span>' +
+                                    '<span class="info-value">' + escapeHtml(c.destination) + '</span>' +
+                                '</div>' +
+                                '<div class="info-row">' +
+                                    '<span class="info-label"><i class="fas fa-star" aria-hidden="true"></i> 心中的梦想</span>' +
+                                    '<span class="info-value">' + escapeHtml(c.dream) + '</span>' +
+                                '</div>' +
+                                '<div class="motto-box">' +
+                                    '<div class="motto-text" title="' + escapeHtml(c.motto) + '">' + escapeHtml(c.motto) + '</div>' +
+                                '</div>' +
+                                '<div class="info-row" style="margin-top: 0.5rem;">' +
+                                    '<span class="info-label"><i class="fas fa-sticky-note" aria-hidden="true"></i> 备注</span>' +
+                                    '<span class="info-value" style="white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">' + escapeHtml(c.notes) + '</span>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="card-footer">' +
+                                '<span class="dream-tag" title="' + escapeHtml(c.dream) + '">' +
+                                    '<i class="fas fa-rocket" aria-hidden="true"></i>' +
+                                    escapeHtml(c.dream) +
+                                '</span>' +
+                                '<span class="date-tag">' + new Date(c.createdAt).toLocaleDateString('zh-CN') + '</span>' +
+                            '</div>' +
+                        '</article>';
+                    }).join('');
+                }
+            }
 
-if (type === 'add') {
-let students = [];
-try {
-const res = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/${baseBranch}/${CONFIG.DATA_PATH}/${classId}/students.json`);
-if (res.ok) students = await res.json();
-} catch(e) {}
-const saveData = {...data};
-delete saveData.className;
-students.push(saveData);
-filePath = `${CONFIG.DATA_PATH}/${classId}/students.json`;
-content = btoa(unescape(encodeURIComponent(JSON.stringify(students, null, 2))));
-message = `添加同学：${data.name} (${data.className})`;
-} else if (type === 'role') {
-let roles = {};
-try {
-const res = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/${baseBranch}/${CONFIG.DATA_PATH}/${classId}/roles.json`);
-if (res.ok) roles = await res.json();
-} catch(e) {}
-roles[data.roleType] = data.roleName;
-filePath = `${CONFIG.DATA_PATH}/${classId}/roles.json`;
-content = btoa(unescape(encodeURIComponent(JSON.stringify(roles, null, 2))));
-message = `任命职务：${data.roleName} 为 ${CONFIG.ROLES[data.roleType]?.name || data.roleType} (${data.className})`;
-}
+            // 点击姓氏筛选（不显示列表，但功能保留）
+            window.filterBySurname = function(surname) {
+                document.getElementById('searchInput').value = surname;
+                render();
+                showToast('已筛选姓' + surname + '的同学');
+            };
 
-// 4. 获取文件SHA（如果存在）
-let fileSha = null;
-try {
-const fileRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${baseBranch}`, {
-headers: {'Authorization':`token ${token}`}
-});
-if (fileRes.ok) {
-const fileData = await fileRes.json();
-fileSha = fileData.sha;
-}
-} catch(e) {}
+            function validateForm() {
+                var isValid = true;
+                var fields = [
+                    { id: 'name', validator: function(v) { return v && v.length >= 1 && v.length <= 5; } },
+                    { id: 'className', validator: function(v) { return !!v; } },
+                    { id: 'birthDate', validator: function(v) {
+                        if (!v) return false;
+                        var d = new Date(v);
+                        var year = d.getFullYear();
+                        return year >= 2009 && year <= 2012;
+                    }},
+                    { id: 'phone', validator: function(v) { return /^1[3-9]\d{9}$/.test(v); } },
+                    { id: 'crush', validator: function(v) { return !!v; } },
+                    { id: 'movie', validator: function(v) { return !!v; } },
+                    { id: 'color', validator: function(v) { return !!v; } },
+                    { id: 'food', validator: function(v) { return !!v; } },
+                    { id: 'game', validator: function(v) { return !!v; } },
+                    { id: 'destination', validator: function(v) { return !!v; } },
+                    { id: 'dream', validator: function(v) { return !!v; } },
+                    { id: 'motto', validator: function(v) { return !!v; } },
+                    { id: 'notes', validator: function(v) { return !!v; } }
+                ];
 
-// 5. 提交文件修改
-const body = {message,content,branch:branchName};
-if (fileSha) body.sha = fileSha;
-const updateRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`, {
-method: 'PUT',
-headers: {'Authorization':`token ${token}`,'Content-Type':'application/json'},
-body: JSON.stringify(body)
-});
-if (!updateRes.ok) throw new Error('提交文件失败');
+                fields.forEach(function(field) {
+                    var el = document.getElementById(field.id);
+                    var group = el.closest('.form-group');
+                    var value = el.value.trim();
+                    if (!field.validator(value)) {
+                        group.classList.add('has-error');
+                        isValid = false;
+                    } else {
+                        group.classList.remove('has-error');
+                    }
+                });
 
-// 6. 创建Pull Request
-const prRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/pulls`, {
-method: 'POST',
-headers: {'Authorization':`token ${token}`,'Content-Type':'application/json'},
-body: JSON.stringify({
-title: `[同学录] ${message}`,
-body: `由 ${appState.currentUser.className || '管理员'} 提交
+                return isValid;
+            }
 
-请审核后合并`,
-head: branchName,
-base: baseBranch
-})
-});
-if (!prRes.ok) throw new Error('创建PR失败');
-const prData = await prRes.json();
-window.open(prData.html_url, '_blank');
-}
+            function clearForm() {
+                document.getElementById('classmateForm').reset();
+                document.getElementById('editId').value = '';
+                currentAvatar = null;
+                updateAvatarPreview();
+                document.querySelectorAll('.form-group').forEach(function(g) { g.classList.remove('has-error'); });
+            }
 
-// ==================== 编辑/删除提示 ====================
-function editStudent(id) {
-const s = appState.students.find(x => x.id === id);
-if (!s) return;
-showToast('编辑功能：请通过GitHub直接修改 data/'+s._classId+'/students.json', 'warning');
-}
-function deleteStudent(id) {
-const s = appState.students.find(x => x.id === id);
-if (!s) return;
-if (!confirm(`确定要删除 ${s.name} 的信息吗？`)) return;
-showToast('删除功能：请通过GitHub直接删除 data/'+s._classId+'/students.json 中对应条目', 'warning');
-}
-function removeRole(className, roleKey) {
-if (!confirm(`确定要移除该职务吗？`)) return;
-showToast('移除职务：请通过GitHub直接修改 data/'+appState.classes.find(c=>c.name===className)?.id+'/roles.json', 'warning');
-}
+            function updateAvatarPreview() {
+                var preview = document.getElementById('avatarPreview');
+                if (currentAvatar) {
+                    preview.innerHTML = '<img src="' + currentAvatar + '" alt="头像预览" style="width:100%;height:100%;object-fit:cover;">';
+                } else {
+                    preview.innerHTML = '<i class="fas fa-user" aria-hidden="true"></i>';
+                }
+            }
 
-// ==================== Toast提示 ====================
-function showToast(message, type='info') {
-const toast = document.createElement('div');
-toast.className = `toast ${type}`;
-toast.textContent = message;
-document.body.appendChild(toast);
-setTimeout(() => toast.classList.add('show'), 10);
-setTimeout(() => { toast.remove(); }, 3000);
-}
+            function openModal(isEdit, classmate) {
+                var overlay = document.getElementById('modalOverlay');
+                var title = document.getElementById('modalTitle');
 
-// 启动
-init();
-</script>
+                if (isEdit && classmate) {
+                    title.innerHTML = '<i class="fas fa-user-edit" aria-hidden="true"></i><span>编辑同学</span>';
+                    document.getElementById('editId').value = classmate.id;
+                    document.getElementById('name').value = classmate.name;
+                    document.getElementById('className').value = classmate.className || '';
+                    document.getElementById('birthDate').value = classmate.birthDate;
+                    document.getElementById('phone').value = classmate.phone;
+                    document.getElementById('university').value = classmate.university || '';
+                    document.getElementById('crush').value = classmate.crush;
+                    document.getElementById('movie').value = classmate.movie;
+                    document.getElementById('color').value = classmate.color;
+                    document.getElementById('food').value = classmate.food;
+                    document.getElementById('game').value = classmate.game;
+                    document.getElementById('destination').value = classmate.destination;
+                    document.getElementById('dream').value = classmate.dream;
+                    document.getElementById('motto').value = classmate.motto;
+                    document.getElementById('notes').value = classmate.notes;
+                    currentAvatar = classmate.avatar;
+                    updateAvatarPreview();
+                } else {
+                    title.innerHTML = '<i class="fas fa-user-plus" aria-hidden="true"></i><span>添加同学</span>';
+                    clearForm();
+                }
+
+                overlay.classList.add('active');
+                overlay.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                setTimeout(function() { document.getElementById('name').focus(); }, 100);
+            }
+
+            function closeModal() {
+                var overlay = document.getElementById('modalOverlay');
+                overlay.classList.remove('active');
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                clearForm();
+            }
+
+            function saveClassmate() {
+                if (!validateForm()) {
+                    showToast('请检查表单填写是否正确', 'error');
+                    return;
+                }
+
+                var id = document.getElementById('editId').value;
+                var isEdit = !!id;
+                var now = Date.now();
+
+                var data = {
+                    id: isEdit ? id : generateId(),
+                    name: document.getElementById('name').value.trim(),
+                    className: document.getElementById('className').value,
+                    birthDate: document.getElementById('birthDate').value,
+                    phone: document.getElementById('phone').value.trim(),
+                    university: document.getElementById('university').value.trim(),
+                    crush: document.getElementById('crush').value.trim(),
+                    movie: document.getElementById('movie').value.trim(),
+                    color: document.getElementById('color').value.trim(),
+                    food: document.getElementById('food').value.trim(),
+                    game: document.getElementById('game').value.trim(),
+                    destination: document.getElementById('destination').value.trim(),
+                    dream: document.getElementById('dream').value.trim(),
+                    motto: document.getElementById('motto').value.trim(),
+                    notes: document.getElementById('notes').value.trim(),
+                    avatar: currentAvatar,
+                    createdAt: isEdit ? (classmates.find(function(c) { return c.id === id; })?.createdAt || now) : now
+                };
+
+                if (isEdit) {
+                    var index = classmates.findIndex(function(c) { return c.id === id; });
+                    if (index !== -1) {
+                        classmates[index] = data;
+                        showToast('同学信息已更新');
+                    }
+                } else {
+                    classmates.push(data);
+                    showToast('新同学已添加');
+                }
+
+                saveData();
+                render();
+                closeModal();
+            }
+
+            window.editClassmate = function(id) {
+                var classmate = classmates.find(function(c) { return c.id === id; });
+                if (classmate) {
+                    openModal(true, classmate);
+                }
+            };
+
+            window.deleteClassmate = function(id) {
+                var classmate = classmates.find(function(c) { return c.id === id; });
+                if (!classmate) return;
+
+                showConfirm(
+                    '确认删除',
+                    '确定要删除 ' + classmate.name + ' 的同学信息吗？此操作不可恢复。',
+                    function() {
+                        classmates = classmates.filter(function(c) { return c.id !== id; });
+                        saveData();
+                        render();
+                        showToast('同学信息已删除');
+                    }
+                );
+            };
+
+            function showConfirm(title, text, callback) {
+                confirmCallback = callback;
+                document.getElementById('confirmTitle').textContent = title;
+                document.getElementById('confirmText').textContent = text;
+                var dialog = document.getElementById('confirmDialog');
+                dialog.classList.add('active');
+                dialog.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function hideConfirm() {
+                var dialog = document.getElementById('confirmDialog');
+                dialog.classList.remove('active');
+                dialog.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                confirmCallback = null;
+            }
+
+            function showToast(message, type) {
+                var toast = document.getElementById('toast');
+                var icon = type === 'error' ? '<i class="fas fa-exclamation-circle" aria-hidden="true"></i>' : '<i class="fas fa-check-circle" aria-hidden="true"></i>';
+                toast.innerHTML = icon + ' ' + message;
+                toast.classList.add('show');
+                setTimeout(function() { toast.classList.remove('show'); }, 3000);
+            }
+
+            function resetData() {
+                showConfirm(
+                    '重置示例数据',
+                    '确定要覆盖当前所有数据，恢复为初始示例数据吗？此操作不可恢复。',
+                    function() {
+                        classmates = JSON.parse(JSON.stringify(defaultData));
+                        saveData();
+                        render();
+                        showToast('已重置为示例数据');
+                    }
+                );
+            }
+
+            function toggleTheme() {
+                var html = document.documentElement;
+                var current = html.getAttribute('data-theme');
+                var next = current === 'light' ? 'dark' : 'light';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+
+                var icon = document.getElementById('themeIcon');
+                icon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+
+            function initTheme() {
+                var saved = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var theme = saved || (prefersDark ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+                document.getElementById('themeIcon').className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+
+            function initBgSelector() {
+                var dots = document.querySelectorAll('.bg-dot');
+                var pattern = document.getElementById('bgPattern');
+                var saved = localStorage.getItem('bgPattern') || 'gradient-1';
+
+                pattern.className = 'bg-pattern ' + saved;
+                dots.forEach(function(d) {
+                    if (d.dataset.bg === saved) {
+                        d.classList.add('active');
+                        d.setAttribute('aria-checked', 'true');
+                    } else {
+                        d.classList.remove('active');
+                        d.setAttribute('aria-checked', 'false');
+                    }
+                });
+
+                dots.forEach(function(dot) {
+                    dot.addEventListener('click', function() {
+                        var bg = this.dataset.bg;
+                        pattern.className = 'bg-pattern ' + bg;
+                        localStorage.setItem('bgPattern', bg);
+                        dots.forEach(function(d) {
+                            d.classList.remove('active');
+                            d.setAttribute('aria-checked', 'false');
+                        });
+                        this.classList.add('active');
+                        this.setAttribute('aria-checked', 'true');
+                    });
+
+                    dot.addEventListener('keydown', function(e) {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.click();
+                        }
+                    });
+                });
+            }
+
+            // 登录相关
+            function openLoginModal() {
+                if (isAdmin) {
+                    showToast('您已是登录状态（管理员）');
+                    return;
+                }
+                var overlay = document.getElementById('loginOverlay');
+                overlay.classList.add('active');
+                overlay.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                document.getElementById('loginPassword').value = '';
+                document.getElementById('loginError').style.display = 'none';
+                setTimeout(function() { document.getElementById('loginPassword').focus(); }, 100);
+            }
+
+            function closeLoginModal() {
+                var overlay = document.getElementById('loginOverlay');
+                overlay.classList.remove('active');
+                overlay.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            function doLogin() {
+                var pwd = document.getElementById('loginPassword').value;
+                if (pwd === DEFAULT_PASSWORD) {
+                    isAdmin = true;
+                    sessionStorage.setItem(LOGIN_KEY, 'true');
+                    updateAdminUI();
+                    closeLoginModal();
+                    showToast('登录成功，已解锁管理权限');
+                } else {
+                    document.getElementById('loginError').style.display = 'block';
+                    document.getElementById('loginPassword').value = '';
+                    document.getElementById('loginPassword').focus();
+                }
+            }
+
+            function doLogout() {
+                isAdmin = false;
+                sessionStorage.removeItem(LOGIN_KEY);
+                updateAdminUI();
+                showToast('已退出登录');
+            }
+
+            function initEventListeners() {
+                document.getElementById('addBtn').addEventListener('click', function() { openModal(false); });
+                document.getElementById('modalClose').addEventListener('click', closeModal);
+                document.getElementById('modalCancel').addEventListener('click', closeModal);
+                document.getElementById('modalSubmit').addEventListener('click', saveClassmate);
+                document.getElementById('resetBtn').addEventListener('click', resetData);
+                document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+                document.getElementById('loginBtn').addEventListener('click', openLoginModal);
+                document.getElementById('loginClose').addEventListener('click', closeLoginModal);
+                document.getElementById('loginCancel').addEventListener('click', closeLoginModal);
+                document.getElementById('loginSubmit').addEventListener('click', doLogin);
+                document.getElementById('logoutBtn').addEventListener('click', doLogout);
+
+                document.getElementById('modalOverlay').addEventListener('click', function(e) {
+                    if (e.target === e.currentTarget) closeModal();
+                });
+
+                document.getElementById('loginOverlay').addEventListener('click', function(e) {
+                    if (e.target === e.currentTarget) closeLoginModal();
+                });
+
+                document.getElementById('confirmCancel').addEventListener('click', hideConfirm);
+                document.getElementById('confirmOk').addEventListener('click', function() {
+                    if (confirmCallback) confirmCallback();
+                    hideConfirm();
+                });
+
+                document.getElementById('confirmDialog').addEventListener('click', function(e) {
+                    if (e.target === e.currentTarget) hideConfirm();
+                });
+
+                document.getElementById('searchInput').addEventListener('input', function() {
+                    clearTimeout(searchDebounceTimer);
+                    searchDebounceTimer = setTimeout(render, 300);
+                });
+
+                document.getElementById('sortSelect').addEventListener('change', render);
+
+                document.getElementById('avatarSelectBtn').addEventListener('click', function() {
+                    document.getElementById('avatarInput').click();
+                });
+
+                document.getElementById('avatarInput').addEventListener('change', function(e) {
+                    var file = e.target.files[0];
+                    if (!file) return;
+
+                    if (file.size > 2 * 1024 * 1024) {
+                        showToast('图片大小不能超过2MB', 'error');
+                        return;
+                    }
+
+                    var reader = new FileReader();
+                    reader.onload = function(event) {
+                        currentAvatar = event.target.result;
+                        updateAvatarPreview();
+                    };
+                    reader.readAsDataURL(file);
+                });
+
+                document.getElementById('loginPassword').addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') doLogin();
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        if (document.getElementById('confirmDialog').classList.contains('active')) {
+                            hideConfirm();
+                        } else if (document.getElementById('loginOverlay').classList.contains('active')) {
+                            closeLoginModal();
+                        } else if (document.getElementById('modalOverlay').classList.contains('active')) {
+                            closeModal();
+                        }
+                    }
+                });
+
+                window.addEventListener('scroll', function() {
+                    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    var scrolled = (winScroll / height) * 100;
+                    document.getElementById('scrollIndicator').style.width = scrolled + '%';
+                });
+            }
+
+            function init() {
+                loadData();
+                checkLoginStatus();
+                initTheme();
+                initBgSelector();
+                renderClassNav();
+                initEventListeners();
+                render();
+            }
+
+            init();
+        })();
+    </script>
 </body>
 </html>
