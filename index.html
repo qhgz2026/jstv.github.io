@@ -1171,7 +1171,7 @@
 
         function doLogout() {
             isAdmin = false;
-            sessionStorage.removeItem(LOGIN_KEY);
+            localStorage.removeItem(LOGIN_KEY);
             updateAdminUI();
             showToast('已退出登录');
         }
