@@ -567,6 +567,10 @@
         var DEFAULT_PASSWORD = '202621';
         var DATA_LOADED_KEY = 'json_data_loaded';
 
+        // Cloudflare API 配置
+        var API_BASE = 'https://qhgz2026-api.cnload2000.workers.dev';
+        var AUTH_TOKEN = localStorage.getItem('api_token') || '';
+
         var students = [];
         var classes = [];
         var currentAvatar = null;
@@ -600,14 +604,15 @@
             }
         }
 
-        function fetchJsonData(callback) {
+        function fetchApiData(callback) {
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'data/classes.json', true);
+            xhr.open('GET', API_BASE + '/api/classes', true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
                         try {
-                            classes = JSON.parse(xhr.responseText);
+                            var result = JSON.parse(xhr.responseText);
+                            classes = result.data || [];
                             fetchAllStudents(callback);
                         } catch (e) {
                             showToast('班级数据格式错误', 'error');
@@ -627,58 +632,43 @@
         }
 
         function fetchAllStudents(callback) {
-            var loaded = 0;
-            var total = classes.length;
-            var allStudents = [];
-            var hasError = false;
-
-            if (total === 0) {
-                students = [];
-                if (callback) callback(true);
-                return;
-            }
-
-            for (var i = 0; i < total; i++) {
-                (function(cls) {
-                    var xhr = new XMLHttpRequest();
-                    xhr.open('GET', 'data/' + cls.id + '/students.json', true);
-                    xhr.onreadystatechange = function() {
-                        if (xhr.readyState === 4) {
-                            loaded++;
-                            if (xhr.status === 200) {
-                                try {
-                                    var list = JSON.parse(xhr.responseText);
-                                    for (var j = 0; j < list.length; j++) {
-                                        var s = list[j];
-                                        s._classId = cls.id;
-                                        s._className = cls.name;
-                                        s._source = 'json';
-                                        if (!s._uid) s._uid = 'json_' + cls.id + '_' + s.id;
-                                        allStudents.push(s);
-                                    }
-                                } catch (e) {
-                                    hasError = true;
-                                }
+            var xhr = new XMLHttpRequest();
+            var url = API_BASE + '/api/students/public';
+            xhr.open('GET', url, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        try {
+                            var result = JSON.parse(xhr.responseText);
+                            var list = result.data || [];
+                            var allStudents = [];
+                            for (var j = 0; j < list.length; j++) {
+                                var s = list[j];
+                                s._classId = s.class_id;
+                                s._className = s.class_name;
+                                s._source = 'api';
+                                if (!s._uid) s._uid = 'api_' + s.class_id + '_' + s.id;
+                                allStudents.push(s);
                             }
-                            if (loaded >= total) {
-                                students = allStudents;
-                                saveToStorage();
-                                localStorage.setItem(DATA_LOADED_KEY, 'true');
-                                if (callback) callback(!hasError);
-                            }
-                        }
-                    };
-                    xhr.onerror = function() {
-                        loaded++;
-                        if (loaded >= total) {
                             students = allStudents;
                             saveToStorage();
-                            if (callback) callback(!hasError);
+                            localStorage.setItem(DATA_LOADED_KEY, 'true');
+                            if (callback) callback(true);
+                        } catch (e) {
+                            showToast('学生数据格式错误', 'error');
+                            if (callback) callback(false);
                         }
-                    };
-                    xhr.send();
-                })(classes[i]);
-            }
+                    } else {
+                        showToast('无法加载学生数据 (HTTP ' + xhr.status + ')', 'error');
+                        if (callback) callback(false);
+                    }
+                }
+            };
+            xhr.onerror = function() {
+                showToast('网络错误，无法加载学生数据', 'error');
+                if (callback) callback(false);
+            };
+            xhr.send();
         }
 
         function initData() {
@@ -686,8 +676,15 @@
             if (loaded && students.length > 0) {
                 renderClassNav();
                 render();
+                // 后台刷新 API 数据
+                fetchApiData(function(success) {
+                    if (success) {
+                        renderClassNav();
+                        render();
+                    }
+                });
             } else {
-                fetchJsonData(function(success) {
+                fetchApiData(function(success) {
                     renderClassNav();
                     render();
                     if (success) showToast('数据加载完成');
@@ -695,12 +692,12 @@
             }
         }
 
-        function reloadJsonData() {
+        function reloadApiData() {
             localStorage.removeItem(DATA_LOADED_KEY);
-            fetchJsonData(function(success) {
+            fetchApiData(function(success) {
                 renderClassNav();
                 render();
-                if (success) showToast('JSON数据已重新加载');
+                if (success) showToast('数据已重新加载');
             });
         }
 
@@ -993,10 +990,7 @@
             }
 
             var data = {
-                _uid: isEdit ? uid : generateId(),
-                _classId: classId,
-                _className: className,
-                _source: 'local',
+                class_id: classId,
                 name: document.getElementById('name').value.trim(),
                 gender: document.getElementById('gender').value,
                 birthday: document.getElementById('birthday').value.trim(),
@@ -1008,25 +1002,37 @@
                 email: document.getElementById('email').value.trim(),
                 hobby: document.getElementById('hobby').value.trim(),
                 motto: document.getElementById('motto').value.trim(),
-                avatar: currentAvatar
+                avatar: currentAvatar,
+                is_public: 1
             };
 
+            // 调用 API 保存到数据库
+            var xhr = new XMLHttpRequest();
             if (isEdit) {
-                var index = -1;
-                for (var i = 0; i < students.length; i++) {
-                    if (students[i]._uid === uid) { index = i; break; }
-                }
-                if (index !== -1) {
-                    students[index] = data;
-                    showToast('同学信息已更新');
-                }
+                // 提取原始 ID
+                var originalId = uid.replace('api_', '').replace(classId + '_', '');
+                xhr.open('PUT', API_BASE + '/api/students/' + originalId, true);
             } else {
-                students.push(data);
-                showToast('新同学已添加');
+                xhr.open('POST', API_BASE + '/api/students', true);
             }
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            if (AUTH_TOKEN) xhr.setRequestHeader('Authorization', 'Bearer ' + AUTH_TOKEN);
 
-            saveToStorage();
-            render();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        showToast(isEdit ? '同学信息已更新' : '新同学已添加');
+                        // 重新加载数据
+                        fetchApiData(function() {
+                            renderClassNav();
+                            render();
+                        });
+                    } else {
+                        showToast('保存失败: ' + xhr.statusText, 'error');
+                    }
+                }
+            };
+            xhr.send(JSON.stringify(data));
             closeModal();
         }
 
@@ -1039,14 +1045,28 @@
             var s = findStudentByUid(uid);
             if (!s) return;
             showConfirm('确认删除', '确定要删除 ' + s.name + ' 的同学信息吗？此操作不可恢复。', function() {
-                var newList = [];
-                for (var i = 0; i < students.length; i++) {
-                    if (students[i]._uid !== uid) newList.push(students[i]);
-                }
-                students = newList;
-                saveToStorage();
-                render();
-                showToast('同学信息已删除');
+                // 提取原始 ID
+                var parts = uid.split('_');
+                var originalId = parts[parts.length - 1];
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('DELETE', API_BASE + '/api/students/' + originalId, true);
+                if (AUTH_TOKEN) xhr.setRequestHeader('Authorization', 'Bearer ' + AUTH_TOKEN);
+
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            showToast('同学信息已删除');
+                            fetchApiData(function() {
+                                renderClassNav();
+                                render();
+                            });
+                        } else {
+                            showToast('删除失败: ' + xhr.statusText, 'error');
+                        }
+                    }
+                };
+                xhr.send();
             });
         };
 
@@ -1160,7 +1180,7 @@
             document.getElementById('modalCancel').addEventListener('click', closeModal);
             document.getElementById('modalSubmit').addEventListener('click', saveStudent);
             document.getElementById('resetBtn').addEventListener('click', resetData);
-            document.getElementById('reloadBtn').addEventListener('click', reloadJsonData);
+            document.getElementById('reloadBtn').addEventListener('click', reloadApiData);
             document.getElementById('themeToggle').addEventListener('click', toggleTheme);
             document.getElementById('loginBtn').addEventListener('click', openLoginModal);
             document.getElementById('loginClose').addEventListener('click', closeLoginModal);
