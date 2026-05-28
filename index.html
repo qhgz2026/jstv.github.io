@@ -364,7 +364,6 @@
             .class-nav { padding: 0.5rem 1rem 0; }
         }
     </style>
-<base target="_blank">
 </head>
 <body>
     <div class="bg-pattern gradient-1" id="bgPattern"></div>
@@ -703,7 +702,15 @@
         }
 
         function checkLoginStatus() {
-            isAdmin = sessionStorage.getItem(LOGIN_KEY) === 'true';
+            isAdmin = localStorage.getItem(LOGIN_KEY) === 'true';
+            if (!isAdmin) {
+                // 检查 API token
+                var token = localStorage.getItem('api_token');
+                if (token) {
+                    AUTH_TOKEN = token;
+                    isAdmin = true;
+                }
+            }
             updateAdminUI();
         }
 
@@ -1010,7 +1017,6 @@
             // 调用 API 保存到数据库
             var xhr = new XMLHttpRequest();
             if (isEdit) {
-                // 提取原始 ID
                 var parts = uid.split('_');
                 var originalId = parts[parts.length - 1];
                 xhr.open('PUT', API_BASE + '/api/students/' + originalId, true);
@@ -1024,7 +1030,6 @@
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
                         showToast(isEdit ? '同学信息已更新' : '新同学已添加');
-                        // 重新加载数据
                         fetchApiData(function() {
                             renderClassNav();
                             render();
@@ -1047,7 +1052,6 @@
             var s = findStudentByUid(uid);
             if (!s) return;
             showConfirm('确认删除', '确定要删除 ' + s.name + ' 的同学信息吗？此操作不可恢复。', function() {
-                // 提取原始 ID
                 var parts = uid.split('_');
                 var originalId = parts[parts.length - 1];
 
@@ -1156,22 +1160,46 @@
 
         function doLogin() {
             var pwd = document.getElementById('loginPassword').value;
-            if (pwd === DEFAULT_PASSWORD) {
-                isAdmin = true;
-                sessionStorage.setItem(LOGIN_KEY, 'true');
-                updateAdminUI();
-                closeLoginModal();
-                showToast('登录成功，已解锁管理权限');
-            } else {
-                document.getElementById('loginError').style.display = 'block';
-                document.getElementById('loginPassword').value = '';
-                document.getElementById('loginPassword').focus();
-            }
+            var username = 'admin';
+
+            // 调用 Cloudflare API 登录
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', API_BASE + '/api/auth/login', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        try {
+                            var result = JSON.parse(xhr.responseText);
+                            if (result.success) {
+                                AUTH_TOKEN = result.token;
+                                localStorage.setItem('api_token', result.token);
+                                isAdmin = true;
+                                localStorage.setItem(LOGIN_KEY, 'true');
+                                updateAdminUI();
+                                closeLoginModal();
+                                showToast('登录成功！欢迎回来，' + result.user.name);
+                            } else {
+                                showToast('登录失败: ' + result.message, 'error');
+                                document.getElementById('loginError').style.display = 'block';
+                            }
+                        } catch (e) {
+                            showToast('登录响应格式错误', 'error');
+                        }
+                    } else {
+                        showToast('登录失败: 用户名或密码错误', 'error');
+                        document.getElementById('loginError').style.display = 'block';
+                    }
+                }
+            };
+            xhr.send(JSON.stringify({username: username, password: pwd}));
         }
 
         function doLogout() {
             isAdmin = false;
             localStorage.removeItem(LOGIN_KEY);
+            localStorage.removeItem('api_token');
+            AUTH_TOKEN = '';
             updateAdminUI();
             showToast('已退出登录');
         }
