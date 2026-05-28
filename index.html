@@ -364,6 +364,7 @@
             .class-nav { padding: 0.5rem 1rem 0; }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
     <div class="bg-pattern gradient-1" id="bgPattern"></div>
@@ -1010,7 +1011,8 @@
             var xhr = new XMLHttpRequest();
             if (isEdit) {
                 // 提取原始 ID
-                var originalId = uid.replace('api_', '').replace(classId + '_', '');
+                var parts = uid.split('_');
+                var originalId = parts[parts.length - 1];
                 xhr.open('PUT', API_BASE + '/api/students/' + originalId, true);
             } else {
                 xhr.open('POST', API_BASE + '/api/students', true);
