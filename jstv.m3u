@@ -9,8 +9,6 @@ http://ott.mobaibox.com/PLTV/4/224/3221227546/index.m3u8
 http://ott.mobaibox.com/PLTV/4/224/3221227549/index.m3u8
 #EXTINF:-1 group-title="央视频道",CCTV5
 http://ott.mobaibox.com/PLTV/4/224/3221227537/index.m3u8
-#EXTINF:-1 group-title="央视频道",CCTV5+
-http://ott.mobaibox.com/PLTV/4/224/3221227502/index.m3u8
 #EXTINF:-1 group-title="央视频道",CCTV6
 http://ott.mobaibox.com/PLTV/4/224/3221228516/index.m3u8
 #EXTINF:-1 group-title="央视频道",CCTV7
@@ -41,14 +39,14 @@ http://ott.mobaibox.com/PLTV/4/224/3221228472/index.m3u8
 http://ott.mobaibox.com/PLTV/4/224/3221228165/index.m3u8 
 #EXTINF:-1 group-title="高清臻享频道",北京卫视4K
 http://ott.mobaibox.com/PLTV/4/224/3221228817/index.m3u8   
-#EXTINF:-1 group-title="高清臻享频道",江苏卫视4K
+#EXTINF:-1 group-title="高清臻享频道",江苏卫视4K*
 http://ott.mobaibox.com/PLTV/4/224/3221228861/index.m3u8  
 #EXTINF:-1 group-title="高清臻享频道",北京卫视4K
 http://ott.mobaibox.com/PLTV/4/224/3221228890/index.m3u8
 #EXTINF:-1 group-title="高清臻享频道",广东卫视4K
 http://ott.mobaibox.com/PLTV/4/224/3221228838/index.m3u8
 #EXTINF:-1 group-title="高清臻享频道",深圳卫视4K
-http://ott.mobaibox.com/PLTV/4/224/3221228835/index.m3u8
+http://ott.mobaibox.com/PLTV/4/224/3221228835/index.m3u8
 #EXTINF:-1 group-title="卫视频道",江苏卫视
 http://ott.mobaibox.com/PLTV/4/224/3221227552/index.m3u8
 #EXTINF:-1 group-title="卫视频道",浙江卫视
@@ -179,6 +177,14 @@ http://ott.mobaibox.com/PLTV/4/224/3221228246/index.m3u8
 http://ott.mobaibox.com/PLTV/4/224/3221227325/index.m3u8
 #EXTINF:-1 group-title="省内频道",镇江-3
 http://ott.mobaibox.com/PLTV/4/224/3221228208/index.m3u8
+#EXTINF:-1 group-title="省内频道",徐州-1
+http://ott.mobaibox.com/PLTV/4/224/3221225945/index.m3u8
+#EXTINF:-1 group-title="省内频道",徐州-2
+http://ott.mobaibox.com/PLTV/4/224/3221225947/index.m3u8
+#EXTINF:-1 group-title="省内频道",徐州-3
+http://ott.mobaibox.com/PLTV/4/224/3221225949/index.m3u8
+#EXTINF:-1 group-title="省内频道",徐州-4
+http://ott.mobaibox.com/PLTV/4/224/3221225951/index.m3u8
 #EXTINF:-1 group-title="省内频道",淮安公共
 http://ott.mobaibox.com/PLTV/4/224/3221228840/index.m3u8
 #EXTINF:-1 group-title="省内频道",淮安影视娱乐
@@ -221,6 +227,8 @@ http://ott.mobaibox.com/PLTV/4/224/3221227678/index.m3u8
 http://ott.mobaibox.com/PLTV/4/224/3221227576/index.m3u8
 #EXTINF:-1 group-title="省内频道",沭阳综合
 http://ott.mobaibox.com/PLTV/4/224/3221228812/index.m3u8
+#EXTINF:-1 group-title="省内频道",泗洪综合
+http://ott.mobaibox.com/PLTV/4/224/3221228521/index.m3u8
 #EXTINF:-1 group-title="省内频道",宿迁公共
 http://ott.mobaibox.com/PLTV/4/224/3221226939/index.m3u8
 #EXTINF:-1 group-title="省内频道",宿迁综合
@@ -237,7 +245,7 @@ http://ott.mobaibox.com/PLTV/4/224/3221228152/index.m3u8
 http://ott.mobaibox.com/PLTV/4/224/3221228081/index.m3u8
 #EXTINF:-1 group-title="省内频道",铜山3
 http://ott.mobaibox.com/PLTV/4/224/3221228055/index.m3u8
-#EXTINF:-1 group-title="省内频道",铜山4
+#EXTINF:-1 group-title="省内频道",铜山4*
 http://ott.mobaibox.com/PLTV/4/224/3221228249/index.m3u8
 #EXTINF:-1 group-title="省内频道",新沂-1
 http://ott.mobaibox.com/PLTV/4/224/3221227289/index.m3u8
@@ -255,7 +263,7 @@ http://ott.mobaibox.com/PLTV/3/224/3221229050/index.m3u8
 http://ott.mobaibox.com/PLTV/3/224/3221229021/index.m3u8
 #EXTINF:-1 group-title="省内频道",宜兴生活
 http://ott.mobaibox.com/PLTV/3/224/3221229018/index.m3u8 
-#EXTINF:-1 group-title="高清臻享频道",4KUHD
+#EXTINF:-1 group-title="高清臻享频道",4KUHD*
 http://ott.mobaibox.com/PLTV/4/224/3221227506/index.m3u8
 #EXTINF:-1 group-title="高清臻享频道",睛彩竞技
 http://ott.mobaibox.com/PLTV/4/224/3221228679/index.m3u8
@@ -351,8 +359,6 @@ http://ott.mobaibox.com/PLTV/4/224/3221227588/index.m3u8
 http://ott.mobaibox.com/PLTV/4/224/3221227512/index.m3u8
 #EXTINF:-1 group-title="专业频道",NewTV炫舞未来
 http://ott.mobaibox.com/PLTV/4/224/3221227475/index.m3u8
-#EXTINF:-1 group-title="专业频道",NewTV中国功夫
-http://ott.mobaibox.com/PLTV/4/224/3221227530/index.m3u8
 #EXTINF:-1 group-title="专业频道",中国功夫
 http://ott.mobaibox.com/PLTV/4/224/3221227530/index.m3u8
 #EXTINF:-1 group-title="专业频道",黑莓电影
@@ -381,16 +387,12 @@ http://ott.mobaibox.com/PLTV/4/224/3221227618/index.m3u8
 http://ott.mobaibox.com/PLTV/4/224/3221227547/index.m3u8
 #EXTINF:-1 group-title="专业频道",精品萌宠
 http://ott.mobaibox.com/PLTV/4/224/3221228430/index.m3u8
-#EXTINF:-1 group-title="专业频道",精品体育
-http://ott.mobaibox.com/PLTV/4/224/3221227615/index.m3u8
 #EXTINF:-1 group-title="专业频道",军旅剧场
 http://ott.mobaibox.com/PLTV/4/224/3221227603/index.m3u8
 #EXTINF:-1 group-title="专业频道",军事评论
 http://ott.mobaibox.com/PLTV/4/224/3221227544/index.m3u8
 #EXTINF:-1 group-title="专业频道",美食频道
 http://ott.mobaibox.com/PLTV/4/224/3221228562/index.m3u8
-#EXTINF:-1 group-title="专业频道",美妆频道
-http://ott.mobaibox.com/PLTV/4/224/3221228703/index.m3u8
 #EXTINF:-1 group-title="专业频道",咪咕音乐
 http://ott.mobaibox.com/PLTV/4/224/3221228794/index.m3u8
 #EXTINF:-1 group-title="专业频道",咪咕音乐
@@ -437,10 +439,6 @@ http://ott.mobaibox.com/PLTV/4/224/3221228723/index.m3u8
 http://ott.mobaibox.com/PLTV/4/224/3221228698/index.m3u8
 #EXTINF:-1 group-title="综艺频道",CETV早期教育
 http://ott.mobaibox.com/PLTV/4/224/3221228692/index.m3u8
-#EXTINF:-1 group-title="综艺频道",滑雪
-http://ott.mobaibox.com/PLTV/4/224/3221228726/index.m3u8
-#EXTINF:-1 group-title="综艺频道",滑雪2
-http://ott.mobaibox.com/PLTV/4/224/3221228737/index.m3u8  
 #EXTINF:-1 group-title="轮播频道",电影轮播
 http://ott.mobaibox.com/PLTV/4/224/3221227579/index.m3u8
 #EXTINF:-1 group-title="轮播频道",电影轮播
@@ -505,10 +503,6 @@ http://ott.mobaibox.com/PLTV/4/224/3221228664/index.m3u8
 http://ott.mobaibox.com/PLTV/4/224/3221228666/index.m3u8
 #EXTINF:-1 group-title="轮播频道",韩剧剧场3
 http://ott.mobaibox.com/PLTV/4/224/3221228669/index.m3u8
-#EXTINF:-1 group-title="轮播频道",韩剧剧场4
-http://ott.mobaibox.com/PLTV/4/224/3221228670/index.m3u8
-#EXTINF:-1 group-title="轮播频道",戏剧频道
-http://ott.mobaibox.com/PLTV/4/224/3221228673/index.m3u8
 #EXTINF:-1 group-title="轮播频道",电影频道
 http://ott.mobaibox.com/PLTV/4/224/3221228676/index.m3u8
 #EXTINF:-1 group-title="轮播频道",电视剧12
@@ -559,20 +553,14 @@ http://ott.mobaibox.com/PLTV/4/224/3221228893/index.m3u8
 http://ott.mobaibox.com/PLTV/4/224/3221228896/index.m3u8
 #EXTINF:-1 group-title="轮播频道",电视剧26
 http://ott.mobaibox.com/PLTV/4/224/3221228911/index.m3u8
-#EXTINF:-1 group-title="广播Radio",江苏文艺广播FM91.4
-http://ott.mobaibox.com/PLTV/1/224/3221227987/1.m3u8
 #EXTINF:-1 group-title="广播Radio",江苏健康广播FM100.5
 http://ott.mobaibox.com/PLTV/1/224/3221227952/1.m3u8
 #EXTINF:-1 group-title="广播Radio",江苏音乐台FM89.7
 http://ott.mobaibox.com/PLTV/1/224/3221227949/1.m3u8
 #EXTINF:-1 group-title="广播Radio",江苏交通广播网FM101.1
 http://ott.mobaibox.com/PLTV/1/224/3221227937/1.m3u8
-#EXTINF:-1 group-title="广播Radio",金陵之声FM99.7
-http://ott.mobaibox.com/PLTV/3/224/3221227940/index.m3u8
 #EXTINF:-1 group-title="广播Radio",江苏经典流行音乐FM97.5
 http://ott.mobaibox.com/PLTV/3/224/3221227943/index.m3u8
-#EXTINF:-1 group-title="广播Radio",江苏财经广播FM95.2
-http://ott.mobaibox.com/PLTV/3/224/3221227946/index.m3u8
 #EXTINF:-1 group-title="广播Radio",江苏新闻广播FM93.7
 http://ott.mobaibox.com/PLTV/3/224/3221227984/index.m3u8
 #EXTINF:-1 group-title="广播Radio",江苏故事广播FM104.9
